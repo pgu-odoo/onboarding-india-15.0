@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+	<data noupdate="1">
+		<record model="estate.property" id="estate_demo_r1">
+			<field name="name">SkyHigh Apartments</field>
+			<field name="description">Skyhigh Apartments are the highest towers of the city.</field>
+			<field name="expected_price">3235000</field>
+		</record>
+		<record model="estate.property" id="estate_demo_r2">
+			<field name="name">Pramukh Housings</field>
+			<field name="description">one of the best housing society of city.</field>
+			<field name="expected_price">1455000</field>
+		</record>
+		<record model="estate.property" id="estate_demo_r3">
+			<field name="name">Azad Apartments</field>
+			<field name="description"></field>
+			<field name="expected_price">1080000</field>
+		</record>
+	</data>
+</odoo>
