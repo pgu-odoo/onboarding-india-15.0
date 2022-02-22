@@ -70,7 +70,7 @@
 							<div t-if="record.state.value == 'Offer Received'">
 								Best Price: <field name="best_price" />
 							</div>
-							<div t-if="record.state.value == 'Offer Accepted'">
+							<div t-if="record.state.value == 'Offer Accepted' or record.state.value == 'Sold'">
 								Selling Price: <field name="selling_price" />
 							</div>
 							<div>

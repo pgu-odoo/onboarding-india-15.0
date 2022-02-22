@@ -190,6 +190,10 @@ class PropertyTags(models.Model):
 	name = fields.Char(required=True)
 	color = fields.Integer()
 
+
+
+	
+
 	#relational fields
 	tag_ids = fields.Many2many('estate.property','property_tag_rel','property_tag_ids','tag_ids')
 
