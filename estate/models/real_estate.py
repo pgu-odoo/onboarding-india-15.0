@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from email.policy import default
 from odoo import models, fields, api
 from dateutil.relativedelta import relativedelta
 from datetime import date, datetime
@@ -59,7 +58,7 @@ class EstateProperty(models.Model):
 											],
 								copy=False, 
 								default='new',
-								compute='_compute_offer_received')
+								compute='_compute_offer_received', store=True)
 
 	_sql_constraints = [
 						('check_expected_price', 'CHECK(expected_price > 0)','Expected Price must be Positive')

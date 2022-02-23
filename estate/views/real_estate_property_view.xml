@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <odoo>
+	
 
 	<record id='estate_property_tree' model='ir.ui.view'>
 		<field name="name">Estate Tree View</field>
@@ -16,7 +17,7 @@
 				<field name="expected_price"></field>
 				<field name="selling_price"></field>
 				<field name="date_availability" optional="hide"></field>
-				<field name="state" invisible="1" />
+				<field name="state" />
 			</tree>
 		</field>
 	</record>
@@ -207,5 +208,26 @@
 	        </kanban>
 	    </field>
 	</record> -->
+
+	<record id='estate_property_search' model='ir.ui.view'>
+		<field name="name">test.test</field>
+		<field name="model">estate.property</field>
+		<field name="arch" type="xml">
+			<search string="Search View">
+				<field name="name"/>
+				<field name="state"/>
+				<filter name="available_properties" string="Available Properties" 
+				domain="[('state', '=', 'new')]"/>
+				<field name="description" string="Name and description"
+					filter_domain="['|', ('name', 'ilike', self), ('description', 'ilike', self)]"/>
+				<field name="property_type_id" widget="selection"/>
+				
+				<group string="Group By">
+					<filter name="group_by_property_tags" string="property_tags"
+							context="{'group_by': 'property_tag_ids'}" />
+				</group>
+			</search>
+		</field>
+	</record>
 	
 </odoo>
