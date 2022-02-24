@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 from dateutil.relativedelta import relativedelta
 from datetime import date, datetime
 from odoo.exceptions import UserError, ValidationError
@@ -17,7 +17,7 @@ class EstateProperty(models.Model):
 	# lambda function use for take the any data from without declaring the function body here I use this for take date and time from
 	date_availability = fields.Date(string='Date Availablity From', copy=False, default=lambda self: fields.Date.today() + relativedelta(months=+3))
 	expected_price = fields.Float(string='Expected Price', help='What is your expected price of the property?')
-	bedrooms = fields.Integer(string='No. of Bedrooms', default=2)
+	bedrooms = fields.Integer(string=_('No. of Bedrooms'), default=2)
 	living_area = fields.Integer(string='Living Area (sqm)')
 	facades = fields.Integer(string='Facades')
 	garage = fields.Boolean(string='Garage')
@@ -67,7 +67,7 @@ class EstateProperty(models.Model):
 	@api.ondelete(at_uninstall=False)
 	def _def_ondelete(self):
 		if (self.state != 'new' and self.state != 'cancelled'):
-			raise ValidationError('Property Can\'t be deleted if it is not in new or cancelled state!!')
+			raise ValidationError(_('Property Can\'t be deleted if it is not in new or cancelled state!!'))
 
 	@api.depends('property_offer_ids.status') 
 	def _compute_sold(self):

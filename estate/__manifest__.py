@@ -31,6 +31,7 @@
 		'views/real_estate_property_type.xml',
 		'views/real_estate_property_tag.xml',
 		'views/real_estate_property_offer.xml',
+		'wizards/property_wizard_view.xml',
 	],
 
 	'demo' : [
