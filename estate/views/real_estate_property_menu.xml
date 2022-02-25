@@ -18,6 +18,12 @@
 		<field name="view_mode">tree,form</field>
 	</record>
 
+	<record id="property_offer_action" model="ir.actions.act_window">
+		<field name="name">Property Offers</field>
+		<field name="res_model">estate.property.offer</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
 	<record id="stat_property_offer_action" model="ir.actions.act_window">
 		<field name="name">Property Offers</field>
 		<field name="res_model">estate.property.offer</field>
@@ -76,6 +82,13 @@
 		action="property_tag_action"
 		parent="real_estate_settings"
 		sequence="2" />
+
+	<menuitem
+		id="proeprty_offer_menu"
+		name="Property Offers"
+		action="property_offer_action"
+		parent="real_estate_settings"
+		sequence="3" />
 
 	<!-- Redirects -->
 	<!-- <menuitem 

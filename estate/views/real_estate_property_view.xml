@@ -222,8 +222,8 @@
 					filter_domain="['|', ('name', 'ilike', self), ('description', 'ilike', self)]"/>
 				<field name="property_type_id" widget="selection"/>
 				
-				<group string="Group By">
-					<filter name="group_by_property_tags" string="property_tags"
+				<group string="Grouping By">
+					<filter name="group_by_property_tags" string="property Tags"
 							context="{'group_by': 'property_tag_ids'}" />
 				</group>
 			</search>
