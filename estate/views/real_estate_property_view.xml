@@ -7,7 +7,7 @@
 		<field name="arch" type="xml">
 			<tree string="property List" decoration-success="state == 'offer_received'" 		decoration-muted="state == 'sold'" decoration-bf="state == 'new'">
 				<field name="name"></field>
-				<field name="property_tag_ids"></field>
+				<field name="property_tag_ids" widget="many2many_tags" options="{ 'color_field' : 'color', 'no_edit_color' : True}"></field>
 				<field name="property_type_id"></field>
 				<field name="postcode"></field>
 				<field name="bedrooms"></field>
