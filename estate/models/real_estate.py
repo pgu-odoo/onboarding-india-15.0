@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from re import search
 from odoo import models, fields, api, _
 from dateutil.relativedelta import relativedelta
 from datetime import date, datetime
@@ -59,7 +60,9 @@ class EstateProperty(models.Model):
 											],
 								copy=False, 
 								default='new',
-								compute='_compute_offer_received', store=True)
+								compute='_compute_offer_received',
+								store = True)
+								# search='_search_state') #output nahtu avtu atle haal cancel rakhyu chhe
 
 	_sql_constraints = [
 						('check_expected_price', 'CHECK(expected_price > 0)','Expected Price must be Positive')
@@ -69,6 +72,17 @@ class EstateProperty(models.Model):
 	def _def_ondelete(self):
 		if (self.state != 'new' and self.state != 'cancelled'):
 			raise ValidationError(_('Property Can\'t be deleted if it is not in new or cancelled state!!'))
+
+	#output nahtu avtu atle haal cancel rakhyu chhe
+	# @api.model
+	# def _search_state(self, operator, value):
+	# 	if operator == "not in":
+	# 		raise NotImplementedError("Unsupported 'Not In' operation on Proeprty State Field")
+
+	# 	search_state = self.env['property.offer.ids'].sudo().search([
+    #         ('state', operator, value)
+    #     ])
+	# 	return [('id', 'not in', search_state.state)]
 
 	@api.depends('property_offer_ids.status') 
 	def _compute_sold(self):
