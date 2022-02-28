@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<odoo>
-	
-
+<odoo>	
 	<record id='estate_property_tree' model='ir.ui.view'>
 		<field name="name">Estate Tree View</field>
 		<field name="model">estate.property</field>
@@ -126,6 +124,9 @@
 			            </group>
 						<group>
 			            	<field name="best_price" />
+			            </group>
+						<group>
+			            	<field name="company_id" />
 			            </group>
 			        </group>  
 		            <notebook>

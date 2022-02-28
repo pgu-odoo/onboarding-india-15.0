@@ -40,6 +40,7 @@ class EstateProperty(models.Model):
 	property_type_id = fields.Many2one('estate.property.type', ondelete='restrict')
 	salesman_id = fields.Many2one('res.users', default=lambda self : self.env.user, copy=False)
 	buyer_id = fields.Many2one('res.partner',compute='_compute_sold')
+	company_id = fields.Many2one('res.company')
 	property_tag_ids = fields.Many2many('estate.property.tag','property_tag_rel','tag_ids','property_tag_ids')
 	property_offer_ids = fields.One2many('estate.property.offer','property_id')
 
@@ -177,8 +178,6 @@ class EstatePropertyType(models.Model):
 	def _compute_offer_count(self):
 		for record in self:
 			record.offer_count = len(record.offer_ids)
-
-
 
 #Property Tags Class
 class PropertyTags(models.Model):
