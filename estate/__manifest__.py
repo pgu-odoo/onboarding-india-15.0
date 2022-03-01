@@ -21,7 +21,10 @@
 	'version' : '1.0',
 	'license' : 'LGPL-3',
 
-	'depends' : ['base'],
+	'depends' : [
+					'base',
+					'website'
+				],
 
 	'data' : [
 		'security/estate_security.xml',
@@ -33,7 +36,8 @@
 		'views/real_estate_property_offer.xml',
 		'wizards/property_wizard_view.xml',
 		'report/estate_property_templates.xml',
-		'report/estate_property_reports.xml'
+		'report/estate_property_reports.xml',
+		'views/real_estate_web.xml',
 	],
 
 	'demo' : [
