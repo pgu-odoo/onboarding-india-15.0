@@ -14,6 +14,7 @@ class EstateProperty(models.Model):
 
 	name = fields.Char(string='Title', required=True)
 	description = fields.Html()
+	image = fields.Image()
 	postcode = fields.Char(string='Postcode')
 	# lambda function use for take the any data from without declaring the function body here I use this for take date and time from
 	date_availability = fields.Date(string='Date Availablity From', copy=False, default=lambda self: fields.Date.today() + relativedelta(months=+3))

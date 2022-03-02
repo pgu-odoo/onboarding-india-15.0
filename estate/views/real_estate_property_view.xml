@@ -93,6 +93,7 @@
 					<field name="state" widget="statusbar" />
 				</header>
 				<sheet>
+					<field name="image" class="oe_avatar" widget="image" />
 			        <group>
 			            <group>
 			                <h1><field name="name" placeholder="Property Name" /></h1>

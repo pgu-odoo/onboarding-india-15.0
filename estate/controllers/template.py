@@ -8,7 +8,9 @@ class Academy(http.Controller):
         Properties = http.request.env['estate.property']
 
         return http.request.render('estate.index', {
-             'properties': Properties.search([])
+             'properties': Properties.search([
+                                                ('state','in',['new','offer_received'])
+                                            ])
          })
 
     @http.route('/estate/<model("estate.property"):name>', auth="public", website=True)
