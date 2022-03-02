@@ -1,0 +1,6 @@
+<odoo>
+    <record model="product.public.category" id="category_properties">
+        <field name="name">Properties</field>
+        <field name="parent_id" ref="website_sale.categ_others"/>
+    </record>
+</odoo>

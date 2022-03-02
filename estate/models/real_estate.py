@@ -8,11 +8,12 @@ from odoo.exceptions import UserError, ValidationError
 class EstateProperty(models.Model):
 	_name = 'estate.property'
 	_description = 'Estate property'
+	_inherit = 'mail.thread'
 	_order = 'id desc'
 
 
 	name = fields.Char(string='Title', required=True)
-	description = fields.Text(string='Description')
+	description = fields.Html()
 	postcode = fields.Char(string='Postcode')
 	# lambda function use for take the any data from without declaring the function body here I use this for take date and time from
 	date_availability = fields.Date(string='Date Availablity From', copy=False, default=lambda self: fields.Date.today() + relativedelta(months=+3))

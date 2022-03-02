@@ -23,7 +23,9 @@
 
 	'depends' : [
 					'base',
-					'website'
+					'website',
+					'mail',
+					# 'website_sale'
 				],
 
 	'data' : [
@@ -38,12 +40,14 @@
 		'report/estate_property_templates.xml',
 		'report/estate_property_reports.xml',
 		'views/real_estate_web.xml',
+		# 'data/data.xml', # not needed right now
 	],
 
-	'demo' : [
-		'demo/estate_demo.xml',
+	################### commented because it was causing problems in further tasks
+	# 'demo' : [
+	# 	'demo/estate_demo.xml',
 
-	],
+	# ],
 	'auto_install' : True,
 	'application': True,
 }
