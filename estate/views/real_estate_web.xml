@@ -3,22 +3,55 @@
 <odoo>
     <template id="index">
         <t t-call="website.layout">
-            <t t-set="title">Real Estate</t>
+            <t t-set="title">Available Properties</t>
             <div class="oe_structure">
                 <div class="container p-3">
-                    <h3>List of All Properties</h3>
-                    <t t-foreach="properties" t-as="property">
-                        <ul>
-                            <li>
-                                <t t-esc="property.id"/>
-                                <!-- for link to the current property in the URL -->
-                            <!-- <a t-attf-href="/estate/{{ slug(ItrationVariable) }}"></a> -->
-                                <a t-attf-href="/estate/{{ slug(property) }}">
-                                    <t t-esc="property.name" />
-                                </a>
-                            </li>
-                        </ul>
-                    </t>
+                    <h3>Available Properties</h3>
+                    <hr />
+                    <div class="row">
+                        <t t-foreach="properties" t-as="property">
+                            <div class="col-md-4 p-2 mt-1 mb-2">
+                                <div class="border m-1">
+                                    <div class="d-flex justify-content-center">
+                                        <div t-field="property.image" t-options="{'widget' : 'image'}" class="col-md-9" style="width:100%"></div>
+                                    </div>
+                                    <hr />
+                                    <div class="d-flex justify-content-center">
+                                        <a t-attf-href="/estate/{{ slug(property) }}">
+                                            <h3 t-field="property.name"></h3>
+                                        </a>
+                                    </div>
+                                    <!-- <div t-field="property.description"></div> -->
+                                    <div class="row">
+                                        <div class="col-md-6 text-center">
+                                            <p>
+                                                Available From<br />
+                                                <b t-field="property.date_availability" t-options='{"format": "long"}'></b>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6 text-center">
+                                            <p>
+                                                Available To<br />
+                                                <b t-field="property.date_deadline" t-options='{"format": "long"}'></b>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <hr />
+                                    <footer class="pl-3">
+                                        <p>
+                                            Last Modified :
+                                            <b t-field="property.write_date" t-options='{"widget": "relative"}'></b>
+                                        </p>
+                                    </footer>
+                                </div> 
+                            </div>    
+                        </t>
+                    </div>
+                    <div class="products_pager form-inline justify-content-center mt-3">
+                        <t t-call="website.pager">
+                        <t t-set="_classes">mt-2 ml-md-2</t>
+                        </t>
+                    </div>
                 </div>
             </div>
         </t>
@@ -30,25 +63,37 @@
             <div class="oe_structure">
                 <div class="container p-3 shadow-lg mt-4 mb-4 p-3 mb-5 bg-white rounded">
                     <t t-foreach="property" t-as="prop">
-                        <header>
-                            <h3 t-field="prop.name"></h3>
+                        <header class="pl-2">
+                                <h1 t-field="prop.name"></h1>
                         </header>
                         <hr /> 
                         <div class="row">
+                            <div class="col-md-8 row">
+                                <div class="col-md-6">
+                                    <p>
+                                        Date Available From:
+                                        <b t-field="prop.date_availability" t-options='{"format": "long"}'></b>
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>
+                                        Date Available To :
+                                        <b t-field="prop.date_deadline" t-options='{"format": "long"}'></b>
+                                    </p>
+                                </div>
+                            </div>
+                            <div t-field="prop.image" t-options="{'widget' : 'image'}" class="col-md-4"></div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-6">
-                                <p>
-                                    Date Available From:
-                                    <b t-field="prop.date_availability" t-options='{"format": "long"}'></b>
-                                </p>
+                                hi
+                                <div t-field="prop.description"></div>
                             </div>
                             <div class="col-md-6">
-                                <p>
-                                    Date Available To :
-                                    <b t-field="prop.date_deadline" t-options='{"format": "long"}'></b>
-                                </p>
+                                hi
                             </div>
                         </div>
-                        <div t-field="prop.description"></div>
+                
                         <hr />
                         <footer>
                             <p>

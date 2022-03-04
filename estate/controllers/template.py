@@ -1,17 +1,57 @@
 # -*- coding: utf-8 -*-
 from odoo import http
+from odoo.http import request
 
 class Academy(http.Controller):
 
-    @http.route('/estate', auth='public', website=True)
-    def index(self, **kw):
-        Properties = http.request.env['estate.property']
+    @http.route([
+                    '/estate',
+                    '/estate/page/<int:page>'
+                ],
+                type='http', auth='public', website=True)
+    def index(self, page=1 , search = '', **post):
+        #for number of properties per page
+        limit = 10
 
-        return http.request.render('estate.index', {
-             'properties': Properties.search([])
-         })
+        #domain to obtain available properties
+        domain = [
+                    ('state','in',['new','offer_received'])
+                ]
 
-    @http.route('/estate/<model("estate.property"):name>', auth="public", website=True)
+        #for search (not used right now)
+        if search:
+            domain.append(('name', 'ilike', search))
+        if search:
+            post["search"] = search
+
+        #requesting all properties in object
+        properties = http.request.env['estate.property']
+
+        #total number of properties with the domain applied
+        total = properties.search_count(domain)
+
+        #pager code [
+        #            url is our path , 
+        #            total is the total number of records in pager,
+        #            page is the default page number,
+        #            step is the total number of records per page
+        #           ]
+        pager = request.website.pager(
+                                        url= '/estate',
+                                        total=total,
+                                        page=page,
+                                        step=limit,
+                                    )
+        #offset is for the next page to start from the last record of previous page + 1
+        offset = pager['offset']
+
+        return request.render('estate.index', {
+                                                'search': search,
+                                                'properties': properties.search(domain, limit=limit, offset=offset),
+                                                'pager': pager,
+                                            })
+
+    @http.route('/estate/<model("estate.property"):name>', type='http', auth="public", website=True)
     def property(self, name):
         return http.request.render('estate.property_details', {
             'property' : name
