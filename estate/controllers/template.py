@@ -2,7 +2,7 @@
 from odoo import http
 from odoo.http import request
 
-class Academy(http.Controller):
+class RealEstateController(http.Controller):
 
     @http.route([
                     '/estate',
@@ -11,7 +11,7 @@ class Academy(http.Controller):
                 type='http', auth='public', website=True)
     def index(self, page=1 , search = '', **post):
         #for number of properties per page
-        limit = 10
+        limit = 6
 
         #domain to obtain available properties
         domain = [
@@ -23,6 +23,9 @@ class Academy(http.Controller):
             domain.append(('name', 'ilike', search))
         if search:
             post["search"] = search
+
+        if not http.request.env.user.has_group('estate.group_estate_admin'):
+            domain.append(('is_published','=','True'))
 
         #requesting all properties in object
         properties = http.request.env['estate.property']
@@ -47,7 +50,7 @@ class Academy(http.Controller):
 
         return request.render('estate.index', {
                                                 'search': search,
-                                                'properties': properties.search(domain, limit=limit, offset=offset),
+                                                'properties': properties.search(domain, limit=limit, offset=offset, order='is_published desc'),
                                                 'pager': pager,
                                             })
 

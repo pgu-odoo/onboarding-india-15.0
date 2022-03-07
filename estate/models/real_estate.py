@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from odoo.addons.http_routing.models.ir_http import slug
 from odoo import models, fields, api, _
 from dateutil.relativedelta import relativedelta
 from datetime import date, datetime
@@ -8,7 +9,7 @@ from odoo.exceptions import UserError, ValidationError
 class EstateProperty(models.Model):
 	_name = 'estate.property'
 	_description = 'Estate property'
-	_inherit = 'mail.thread'
+	_inherit = ['mail.thread', 'website.published.mixin']
 	_order = 'id desc'
 
 
@@ -28,6 +29,10 @@ class EstateProperty(models.Model):
 	active = fields.Boolean(string='Active', default=True)
 	is_sold = fields.Boolean(default=False, invisible=True)
 	is_cancelled = fields.Boolean(default=False, invisible=True)
+	is_published = fields.Boolean()
+	can_publish = fields.Boolean('Can Publish', compute='_compute_can_publish')
+	website_url = fields.Char('Website URL', compute='_compute_website_url', help='The full URL to access the document through the website.')
+
 
 	#selection fields
 	garden_orientation = fields.Selection(string='Garden Orientation', 
@@ -84,6 +89,14 @@ class EstateProperty(models.Model):
     #         ('state', operator, value)
     #     ])
 	# 	return [('id', 'not in', search_state.state)]
+
+	def _compute_can_publish(self):
+		for record in self:
+			record.can_publish = self.env.user.has_group('estate.group_estate_admin')
+
+	def _compute_website_url(self):
+		for record in self:
+			record.website_url = '/estate/%s' % slug(record)
 
 	@api.depends('property_offer_ids.status') 
 	def _compute_sold(self):

@@ -24,6 +24,12 @@
 		<field name="view_mode">tree,form</field>
 	</record>
 
+	<record id="property_tag_action" model="ir.actions.act_window">
+		<field name="name">Property Tags</field>
+		<field name="res_model">estate.property.tag</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
 	<record id="stat_property_offer_action" model="ir.actions.act_window">
 		<field name="name">Property Offers</field>
 		<field name="res_model">estate.property.offer</field>
@@ -31,11 +37,11 @@
 		<field name="domain">[('property_type_id','=',active_id)]</field>
 	</record>
 
-	<record id="property_tag_action" model="ir.actions.act_window">
-		<field name="name">Property Tags</field>
-		<field name="res_model">estate.property.tag</field>
-		<field name="view_mode">tree,form</field>
-	</record>
+	<!-- <record id="stat_property_website_redirect_action" model="ir.actions.act_url">
+		<field name="name">Property Website Redirect</field>
+		<field name="url">https://www.odoo.com</field>
+		<field name="target">new</field>
+	</record> -->
 
 	<!-- <record id="odoo_redirect_action" model="ir.actions.act_url">
 		<field name="name">Odoo Website</field>
