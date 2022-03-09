@@ -93,14 +93,16 @@
 					<field name="state" widget="statusbar" />
 				</header>
 				<sheet>
-					<widget name="web_ribbon" text="Published" bg_color="bg-success" attrs="{'invisible': [('is_published','=',False)]}" />
-					<widget name="web_ribbon" text="Unpublished" bg_color="bg-danger" attrs="{'invisible': [('is_published','=',True)]}" />
 					<div class="oe_button_box" name="button_box">
                         <button class="oe_stat_button">
                             <field name="is_published" widget="website_redirect_button" />
                         </button>
                     </div>
-					<field name="image" class="oe_avatar" widget="image" />
+					<widget name="web_ribbon" text="Published" bg_color="bg-success" attrs="{'invisible': [('is_published','=',False)]}" />
+					<widget name="web_ribbon" text="Unpublished" bg_color="bg-danger" attrs="{'invisible': [('is_published','=',True)]}" />
+					<div class="mr-5 pr-5 mt-5 pt-5">
+						<field name="image" class="oe_avatar" widget="image" />
+					</div>
 			        <group>
 			            <group>
 			                <h1><field name="name" placeholder="Property Name" /></h1>

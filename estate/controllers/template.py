@@ -18,12 +18,17 @@ class RealEstateController(http.Controller):
                     ('state','in',['new','offer_received'])
                 ]
 
+        #for Listed After DatePicker
+        if post.get('my_date'):
+            domain.append(('create_date','>=',post.get('my_date')))
+
         #for search (not used right now)
         if search:
             domain.append(('name', 'ilike', search))
         if search:
             post["search"] = search
 
+        #for publish management
         if not http.request.env.user.has_group('estate.group_estate_admin'):
             domain.append(('is_published','=','True'))
 
@@ -50,7 +55,7 @@ class RealEstateController(http.Controller):
 
         return request.render('estate.index', {
                                                 'search': search,
-                                                'properties': properties.search(domain, limit=limit, offset=offset, order='is_published desc'),
+                                                'properties': properties.search(domain, limit=limit, offset=offset, order='is_published desc, create_date desc'),
                                                 'pager': pager,
                                             })
 

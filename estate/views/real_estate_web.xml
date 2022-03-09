@@ -6,7 +6,23 @@
             <t t-set="title">Available Properties</t>
             <div class="oe_structure">
                 <div class="container p-3">
-                    <h3>Available Properties</h3>
+                    <div class="row">
+                        <h3 class="col-md-6 mb-0">Available Properties</h3>
+                        <div class="col-md-6">
+                            <form method="POST" action="/estate" class="row">
+                                <div class="form-group col-md-5 offset-md-4">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <!-- <label class="font-weight-bold" for="my_date">Authentication Code</label> -->
+                                    <input type="date" id="my_date" name="my_date" class="form-control" required="required"/>
+                                </div>
+                                <div t-attf-class="clearfix oe_login_buttons text-center col-md-3">
+                                    <button type="submit" class="btn btn-primary btn-block">
+                                        Listed After
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                     <hr />
                     <div class="row">
                         <t t-foreach="properties" t-as="property">
@@ -19,7 +35,6 @@
                                     <div class="d-flex justify-content-center">
                                         <a t-attf-href="/estate/{{ slug(property) }}">
                                             <h3><span t-field="property.name"></span> <span t-if="not property.is_published" class="text-danger"><i class="fa fa-eye-slash"></i></span></h3>
-                    
                                         </a>
                                     </div>
                                     <!-- <div t-field="property.description"></div> -->
@@ -73,10 +88,35 @@
             <t t-set="title">Property Details</t>
             <div class="oe_structure">
                 <div class="container p-3 shadow-lg mt-4 mb-4 p-3 mb-5 bg-white rounded">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ol class="breadcrumb mb-2">
+                                <li class="breadcrumb-item o_not_editable">
+                                    <a t-att-href="'/estate'">All Properties</a>
+                                </li>
+                                <li class="breadcrumb-item active">
+                                    <span t-field="property.name"></span>
+                                </li>
+                            </ol>
+                        </div>
+                        <!-- <div class="col-lg-6">
+                            <ol class="breadcrumb mb-2">
+                                <li class="breadcrumb-item o_not_editable">
+                                    <a t-att-href="keep(category=0)">All Products</a>
+                                </li>
+                                <li t-if="category" class="breadcrumb-item">
+                                    <a t-att-href="keep('/estate/category/%s' % slug(category), category=0)" t-field="category.name"></a>
+                                </li>
+                                <li class="breadcrumb-item active">
+                                    <span t-field="property.name"></span>
+                                </li>
+                            </ol>
+                        </div> -->
+                    </div>
                     <t t-foreach="property" t-as="prop">
-                        <div id="website_published_button" class="float-right">
+                        <div id="website_published_button" class="float-right m-1">
                             <t t-call="website.publish_short">
-                            <t t-set="object" t-value="property"/>
+                            <t t-set="object" t-value="prop"/>
                             <t t-set="publish_edit" t-value="True"/>
                             <t t-set="action" t-value="'estate.real_estate_action'"/>
                             </t>
