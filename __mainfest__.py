@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
-    'name' : 'Invoicing',
-    'version' : '1.2',
+    'name' : 'Open Academy',
+    'version' : '1.0',
     'summary': 'Invoices & Payments',
     'sequence': 10,
     'description': """
