@@ -9,7 +9,7 @@
     maintains Books and Customers
     Cutomer checkout book
     and organizing """,
-    'category': 'Account/Contacts/Subscriptions & Timesheet',
+    'category': 'Account/Contacts/Subscriptions',
     'depends' : ['base_setup'],
     'installable': True,
     'application': True,
