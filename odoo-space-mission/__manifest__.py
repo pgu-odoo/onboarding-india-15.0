@@ -4,9 +4,9 @@
     'name' : 'Odoo Space Mission',
     'version' : '1.0',
     'summary': 'Space Mission',
-    'sequence': 11,
+    'sequence': 1001,
     'description': """  A exciting Space Mission by Odoo 
-    maintains spacecrafts and crews """
+    maintains spacecrafts and crews """,
     'category': 'Inventory/Hr/Contacts',
     'depends' : ['base_setup'],
     'installable': True,

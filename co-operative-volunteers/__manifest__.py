@@ -5,7 +5,7 @@
     'version' : '1.0',
     'summary': 'A consolidated tool for library management',
     'sequence': 13,
-    'description': """ A co operative volunteers management system """
+    'description': """ A co operative volunteers management system """,
     'category': 'Hr/Planner/Contacts',
     'depends' : ['base_setup'],
     'installable': True,

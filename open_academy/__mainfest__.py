@@ -4,11 +4,11 @@
     'name' : 'Open Academy',
     'version' : '1.0',
     'summary': 'Open Academy',
-    'sequence': 10,
+    'sequence': 1000,
     'description': """  Academy module to manage 
     Training
     Sessions
-    Course Attendees """
+    Course Attendees """,
     'category': 'Training',
     'depends' : ['base_setup'],
     'installable': True,

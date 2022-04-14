@@ -4,11 +4,11 @@
     'name' : 'Library Mangement Module',
     'version' : '1.0',
     'summary': 'A consolidated tool for library management',
-    'sequence': 12,
+    'sequence': 1002,
     'description': """  A complete module for library managemnet
     maintains Books and Customers
     Cutomer checkout book
-    and organizing """
+    and organizing """,
     'category': 'Account/Contacts/Subscriptions & Timesheet',
     'depends' : ['base_setup'],
     'installable': True,
