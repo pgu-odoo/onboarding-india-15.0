@@ -9,7 +9,7 @@
     Training
     Sessions
     Course Attendees """,
-    'category': 'Hr/Planner/Account/Contacts',
+    'category': 'Hr/Planner/Contacts',
     'depends' : ['base_setup'],
     'installable': True,
     'application': True,
