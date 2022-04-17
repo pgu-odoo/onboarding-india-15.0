@@ -4,6 +4,8 @@
     'name' : 'Odoo Open Institue',
     
     'summary': """Open institute Mission""",
+
+    'sequence': 1100,
     
     'description': """  Academy module to manage training:
     -courses
