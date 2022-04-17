@@ -17,7 +17,7 @@
 
     'category': 'Training',
   
-    'depends' : ['base'],
+    'depends' : ['base_setup'],
   
 
     'installable': True,
