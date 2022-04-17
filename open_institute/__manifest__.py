@@ -2,22 +2,35 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details. a dictionary, each key in this dctionary is module
 {
     'name' : 'Odoo Open Institue',
-    'version' : '1.0',
-    'summary': 'Open institute Mission',
-    'sequence': 999,
+    
+    'summary': """Open institute Mission""",
+    
     'description': """  Academy module to manage training:
     -courses
     -sessions
     -attendences.
                   """,
-    'category': 'Planning/Sales/Contacts',
-    'depends' : ['base_setup'],
+ 
+     'author': 'Odoo',
+
+     'website': 'https://Odoo.com',
+
+    'category': 'Training',
+  
+    'depends' : ['base'],
+  
+
     'installable': True,
     'application': True,
     'auto_install': False,
     'license': 'LGPL-3',
+
+
     'data':[,
     ],
 
-    'demo' : [ 'demo/institute_demo.xml',],
+
+    'demo' : [ 'demo/institute_demo.xml',
+
+    ],
 }
