@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8">
+<odoo>
+	 <data noupdate="1">
+	 	 <record model="open.course" id="erp_101">
+	 	     <field name ="name">ERP 101</field> 
+	 	     <field description="description">Learn ERP system</field>
+	 	     <field name="level">beginner</field>
+	 	 </record>
+
+	 	 <record model ="ope.course" id="accounting_200">
+	 	 	 <field name="name"> Acoounting 200 </field>
+	 	 	 <field name="description"> Acounting 200
+	 	 	 	Intermediate accounting course
+	 	 	 	Learniing bout Cost Acoounting and pricing and revenue generation </field>
+	 	 	 <field name="level">intermediate</field>
+	 	 </record>
+
+	 	 <record model="open.course" id="website_500">
+	 	 	<field name="name"> Website 500 </field>
+	 	 	<field name="description"></field>
+	 	 	<field name="level">Advanced</field>
+	 	 </record>
+
+	 </data>
+</odoo>

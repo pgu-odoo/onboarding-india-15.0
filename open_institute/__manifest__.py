@@ -5,12 +5,17 @@
     'version' : '1.0',
     'summary': 'Open institute Mission',
     'sequence': 999,
-    'description': """  A exciting Space Mission by Odoo 
-    maintains spacecrafts and crews """,
+    'description': """  Academy module to manage training:
+    -courses
+    -sessions
+    -attendences.
+                  """,
     'category': 'Planning/Sales/Contacts',
     'depends' : ['base_setup'],
     'installable': True,
     'application': True,
     'auto_install': False,
     'license': 'LGPL-3',
+
+    'demo' : [ 'demo/institute_demo.xml',],
 }
