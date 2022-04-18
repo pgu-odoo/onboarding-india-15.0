@@ -21,8 +21,14 @@
 	'version' : '1.0',
 
 	'depends' : ['base_setup'],
-    'data' : [],
+    
 
 	################### commented because it was causing problems in further tasks
+	
+	'installable': True,
+	'application':True,
+	'auto_install': False,
+	'license':'LGPL-3',
+	'data' : [],
 	'demo' : [],
 }
