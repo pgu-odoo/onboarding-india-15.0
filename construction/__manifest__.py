@@ -20,7 +20,7 @@
 	'category' : 'Sales',
 	'version' : '1.0',
 
-	'depends' : [],
+	'depends' : ['base_setup'],
     'data' : [],
 
 	################### commented because it was causing problems in further tasks
