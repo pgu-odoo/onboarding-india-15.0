@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
+
+
 from odoo import models, fields, api
 
 class Course(models.Model):
-	_name = 'open.course'
+
+	_name = 'institute.course'
 	_description = 'open institute module'
 	
 	name = fields.Char(string="Title", required=True)

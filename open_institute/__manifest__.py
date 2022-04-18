@@ -28,7 +28,9 @@
     'license': 'LGPL-3',
 
 
-    'data':[,
+    'data':[
+      'security/institute_security.xml',
+      'security/ir.model.access.csv',
     ],
 
 
