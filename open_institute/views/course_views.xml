@@ -3,11 +3,12 @@
 	<data>
 		<record model="ir.ui.view" id="course_view_form">
 			<field name="name">institute.course.form</field>
-			<field name="model">model_institute_course</field>
+			<field name="model">institute.course</field>
 			<field name="arch" type="xml">
 				<form string="Course Form">
 					<sheet>
 						<h1><field name="name"/></h1>
+						<div>
 						<group>
 							<group>
 								<field name="active"/>
@@ -16,11 +17,14 @@
 								<field name="level"/>
 							</group>
 						</group>
+					</div>
+					<div>
 						<notebook>
 							<page string="Description">
 							     <field name="description"/>	
 							</page>
 						</notebook>
+					</div>	
 					</sheet>
 				</form>
 			</field>
@@ -28,7 +32,7 @@
 		</record>
 		<record model="ir.ui.view" id="course_view_list">
 			<field name="name">institute.course.list</field>
-			<field name="model">model_institute_course</field>
+			<field name="model">institute.course</field>
 			<field name="arch" type="xml">
 				<tree string="Course List">
 					<field name="name"/>
@@ -39,7 +43,7 @@
 		</record>
 		<record model="ir.ui.view" id="course_view_search">
 			<field name="name">institute.course.search</field>
-			<field name="model">model_institute_course</field>
+			<field name="model">institute.course</field>
 			<field name="arch" type="xml">
 				<search>
 					<field name="name"/>
