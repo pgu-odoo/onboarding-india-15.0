@@ -31,11 +31,11 @@
     'data':[
       'security/institute_security.xml',
       'security/ir.model.access.csv',
-      'views/institute_menu_item.xml'
+      'views/institute_menu_item.xml',
+      'views/course_views.xml',
     ],
 
-
-    'demo' : [ 'demo/institute_demo.xml',
-
+    'demo': [
+        'demo/institute_demo.xml',
     ],
 }
