@@ -31,6 +31,7 @@
     'data':[
       'security/institute_security.xml',
       'security/ir.model.access.csv',
+      'views/institute_menu_item.xml'
     ],
 
 
