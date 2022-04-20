@@ -20,7 +20,7 @@
 	'category' : 'Sales',
 	'version' : '1.0',
 
-	'depends' : ['base_setup'],
+	'depends' : ['base'],
     
 
 	################### commented because it was causing problems in further tasks
@@ -29,6 +29,14 @@
 	'application':True,
 	'auto_install': False,
 	'license':'LGPL-3',
-	'data' : [],
-	'demo' : [],
+	'data' : [
+				'security/academy_security.xml',
+				'security/ir.model.access.csv',
+				'views/academy_menuitems.xml'
+			],
+
+	'demo' : ['demo/academy_demo.xml',
+
+			
+			],
 }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data noupdate="0">
+		<!--Group model='res.group'-->
+		<record id="group_academy_admin" model="res.groups"> <!--admin is user who have a full access-->
+			<field name="name">academy / admin</field>  <!--set a name of group through field tag-->
+		</record>
+
+
+		<!--recordrules model='ir.rule'-->
+		<record id="only_active_modify" model="ir.rule"> <!--admin is user who have a full access-->
+			<field name="name">only active course can be modified</field>
+			<field name="perm_read" eval="True"/>
+			<field name="perm_write" eval="True"/>
+			<field name="perm_create" eval="True"/>
+			<field name="perm_unlink" eval="True"/>
+
+			<!--create domain for recordrules-->
+			<field name="domain_force">[('active','=',True)]</field>  <!--permission of write and delete are apply when active=True-->
+
+			<!--this specify the model on which this recordrules are applied remeber that ref attribute take externam id-->
+			<field name="model_id" ref="model_academy_course"/>
+		</record>
+	</data>
+</odoo>
