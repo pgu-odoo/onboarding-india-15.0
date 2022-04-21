@@ -33,9 +33,8 @@
       'security/ir.model.access.csv',
       'views/institute_menu_item.xml',
       'views/course_views.xml',
+      'views/session_view.xml',
     ],
 
-    'demo': [
-        'demo/institute_demo.xml',
-    ],
+    'demo': ['demo/institute_demo.xml',],
 }
