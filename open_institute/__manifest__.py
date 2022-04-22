@@ -10,16 +10,15 @@
     'description': """  Academy module to manage training:
     -courses
     -sessions
-    -attendences.
-                  """,
+    -attendences.""",
  
-     'author': 'Odoo',
+    'author': 'Odoo',
 
      'website': 'https://Odoo.com',
 
     'category': 'Training',
   
-    'depends' : ['base_setup'],
+    'depends' : ['sale'],
   
 
     'installable': True,
@@ -34,6 +33,7 @@
       'views/institute_menu_item.xml',
       'views/course_views.xml',
       'views/session_view.xml',
+      'views/sale_view_inherit.xml'
     ],
 
     'demo': ['demo/institute_demo.xml',],

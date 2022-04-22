@@ -5,7 +5,7 @@
 			
 			<field name="name">Courses</field>
 			<field name="res_model">institute.course</field>
-			<field name="view_mode">tree,form</field>
+			<field name="view_mode">tree,form,pivot</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">Create the first course</p>
 			</field>
@@ -13,15 +13,20 @@
 		<record model="ir.actions.act_window" id="session_list_action">
 			<field name="name">Session</field>
 			<field name="res_model">institute.session</field>
-			<field name="view_mode">tree,form</field>
+			<field name="view_mode">tree,form,calendar</field>
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">Create new Session</p>
 			</field>
-			
 		</record>
+		<!-- <record model="">
+
+			for this to happen i need to create a .py file which will have the action needed
+			
+		</record> -->
 			<menuitem name="Odoo Institute" id="menu_institute" sequence="1"/>
 			<menuitem id="menu_institute_sub" name="Odoo Institute" parent="menu_institute" sequence="2"/>
 			<menuitem id="menu_institute_course" name="Courses" parent="menu_institute_sub" sequence="3" action="course_list_action"/>	
-			<menuitem id="menu_institute_session" name="Sessions" parent="menu_institute_sub" sequence="4" action="session_list_action"/>  
+			<menuitem id="menu_institute_session" name="Sessions" parent="menu_institute_sub" sequence="4" action="session_list_action"/>
+			<!-- <menuitme id="menu_institute_instructors" name="Instructors" parent="menu_institute_sub" sequence="5" action   -->
    	</data>
 </odoo>
