@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<record id="course_view_form" model="ir.ui.view"> <!--we are create a form views into this model (ir.ui.view)-->
+		<field name="name">academy.course.form</field>  
+		<field name="model">academy.course</field>   <!--we are going to create form view for this mode --><!--we can use this models fields inside the form tag-->
+		<field name="arch" type="xml"> 
+
+			<form string="course form">  <!--odoo will understand its form view using <form>-->
+				<sheet> <!--for getting a sheet in backgroud -->
+					<h2>
+						<field name="name" string="Name"/>
+					</h2 > <!--name="name" use from models "academy.course"-->
+
+					<group>	<!--main group-->
+						<group> <!--for getting a label for corresponding fields -->
+							<field name="active"/>
+							<field name="level"/>
+						</group>
+
+						<!--taking a two group for split form -->
+
+						<group>
+							<field name="base_price"/>
+							<field name="additional_fee"/>
+							<field name="total_price"/>
+						</group>
+					</group>
+
+					<notebook>
+						<page string="Description">		 
+							<field name="description"/>
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+
+		</field>  
+		
+	</record> 
+
+
+<!--it is a list or tree view 	-->
+
+		<record id="course_view_tree" model="ir.ui.view"> <!--we are create a form views into this model (ir.ui.view)-->
+			<field name="name">academy.course.tree</field>  
+			<field name="model">academy.course</field>   <!--we are going to create form view for this mode --><!--we can use this models fields inside the form tag-->
+			<field name="arch" type="xml"> 
+
+				<tree default_order="name desc">
+					 <field name="active"/>
+					 <field name="level"/>
+					 <field name="name"/>
+					 <field name="description"/>
+				</tree>
+
+			</field>  
+			
+		</record>
+
+
+<!--it is a search view 	-->
+
+		<record id="course_view_search" model="ir.ui.view"> <!--we are create a form views into this model (ir.ui.view)-->
+			<field name="name">academy.course.search</field>  
+			<field name="model">academy.course</field>   <!--we are going to create form view for this mode --><!--we can use this models fields inside the form tag-->
+			<field name="arch" type="xml"> 
+
+				<search string="course">	
+					 <field name="name"/>
+					 <field name="description"/>
+					 <field name="level"/>
+					 <separator/>
+
+					 <filter string="Beginner" name="Beginner" domain="[('level', '=', 'beginner')]"/>
+					 <filter string="Intermediate" name="Intermediate" domain="[('level', '=', 'intermediate')]"/>
+					 <filter string="Advanced" name="Advanced" domain="[('level', '=', 'advanced')]"/>
+
+
+					 <group expand="1" string="Group By">
+					 	<filter string="level" name="level" context="{'group_by':'level'}"/>
+					 	<filter string="course name" name="name" context="{'group_by':'name'}"/>
+					 </group>
+
+				</search>
+
+			</field>  
+			
+		</record>
+</odoo>
