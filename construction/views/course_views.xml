@@ -24,12 +24,17 @@
 							<field name="base_price"/>
 							<field name="additional_fee"/>
 							<field name="total_price"/>
+							<field name="subject"/>
 						</group>
 					</group>
 
 					<notebook>
 						<page string="Description">		 
 							<field name="description"/>
+						</page>
+						<page string="Subject">
+							<field name='add_subject' string="Subject">
+							</field>
 						</page>
 					</notebook>
 				</sheet>

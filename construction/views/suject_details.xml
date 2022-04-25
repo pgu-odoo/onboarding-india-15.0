@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<record id="subject_view_form" model="ir.ui.view"> <!--we are create a form views into this model (ir.ui.view)-->
+		<field name="name">subject.details.form</field>  
+		<field name="model">subject.details</field>   <!--we are going to create form view for this mode --><!--we can use this models fields inside the form tag-->
+		<field name="arch" type="xml"> 
+
+			<form string="subject form">  <!--odoo will understand its form view using <form>-->
+				<sheet> <!--for getting a sheet in backgroud -->
+					<group> <!--for getting a label for corresponding fields -->
+						<field name="subject"/>
+						<field name="book"/>
+						<field name="author"/>
+					</group>
+				</sheet>
+			</form>
+
+		</field>  
+	</record> 
+
+
+<!--it is a list or tree view 	-->
+
+	<record id="subject_view_tree" model="ir.ui.view"> <!--we are create a form views into this model (ir.ui.view)-->
+		<field name="name">subject.details.tree</field>  
+		<field name="model">subject.details</field>   <!--we are going to create form view for this mode --><!--we can use this models fields inside the form tag-->
+		<field name="arch" type="xml"> 
+			<tree>
+				<field name="subject"/>
+				<field name="book"/>
+				<field name="author"/>
+			</tree>
+
+		</field>  
+	</record>
+
+	<record id="subject_list_actions" model="ir.actions.act_window">
+		<field name="name">Subject Details</field>  
+		<field name="res_model">subject.details</field>  
+		<field name="view_mode">tree,form</field> 
+	</record>
+
+	<menuitem name="Suject Details" id="subject_details" parent="construction.menu_academy"/>
+	<menuitem name="Subject" id="subject_course" parent="subject_details" action="subject_list_actions" />
+			
+</odoo>
