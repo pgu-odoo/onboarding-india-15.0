@@ -13,9 +13,9 @@ class Session(models.Model):
 
 	name = fields.Char(string='Title', related='course_id.name')
 
-	instructor_id = fields.Many2one(comodel_name='res.partner', string='Instructor')
+	instructor_id = fields.Many2one(comodel_name='res.partner',string='Instructor')
 
-	student_ids = fields.Many2many(comodel_name='res.partner', string='Students')
+	student_ids = fields.Many2many(comodel_name='res.partner',string='Students')
 
 	start_date = fields.Date(string='Start Date', 
 							 default=fields.Date.today)
@@ -23,7 +23,17 @@ class Session(models.Model):
 
 	duration = fields.Integer(string='Session Days', default=1)
 
-	end_date = fields.Date(string='End Date', compute='_compute_end_date',inverse='_inverse_end_date',store=True)					   
+	end_date = fields.Date(string='End Date',compute='_compute_end_date',inverse='_inverse_end_date',store=True)	
+
+	state = fields.Selection(string='States',
+								selection=[('drafts','Drafts'),
+											('open','In-progress'),
+											('done','Done'),
+											('canceled','Cancelled')],
+								default='drafts',
+								required=True)
+
+	total_price = fields.Float(srting="Total Price", related='course_id.total_price')										   
 
 	@api.depends('start_date','duration')
 	def _compute_end_date(self):
@@ -37,6 +47,6 @@ class Session(models.Model):
 	def _inverse_end_date(self):
 		for record in self:
 			if (record.start_date and record.end_date):	
-				record.duration=(record.end_date - record.start_date).daYS + 1
+				record.duration=(record.end_date - record.start_date).days + 1
 			else:
-				continue				
+				continue

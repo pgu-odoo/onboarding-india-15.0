@@ -2,26 +2,26 @@
 <odoo>
 	<data>
 		<record model="ir.ui.view" id="view_order_form_inherit_institute">
-				<field name="name">sale.order.form.inherit.institute</field>
-				<field name="model">sale.order</field>
-				<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="name">sale.order.form.inherit.institute</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form"/>
 				<field name="arch" type="xml">
-					<xpath expr="//field=[@name='payment_term_id']" position="after"> 
+					<xpath expr="//field[@name='payment_term_id']" position="after"> 
 						<field name="session_id"/>
 					</xpath>
 						<field name="partner_id" position="before">
-							<field name="instructor_id" attrs="{'invisible':[('session_id','=','False']}"/>
-						</field>
+						<field name="instructor_id" attrs="{'invisible':[('session_ids','=','False']}"/>
+				</field>
 					<xpath expr="//sheet//notebook" position="inside">
-					      <field name="student_ids" attrs="{'invisible':[('session_id','=','False')]}">
-					      	<field name="student_ids">
-					      		<tree>
-					      			<field name="name">
-					      			<field name="phone">
-					      		</tree>
-					      	</field>
-					</xpath>		
-			    </field>
+						<field name="student_ids" attrs="{'invisible':[('session_ids','=','False')]}"/>
+						<field name="student_ids">
+							<tree>
+								<field name="name"/>
+								<field name="phone"/>
+							</tree>
+						</field>
+					</xpath>
+			</field>
 		</record>
 	</data>
 </odoo>
