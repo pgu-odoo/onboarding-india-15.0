@@ -24,7 +24,7 @@
 							<field name="base_price"/>
 							<field name="additional_fee"/>
 							<field name="total_price"/>
-							<field name="subject"/>
+							<field name="subject_ids"/>
 						</group>
 					</group>
 
@@ -33,7 +33,17 @@
 							<field name="description"/>
 						</page>
 						<page string="Subject">
-							<field name='add_subject' string="Subject">
+							<field name='add_subject_ids' string="Subject">
+								<tree>
+									<field name='subject'/>
+									<field name='book'/>
+								</tree>
+								<!-- <form>
+									<group>
+										<field name='subject'/>
+										<field name='book'/>
+									</group>
+								</form> -->
 							</field>
 						</page>
 					</notebook>
@@ -62,6 +72,47 @@
 			</field>  
 			
 		</record>
+
+
+<!--it is a kanban view 	-->
+
+		<record id="course_view_kanban" model="ir.ui.view"> <!--we are create a kanban views into this model (ir.ui.view)-->
+			<field name="name">academy.course.kanban</field>  
+			<field name="model">academy.course</field>   <!--we are going to create kanban view for this model-->
+			<field name="arch" type="xml"> 
+
+				<kanban>
+					 <!-- <field name="id"/> -->
+					 <!-- <field name="active"/>
+					 <field name="level"/>
+					 <field name="name"/>
+					 <field name="description"/> -->
+					 <template>
+					 	<t t-name="kanban-box">
+					 		<div t-attf-class="oe_kanban_global_click">
+					 			<div class="oe_kanban_details">
+					 				<ul>
+					 					<li>Name:<field name="name"/></li>
+					 					<li>Age:<field name="description"/></li>
+					 					<li>Gender:<field name="level"/></li>
+					 				</ul>
+					 			</div>
+					 		</div>
+					 	</t>
+					 </template>
+				</kanban>
+
+			</field>  
+			
+		</record>
+
+
+
+
+
+
+
+
 
 
 <!--it is a search view 	-->

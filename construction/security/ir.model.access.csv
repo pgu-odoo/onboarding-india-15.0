@@ -1,3 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-construction.access_academy_course,access_academy_course,construction.model_academy_course,construction.group_academy_admin,1,1,1,1
-construction.access_subject_details,access_subject_details,construction.model_subject_details,base.group_user,1,1,1,1
+construction.access_academy_course,access_academy_course,construction.model_academy_course,,1,1,1,1
+construction.access_subject_details,access_subject_details,construction.model_subject_details,,1,1,1,1
