@@ -12,11 +12,5 @@
     'category':'Training',
     'version':'0.1',
     'depends':['base_setup'],
-    # 'data':[
-
-    # ],
-    # 'demo':[
-
-    # ],
     'installable':'True'
 }
