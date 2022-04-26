@@ -3,7 +3,7 @@ from odoo import api, fields, models
 
 
 class HospitalPatients(models.Model):
-    _name = "hospital.patients"
+    _name = "hospital.patients" #its create patients table with below attributes
     _description = "hospital patients"
 
     name = fields.Char(string='Name', required=True, translate=True)
@@ -15,4 +15,4 @@ class HospitalPatients(models.Model):
         ('other', 'other'),
     ], required=True, default='other')
     
-    note = fields.Text(string='Description')
+    description = fields.Text(string='Description')

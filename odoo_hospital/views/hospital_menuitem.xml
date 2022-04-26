@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="patients_list_action" >
+            <field name="name">Patients</field>
+            <field name="res_model">hospital.patients</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem name="Odoo Hospital"
+                  id="menu_hospital"
+                  sequence="1"/>
+        <menuitem name="Odoo Hospital" id="menu_hospital_sub" parent="menu_hospital" sequence="2"/>
+        <menuitem name="patients" id="menu_hospital_patients" parent="menu_hospital_sub" sequence="3" action="patients_list_action"/>
+   model="ir.actions.act_window" </data>
+</odoo>
+                  

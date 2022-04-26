@@ -13,4 +13,12 @@
 	'version':'0.1',
 	'depends':['base_setup'],
 	'installable':True,
+	'data':[
+		'security/hospital_security.xml',
+		'security/ir.model.access.csv',	
+		'views/hospital_menuitem.xml',
+	],
+	'demo':[
+		'demo/hospital_demo.xml'
+	]
 }

@@ -1,3 +1,3 @@
 # -*- coding: utf-8 -*
-
-from . import models
+# links those folder name who contain .py files (models,controllers, etc)
+from . import models #1

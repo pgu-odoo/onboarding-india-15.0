@@ -16,3 +16,4 @@ class HospitalDoctors(models.Model):
     ], required=True, default='other')
     
     note = fields.Text(string='Description')
+    
