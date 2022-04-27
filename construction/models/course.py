@@ -3,6 +3,8 @@ from odoo import models,fields,api,_
 from odoo.exceptions import UserError,ValidationError
 
 
+
+
 class Course(models.Model):
 
 	_name='academy.course'
@@ -16,11 +18,21 @@ class Course(models.Model):
 	level=fields.Selection(string='Level',selection=[('beginner','Beginner'),('intermediate','Intermediate'),('advanced','Advanced')],copy=False,default='beginner')
 	active =fields.Boolean(string='Active',default=True)
 
+	lecture_date=fields.Date(string="Lecture Date")
+	lecture_starttime=fields.Datetime(string="Lecture_start time")  # default=field.Date.today for by default current date  (lecture_startday)
+	lecture_endtime=fields.Datetime(string="Lecture end time",compute="_compute_lecture_endtime",inverse="_inverse_lecture_endtime",store=True)# inverse fuction use for if someone give enddate instead of duration and store=True for save in DB 
+
+
+	#duration=fields.Integer(string="Lecture duration")
+
+
+
+
 	base_price=fields.Float(string="Base Price",default=0.00)
 	additional_fee=fields.Float(string="Additional_fee",default=10.00)
 	total_price=fields.Float(string="Total_Price",compute='_compute_total_price')
 
-	subject_ids = fields.Many2one(comodel_name='subject.details',string="Subject")                  # ids_name = fields.Many2one('relation_model_name',string='',ondelete='cascade')
+	subjects = fields.Many2one(comodel_name='subject.details',string="Subject")                  # ids_name = fields.Many2one('relation_model_name',string='',ondelete='cascade')
 	add_subject_ids = fields.One2many('subject.details','details_id',string="Subject Options")      # ids_name = fields.One2many('relation_model_name','inverse_name',string='')
 	# subjects_ids=fields.Many2many(comodel_name='subject.details',string="Subjects")
 
@@ -33,13 +45,32 @@ class Course(models.Model):
 
 	# 	self.total_price=self.base_price+self.additional_fee
 
-	@api.depends('base_price','additional_fee') # invoke when we  change in  "additional_fee"  and "base_price" and we can't changes in total_price
+	@api.depends('base_price','additional_fee') # invoke when we  change in  "additional_fee"  and "base_price" and we can't changes in total_price due to @api.depends 
 	def _compute_total_price(self):
 		print("base_price------------------>",self.base_price)
 		if self.base_price < 0.00:
 			raise UserError('base price cannot be set as nagative')
 
 		self.total_price = self.base_price +  self.additional_fee
+
+
+	# @api.depends('lecture_starttime','duration') # everytime when we  change in  "lecture_starttime"  and "duration" this will update in enddate 
+	# def _compute_lecture_endtime(self):
+	# 	for record in self:
+	# 		if not (record.lecture_starttime and record.duration):
+	# 			record.lecture_endtime =record.lecture_starttime
+	# 		else:
+	# 			duration=timedelta(days=record.duration)
+	# 			record.end_date=record.lecture_starttime+duration
+
+
+	# def _inverse_lecture_endtime(self):
+	# 	for record in self:
+	# 		if  record.lecture_starttime and record.duration:
+	# 			record.duration =(record.lecture_endtime  - record.lecture_starttime).days+1
+	# 		else:
+	# 			continue 
+		
 
 
 

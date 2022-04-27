@@ -16,6 +16,8 @@
 						<group> <!--for getting a label for corresponding fields -->
 							<field name="active"/>
 							<field name="level"/>
+							<field name="lecture_date"/>
+							<field name="lecture_starttime"/>
 						</group>
 
 						<!--taking a two group for split form -->
@@ -24,7 +26,7 @@
 							<field name="base_price"/>
 							<field name="additional_fee"/>
 							<field name="total_price"/>
-							<field name="subject_ids"/>
+							<field name="subjects"/>
 						</group>
 					</group>
 
@@ -57,40 +59,40 @@
 
 <!--it is a list or tree view 	-->
 
-		<record id="course_view_tree" model="ir.ui.view"> <!--we are create a form views into this model (ir.ui.view)-->
-			<field name="name">academy.course.tree</field>  
-			<field name="model">academy.course</field>   <!--we are going to create form view for this mode --><!--we can use this models fields inside the form tag-->
-			<field name="arch" type="xml"> 
+	<record id="course_view_tree" model="ir.ui.view"> <!--we are create a form views into this model (ir.ui.view)-->
+		<field name="name">academy.course.tree</field>  
+		<field name="model">academy.course</field>   <!--we are going to create form view for this mode --><!--we can use this models fields inside the form tag-->
+		<field name="arch" type="xml"> 
 
-				<tree default_order="name desc">
-					 <field name="active"/>
-					 <field name="level"/>
-					 <field name="name"/>
-					 <field name="description"/>
-				</tree>
+			<tree default_order="name desc">
+				 <field name="active"/>
+				 <field name="level"/>
+				 <field name="name"/>
+				 <field name="description"/>
+			</tree>
 
-			</field>  
-			
-		</record>
+		</field>  
+		
+	</record>
 
 
 <!--it is a kanban view 	-->
 
-		<record id="course_view_kanban" model="ir.ui.view"> <!--we are create a kanban views into this model (ir.ui.view)-->
-			<field name="name">academy.course.kanban</field>  
-			<field name="model">academy.course</field>   <!--we are going to create kanban view for this model-->
-			<field name="arch" type="xml"> 
+		<!-- <record id="course_view_kanban" model="ir.ui.view"> --> <!-- we are create a kanban views into this model (ir.ui.view) -->
+			<!-- <field name="name">academy.course.kanban</field>   -->
+			
+			<!-- <field name="arch" type="xml">  -->
 
-				<kanban>
-					 <!-- <field name="id"/> -->
-					 <!-- <field name="active"/>
-					 <field name="level"/>
-					 <field name="name"/>
-					 <field name="description"/> -->
-					 <template>
+				<!-- <kanban>
+					<field name="id"/>
+					<field name="active"/>
+					<field name="level"/>
+					<field name="name"/>
+					<field name="description"/>
+					<template>
 					 	<t t-name="kanban-box">
 					 		<div t-attf-class="oe_kanban_global_click">
-					 			<div class="oe_kanban_details">
+					 			<div class="o_kanban_card_content d-flex">
 					 				<ul>
 					 					<li>Name:<field name="name"/></li>
 					 					<li>Age:<field name="description"/></li>
@@ -99,12 +101,92 @@
 					 			</div>
 					 		</div>
 					 	</t>
-					 </template>
+					</template>
 				</kanban>
 
 			</field>  
 			
-		</record>
+		</record> -->
+
+
+
+
+<!--it is a calendar view 	-->
+
+	<record id="course_view_calendar" model="ir.ui.view">
+        <field name="name">academy.course.calendar</field>
+        <field name="model">academy.course</field>
+        <field name="arch" type="xml">
+            <calendar date_start="lecture_starttime" date_stop="lecture_endtime" mode="month" string="TIME TABLE" color="level">
+          			
+                <field name="level"/>
+                <field name="name"/>
+            </calendar>
+        </field>
+    </record>
+
+
+<!--it is a pivot view 	-->
+
+	<record id="course_view_pivot" model="ir.ui.view">
+        <field name="name">academy.course.pivot</field>
+        <field name="model">academy.course</field>
+        <field name="arch" type="xml">
+            <pivot  string="time table">
+            	
+				<field name="level"/>
+				<field name="name"/>
+                <field name="subjects" type="row" />   <!--type=row,type=col,interval=day,month, (by default view)-->
+                <field name="lecture_date" type="col" interval="day"/>		
+            </pivot>
+        </field>
+    </record>
+
+
+<!--it is a graph view 	-->
+
+	<record id="course_view_graph" model="ir.ui.view">
+        <field name="name">academy.course.graph</field>
+        <field name="model">academy.course</field>
+        <field name="arch" type="xml">
+            <graph  string="this is graph view" type="pie">       <!--by default show as pie chart (type="pie") --> 
+          
+                <field name="name"/>   
+                <field name="base_price" type="measure"/>		
+            </graph>
+        </field>
+    </record>
+
+
+ <!--it is a cohort view 	-->
+
+	<!-- <record id="course_view_cohort" model="ir.ui.view">
+        <field name="name">academy.course.cohort</field>
+        <field name="model">academy.course</field>
+        <field name="arch" type="xml"> -->
+            <!-- <cohort date_start="lecture_date" date_start="lecture_date" string="this is  cohort view" mode="churn"> --> <!--There are two modes: "churn" and "retention".Churn mode will start at 0% and increase over time whereas retention will start at 100% and decrease over time.-->
+          
+                <!-- <field name="level"/> -->
+                <!-- <field name="name"/> -->
+            <!-- </cohort>
+        </field>
+    </record> -->
+
+
+
+<!--it is a gantt view 	-->
+
+	<!-- <record id="course_view_gantt" model="ir.ui.view">  
+        <field name="name">academy.course.gantt</field>
+        <field name="model">academy.course</field>
+        <field name="arch" type="xml">
+            <gantt date_start="lecture_date" date_stop="end date"  default_group_by="level" string="this is gantt view" color="level">
+          
+                <field name="level"/>
+                <field name="name"/>
+            </gantt>
+        </field>
+    </record> -->
 
 
 
@@ -117,30 +199,30 @@
 
 <!--it is a search view 	-->
 
-		<record id="course_view_search" model="ir.ui.view"> <!--we are create a form views into this model (ir.ui.view)-->
-			<field name="name">academy.course.search</field>  
-			<field name="model">academy.course</field>   <!--we are going to create form view for this mode --><!--we can use this models fields inside the form tag-->
-			<field name="arch" type="xml"> 
+	<record id="course_view_search" model="ir.ui.view"> <!--we are create a form views into this model (ir.ui.view)-->
+		<field name="name">academy.course.search</field>  
+		<field name="model">academy.course</field>   <!--we are going to create form view for this mode --><!--we can use this models fields inside the form tag-->
+		<field name="arch" type="xml"> 
 
-				<search string="course">	
-					 <field name="name"/>
-					 <field name="description"/>
-					 <field name="level"/>
-					 <separator/>
+			<search string="course">	
+				 <field name="name"/>
+				 <field name="description"/>
+				 <field name="level"/>
+				 <separator/>
 
-					 <filter string="Beginner" name="Beginner" domain="[('level', '=', 'beginner')]"/>
-					 <filter string="Intermediate" name="Intermediate" domain="[('level', '=', 'intermediate')]"/>
-					 <filter string="Advanced" name="Advanced" domain="[('level', '=', 'advanced')]"/>
+				 <filter string="Beginner" name="Beginner" domain="[('level', '=', 'beginner')]"/>
+				 <filter string="Intermediate" name="Intermediate" domain="[('level', '=', 'intermediate')]"/>
+				 <filter string="Advanced" name="Advanced" domain="[('level', '=', 'advanced')]"/>
 
 
-					 <group expand="1" string="Group By">
-					 	<filter string="level" name="level" context="{'group_by':'level'}"/>
-					 	<filter string="course name" name="name" context="{'group_by':'name'}"/>
-					 </group>
+				 <group expand="1" string="Group By">
+				 	<filter string="level" name="level" context="{'group_by':'level'}"/>
+				 	<filter string="course name" name="name" context="{'group_by':'name'}"/>
+				 </group>
 
-				</search>
+			</search>
 
-			</field>  
-			
-		</record>
+		</field>  
+		
+	</record>
 </odoo>
