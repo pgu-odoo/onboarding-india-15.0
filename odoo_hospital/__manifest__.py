@@ -17,8 +17,9 @@
 		'security/hospital_security.xml',
 		'security/ir.model.access.csv',	
 		'views/hospital_menuitem.xml',
+		'views/patients_view.xml',
 	],
 	'demo':[
-		'demo/hospital_demo.xml'
+		'demo/hospital_demo.xml',
 	]
 }

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+       <!-- Foem view -->
+        <record model="ir.ui.view" id="hospital_patients_form">
+            <field name="name">hospital.patients.form</field>
+            <field name="model">hospital.patients</field> <!-- name="res_model" -->
+            <!-- <field name="view_mode">form</field> -->
+            <field name="arch" type="xml"> <!-- architecture (arch) which customises the way the model is displayed inside the view -->
+                <form string="Patient Form"> 
+                    <sheet>
+                        <h1><field name="name"/></h1>
+                        <group>
+                            <group>
+                                <field name="age"/>
+                                <field name="gender"/>
+                            </group>
+                            <group>
+                                <field name="admit_fee"/>
+                                <field name="additional_fee"/>
+                                <field name="total_fee" force_save='1'/> <!--here we do force_save due to total_fee attribute we mention readonly=True in patients.py file -->  
+                                
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+                                <field name="description"/>
+                                
+                            </page>
+                        </notebook>
+
+                    </sheet>
+                </form> 
+            </field>
+            
+        </record>
+
+        <!-- list(tree) view -->
+        <record model="ir.ui.view" id="hospital_patients_list">
+            <field name="name">hospital.patients.list</field>
+            <field name="model">hospital.patients</field> <!-- name="res_model" -->
+            <!-- <field name="view_mode">list</field> -->
+            <field name="arch" type="xml">
+                <tree string="Patient list"> 
+                   <field name="name"/>
+                   <field name="gender"/>
+                   <field name="age"/>
+                   <field name="description"/> 
+                   
+
+                </tree> 
+            </field>
+            
+        </record>
+
+        <!--search view by default given in localhost server, hence doesn't need to be specified-->
+        <record model="ir.ui.view" id="patients_view_search">
+            <field name="name">hospital.patients.search</field>
+            <field name="model">hospital.patients</field> 
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/> 
+                    <filter name="name" domain="[('name', '=','vishal')]"/>
+                    <field name="gender"/>
+                    <!-- <feild name="age"/>  getting error:if i used this feild inside search view-->
+                    <field name="description"/>
+                    <filter string="Male" name="male" domain="[('gender', '=','male')]"/> 
+                    <filter string="Female" name="female" domain="[('gender', '=','female')]"/> 
+                    <group expand="1" string="Group By">
+                        <filter string="Gender" name="gender" context="{'group_by':'gender'}"/>
+                        <filter string="Patient name" name="patient name" context="{'group_by':'name'}"/>
+                    </group>
+
+                </search>
+
+            </field>
+        </record>
+
+    
+    </data>
+    
+</odoo>
