@@ -1,4 +1,4 @@
-# -- coding: utf-8 -
+# -*- coding: utf-8 -*-
 {
     'name':' Odoo Acedamy',
     'summary':""" Acedamy app to manage training""",
@@ -12,5 +12,11 @@
     'category':'Training',
     'version':'0.1',
     'depends':['base_setup'],
-    'installable':'True'
+    'installable':'True',
+    'data':[
+        'security/academy_security.xml',
+        'security/ir.model.access.csv',],
+    'demo':['demo/academy_demo.xml',
+    ]
+
 }

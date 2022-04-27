@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+		<record model="academy.course" id="erp_101">
+			<field name="name">ERP 101</field>
+			<field name="description">Learn ERP Systems</field>
+			<field name="level">beginner</field>
+		</record>
+		<record model="academy.course" id="accounting_200">
+			<field name="name">Accounting 200</field>
+			<field name="description">
+			Accounting 200:
+			Intermediate accounting course
+			Learning about cost Accounting and pricing Revenue analysis.
+			</field>
+			<field name="level">Intermediate</field>
+		</record>
+		<record model="academy.course" id="website_500">
+			<field name="name">Website 500</field>
+			<field name="description"></field>
+			<field name="level">Master</field>
+		</record>
+	</data>
+</odoo>
