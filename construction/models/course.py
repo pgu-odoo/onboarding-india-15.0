@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from odoo import models,fields,api,_
 from odoo.exceptions import UserError,ValidationError
+from datetime import timedelta 
 
 
 
@@ -19,11 +20,11 @@ class Course(models.Model):
 	active =fields.Boolean(string='Active',default=True)
 
 	lecture_date=fields.Date(string="Lecture Date")
-	lecture_starttime=fields.Datetime(string="Lecture_start time")  # default=field.Date.today for by default current date  (lecture_startday)
-	lecture_endtime=fields.Datetime(string="Lecture end time",compute="_compute_lecture_endtime",inverse="_inverse_lecture_endtime",store=True)# inverse fuction use for if someone give enddate instead of duration and store=True for save in DB 
+	lecture_starttime=fields.Date(string="Lecture_start time")  # default=field.Date.today for by default current date  (lecture_startday)
+	lecture_endtime=fields.Date(string="Lecture end time",compute="_compute_lecture_endtime",inverse="_inverse_lecture_endtime",store=True)# inverse fuction use for if someone give enddate instead of duration and store=True for save in DB 
 
 
-	#duration=fields.Integer(string="Lecture duration")
+	duration=fields.Integer(string="Lecture duration")
 
 
 
@@ -54,22 +55,22 @@ class Course(models.Model):
 		self.total_price = self.base_price +  self.additional_fee
 
 
-	# @api.depends('lecture_starttime','duration') # everytime when we  change in  "lecture_starttime"  and "duration" this will update in enddate 
-	# def _compute_lecture_endtime(self):
-	# 	for record in self:
-	# 		if not (record.lecture_starttime and record.duration):
-	# 			record.lecture_endtime =record.lecture_starttime
-	# 		else:
-	# 			duration=timedelta(days=record.duration)
-	# 			record.end_date=record.lecture_starttime+duration
+	@api.depends('lecture_starttime','duration') # everytime when we  change in  "lecture_starttime"  and "duration" this will update in enddate 
+	def _compute_lecture_endtime(self):
+		for record in self:
+			if not (record.lecture_starttime and record.duration):
+				record.lecture_endtime =record.lecture_starttime
+			else:
+				duration=timedelta(days=record.duration)  # timedelta use of calculate a duration in time instaed of int value 
+				record.lecture_endtime=record.lecture_starttime+duration
 
 
-	# def _inverse_lecture_endtime(self):
-	# 	for record in self:
-	# 		if  record.lecture_starttime and record.duration:
-	# 			record.duration =(record.lecture_endtime  - record.lecture_starttime).days+1
-	# 		else:
-	# 			continue 
+	def _inverse_lecture_endtime(self):
+		for record in self:
+			if  record.lecture_starttime and record.duration:
+				record.duration =(record.lecture_endtime  - record.lecture_starttime).days+1
+			else:
+				continue 
 		
 
 
@@ -121,13 +122,13 @@ class Course(models.Model):
         
 
 
-class SubjectDetails(models.Model):
+# class SubjectDetails(models.Model):
 
-	_name = 'subject.details'
-	_description = 'Subject Details'
-	_rec_name = "subject"
+# 	_name = 'subject.details'
+# 	_description = 'Subject Details'
+# 	_rec_name = "subject"
 
-	subject = fields.Char('Subject')
-	book = fields.Char('Book Name')
-	author = fields.Char("Author")
-	details_id = fields.Many2one('academy.course',string="details")	# id = fields.Many2one('relational.object.name',string='')
+# 	subject = fields.Char('Subject')
+# 	book = fields.Char('Book Name')
+# 	author = fields.Char("Author")
+# 	details_id = fields.Many2one('academy.course',string="details")	# id = fields.Many2one('relational.object.name',string='')

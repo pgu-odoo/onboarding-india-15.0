@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- <odoo>
+	<data>
+		<record id="view_order_form_inherit" model="ir.ui.view">
+			<field name="name">sale.order.from.inherit.academy</field>  
+			<field name="model">sale.order</field>   -->
+			<!-- <field name="inherit_id" ref="sale.view_">sale.order</field> -->  <!--ref=external id of sale view  where we want to add our fields-->
+
+			<!-- <field name="arch" type="xml"> 
+
+				<xpath expr="//field[@name='payment_term_id']" position="after">
+					<field name="sub"></field>
+				</xpath>
+
+				<field name=" ">
+
+				
+			</field>  
+			
+		</record>
+	</data>
+</odoo> -->

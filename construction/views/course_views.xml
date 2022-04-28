@@ -18,6 +18,8 @@
 							<field name="level"/>
 							<field name="lecture_date"/>
 							<field name="lecture_starttime"/>
+							<field name="lecture_endtime"/>
+							<field name="duration"/>
 						</group>
 
 						<!--taking a two group for split form -->
@@ -30,7 +32,7 @@
 						</group>
 					</group>
 
-					<notebook>
+					<notebook>   <!--position="inside,position="before,position="after,"-->
 						<page string="Description">		 
 							<field name="description"/>
 						</page>
@@ -134,10 +136,10 @@
         <field name="arch" type="xml">
             <pivot  string="time table">
             	
-				<field name="level"/>
-				<field name="name"/>
-                <field name="subjects" type="row" />   <!--type=row,type=col,interval=day,month, (by default view)-->
-                <field name="lecture_date" type="col" interval="day"/>		
+				<field name="level" type="row"/>    <!--type=row, type=col,interval=day,month, (by default view)-->
+				<field name="name" type="row"/>
+				<field name="base_price" type="measure"/>
+                
             </pivot>
         </field>
     </record>
@@ -210,14 +212,14 @@
 				 <field name="level"/>
 				 <separator/>
 
-				 <filter string="Beginner" name="Beginner" domain="[('level', '=', 'beginner')]"/>
-				 <filter string="Intermediate" name="Intermediate" domain="[('level', '=', 'intermediate')]"/>
-				 <filter string="Advanced" name="Advanced" domain="[('level', '=', 'advanced')]"/>
+				 <filter string="Filter for Beginner" name="Beginner" domain="[('level', '=', 'beginner')]"/>
+				 <filter string="Filter for Intermediate" name="Intermediate" domain="[('level', '=', 'intermediate')]"/>
+				 <filter string="Filter for Advanced" name="Advanced" domain="[('level', '=', 'advanced')]"/>
 
 
 				 <group expand="1" string="Group By">
 				 	<filter string="level" name="level" context="{'group_by':'level'}"/>
-				 	<filter string="course name" name="name" context="{'group_by':'name'}"/>
+				 	<filter string="course name" name="name" context="{'group_by':'name'}"/>	
 				 </group>
 
 			</search>

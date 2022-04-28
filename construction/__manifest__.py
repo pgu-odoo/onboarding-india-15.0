@@ -20,7 +20,7 @@
 	'category' : 'Sales',
 	'version' : '1.0',
 
-	'depends' : ['base'],
+	'depends' : ['sale'],  #we want to inherit from "sale" 
     
 
 	################### commented because it was causing problems in further tasks
@@ -35,6 +35,8 @@
 				'views/course_views.xml',
 				'views/academy_menuitems.xml',
 				'views/suject_details.xml',
+				'views/sale_views_inherit.xml',
+
 			],
 
 	'demo' : ['demo/academy_demo.xml',],
