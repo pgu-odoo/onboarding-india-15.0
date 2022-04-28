@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-       <!-- Foem view -->
+<!-- Form view for patients data-->
         <record model="ir.ui.view" id="hospital_patients_form">
             <field name="name">hospital.patients.form</field>
             <field name="model">hospital.patients</field> <!-- name="res_model" -->
-            <!-- <field name="view_mode">form</field> -->
+    
             <field name="arch" type="xml"> <!-- architecture (arch) which customises the way the model is displayed inside the view -->
-                <form string="Patient Form"> 
+                <form string="Patient Form">
+                    <header> <!-- for status bar(widget="stausbar" is must be) feild above the form -->
+                        <button id="button_confirm" name="action_confirm" string="Confrim" 
+                                    class="oe_highlight" states="draft" type="object"/>
+                        <button id="button_done" name="action_done" string="Done" 
+                                    class="oe_highlight" states="confirm" type="object"/>
+                        <button id="button_draft" name="action_draft" string="Set To Draft" 
+                                    class="oe_highlight" states="cancel" type="object"/>
+                        <button id="button_cancel" name="action_cancel" string="Cancel"  
+                                    states="draft,done,confirm" type="object"/>
+                        <field name="state" widget="statusbar" 
+                               statusbar_visible="draft,done,confirm" /> <!--options="{'clickable':'1'}"  -->
+                    </header    >
                     <sheet>
                         <h1><field name="name"/></h1>
                         <group>
@@ -30,30 +42,35 @@
                         </notebook>
 
                     </sheet>
+                    <div class="oe_chatter">
+                        <!-- <field name="message_follower_ids"/> --> <!--used to show follower -->
+                        <field name="activity_ids"/> <!--  used for schedule activity -->
+                        <field name="message_ids"/>  <!-- used for send msg and log -->
+                    </div>
                 </form> 
             </field>
             
         </record>
 
-        <!-- list(tree) view -->
+<!-- list(tree) view for patients data -->
         <record model="ir.ui.view" id="hospital_patients_list">
             <field name="name">hospital.patients.list</field>
             <field name="model">hospital.patients</field> <!-- name="res_model" -->
-            <!-- <field name="view_mode">list</field> -->
+            
             <field name="arch" type="xml">
                 <tree string="Patient list"> 
                    <field name="name"/>
                    <field name="gender"/>
                    <field name="age"/>
-                   <field name="description"/> 
+                   <field name="description"/>
+                   <field name="state"/>
                    
-
                 </tree> 
             </field>
             
         </record>
 
-        <!--search view by default given in localhost server, hence doesn't need to be specified-->
+<!--search view by default given in localhost server with only name as search feild, hence doesn't need to be specified -->
         <record model="ir.ui.view" id="patients_view_search">
             <field name="name">hospital.patients.search</field>
             <field name="model">hospital.patients</field> 
@@ -68,15 +85,43 @@
                     <filter string="Female" name="female" domain="[('gender', '=','female')]"/> 
                     <group expand="1" string="Group By">
                         <filter string="Gender" name="gender" context="{'group_by':'gender'}"/>
-                        <filter string="Patient name" name="patient name" context="{'group_by':'name'}"/>
+                        <filter string="Patient name" name="patient_name" context="{'group_by':'name'}"/>
                     </group>
+                    <!-- <field name="context">{'search_default_gender':1}</field> --> <!--we can't write it here because search bar model='ir.action.act_window' hence we have to write it in menuitem.xml file-->
 
                 </search>
 
             </field>
         </record>
 
-    
+<!-- kanban view for patients data-->
+        <record id="patients_kanban_view" model="ir.ui.view">
+            <field name="name">hospital.patients.kanban</field>
+            <field name="model">hospital.patients</field>
+            
+            <field name='arch' type='xml'>
+                <kanban>
+                    <field name="name"/>
+                    <field name="age"/>
+                    <field name="gender"/>
+                    <field name="description"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                                <div class="oe_kanban_details">
+                            
+                                    <ul>
+                                            <li>Name:<field name="name"/></li>
+                                            <li>Age:<field name="description"/></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
     </data>
     
 </odoo>
