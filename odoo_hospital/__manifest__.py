@@ -3,7 +3,7 @@
 	'name':' Odoo Hospital',
 	'summary':'Hospital',
 	'description':""" Hospital:
-						- Patients
+						- Patientsbar
 						- Doctors
 					
 				""" ,
@@ -22,5 +22,6 @@
 	],
 	'demo':[
 		'demo/hospital_demo.xml',
+		'demo/patients_sequence.xml',
 	]
 }

@@ -21,11 +21,19 @@
                                statusbar_visible="draft,done,confirm" /> <!--options="{'clickable':'1'}"  -->
                     </header    >
                     <sheet>
-                        <h1><field name="name"/></h1>
+                        <div class="oe_title">
+                        <h1>
+                            <field name="reference" readonly="1"/>
+                        </h1>
+                        </div>
+                        
                         <group>
                             <group>
+                                <field name="name"/>
                                 <field name="age"/>
                                 <field name="gender"/>
+                                <field name="family_member_id"/>
+                                
                             </group>
                             <group>
                                 <field name="admit_fee"/>
@@ -59,9 +67,10 @@
             
             <field name="arch" type="xml">
                 <tree string="Patient list"> 
+                   <field name="reference" readonly="1"/> 
                    <field name="name"/>
-                   <field name="gender"/>
-                   <field name="age"/>
+                   <field name="family_member_id"/>
+                   <!-- <field name="age"/> -->
                    <field name="description"/>
                    <field name="state"/>
                    
