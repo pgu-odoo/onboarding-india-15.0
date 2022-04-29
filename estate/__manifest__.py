@@ -4,7 +4,6 @@
     'name' : 'Real Estate',
     'version' : '1.0',
     'summary': 'A consolidated tool for Estate management',
-    'sequence': 1002,
     'description': """  A complete module for Estate managemnet
     and organizing """,
     'category': 'Real Estate',
@@ -14,6 +13,8 @@
     'auto_install': False,
     'license': 'LGPL-3',
     'data':['security/ir.model.access.csv',
-    'views/estate_property_views.xml',
-    'views/estate_menu.xml',],
+    'views/estate_menu.xml',
+    'views/property_view.xml',
+    'views/estate_property_type_view.xml',
+    'views/estate_property_tag_view.xml',]
 }

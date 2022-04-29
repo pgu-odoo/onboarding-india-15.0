@@ -1,8 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-		<menuitem id="estate_property_menu_root" name="Real Estate">
-			<menuitem id="estate_property_menu_first_level" name="Advertisement">
-				<menuitem id="estate_property_menu_action" action="estate_property_action"/>
-			</menuitem>		
+	<record model="ir.actions.act_window" id="estate_property_action">
+		<field name="name">Estate Property</field>
+		<field name="res_model">estate.property</field>
+		<field name="view_mode">tree,form,search</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">Create the first layout</p>
+		</field>
+		<field name="context">{'search_default_state':True}</field>
+		<field name="context">{'search_default_groupby_state':True}</field>
+	</record>
+	<record model="ir.actions.act_window" id="estate_property_type_action">
+		<field name="name">Estate Property Type</field>
+		<field name="res_model">estate.property.type</field>
+		<field name="view_mode">tree,form,search</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">Create new Property Type</p>
+		</field>
+		<field name="context">{'search_default_name':True}</field>
+	</record>
+	<record model="ir.actions.act_window" id="estate_property_tag_action">
+		<field name="name">Estate Property Tag</field>
+		<field name="res_model">estate.property.tag</field>
+		<field name="view_mode">tree,form,search</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">Create new Property Tag</p>
+		</field>
+	</record>
+	<menuitem id="estate_property_menu_root" name="Real Estate">
+		<menuitem id="estate_property_menu_first_level" name="Advertisement">
+			<menuitem id="estate_property_menu_action" action="estate_property_action"/>
 		</menuitem>
+		<menuitem id="estate_property_type_menu_first_level" name="Settings">
+			<menuitem id="estate_property_type_menu_action" action="estate_property_type_action"/>
+			<menuitem id="estate_property_tag_menu_action" action="estate_property_tag_action"/>
+		</menuitem>
+	</menuitem>
 </odoo>
