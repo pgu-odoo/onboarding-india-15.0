@@ -3,11 +3,15 @@ from odoo import models,fields,api,_
 
 
 
-class CancleAppointmentWizard(models.TransientModel):
+class CancleLectureWizard(models.TransientModel):
 
-	_name = 'cancle.appointment.wizard'
-	_description = 'Cancle Appointment Wizard'
-	_rec_name = "subject"
-
+	_name = 'create.appointment.wizard'
+	_description = 'create appointment Wizard'
 	
-	appointment_id = fields.Many2one('academy.course',string="details")	# id = fields.Many2one('relational.object.name',string='')
+
+		
+	course_name = fields.Many2one('academy.course',string="course name")	# id = fields.Many2one('relational.object.name',string='')
+	
+
+	def action_create_appointment(self):
+		print('buuton click ')

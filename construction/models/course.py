@@ -10,10 +10,14 @@ class Course(models.Model):
 
 	_name='academy.course'
 	_description='Course info'
+	_rec_name = "name"
+
+	# _inherits = {'subject.details': 'related_subject'}  # we inherit all fiels and  methods that is define in "academy.course" to "subject.details"
+
+	# related_subject=fields.Char(string="related_subject")
 
 
 	# Fields of odoo are  Monetory is use for calculation,Integer ,Float,Boolean,Selection,Text,Char,Html,Date,Datetime
-
 	name =fields.Char(string='Title',required=True) #required True bacause we always have a title
 	description=fields.Text(string='Description')
 	level=fields.Selection(string='Level',selection=[('beginner','Beginner'),('intermediate','Intermediate'),('advanced','Advanced')],copy=False,default='beginner')
@@ -27,15 +31,12 @@ class Course(models.Model):
 	duration=fields.Integer(string="Lecture duration")
 
 
-
-
 	base_price=fields.Float(string="Base Price",default=0.00)
 	additional_fee=fields.Float(string="Additional_fee",default=10.00)
 	total_price=fields.Float(string="Total_Price",compute='_compute_total_price')
 
 	subjects = fields.Many2one(comodel_name='subject.details',string="Subject")                  # ids_name = fields.Many2one('relation_model_name',string='',ondelete='cascade')
 	add_subject_ids = fields.One2many('subject.details','details_id',string="Subject Options")      # ids_name = fields.One2many('relation_model_name','inverse_name',string='')
-	# subjects_ids=fields.Many2many(comodel_name='subject.details',string="Subjects")
 
 
 	# @api.onchange('base_price','additional_fee')  # invoke when we  change in  "additional_fee"  and "base_price" and we can changes in total_price
@@ -89,7 +90,7 @@ class Course(models.Model):
 	# 		vals['name'] = 'Riddhi'
 	# 	res = super(Course,self).create(vals)
 	# 	return res
-	# 	# super(classname,self).craete(other parameer which given in function)
+	# 	# super(classname,self).craete(other parameer which given in sheet)
 
 	
 	# def write(self,vals):  #no decorators needed for  write method  invoke when we click on Edit+save button

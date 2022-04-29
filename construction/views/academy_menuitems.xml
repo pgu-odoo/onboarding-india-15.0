@@ -15,8 +15,28 @@
 			</field>  
 		</record>
 
+
+
+
+
 		<menuitem name="Odoo academy" id="menu_academy" sequence="1" />
 		<menuitem name="Odoo academy" id="menu_academy_sub" parent="menu_academy" sequence="2" />
-		<menuitem name="Courses" id="menu_academy_courses" parent="menu_academy_sub" sequence="3" action="course_list_actions" />
+		<menuitem name="Courses" id="menu_academy_courses" parent="menu_academy_sub" sequence="3" action="course_list_actions"/>
+
+
+
+		<record id="create_appointment_wizard_action" model="ir.actions.act_window">
+            <field name="name">Create Appointment</field>  
+            <field name="res_model">create.appointment.wizard</field>  
+            <field name="view_mode">form</field>  
+
+            <field name="view_id" ref="create_appointment_wizard_form"></field>   
+            <field name="target">new</field>   
+        </record>
+
+        <menuitem name="Create Appointment" id="Appointment_details" parent="construction.menu_academy"/>
+        <menuitem name="Appointment" id="Appointment" parent="Appointment_details" action="create_appointment_wizard_action" />
 	</data>
 </odoo>
+
+

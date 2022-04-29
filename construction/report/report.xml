@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<report
+		id="course_report"
+		string="print report"
+		model="academy.course"
+		report_type="qweb-pdf"
+		name="construction.report_card"
+		file="construction.report_card"/>
+</odoo>

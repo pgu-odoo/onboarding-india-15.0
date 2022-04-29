@@ -20,22 +20,25 @@
 	'category' : 'Sales',
 	'version' : '1.0',
 
-	'depends' : ['sale'],  #we want to inherit from "sale" 
+	'depends' : ['sale','sale_management'],  #we want to inherit from "sale" 
     
 
-	################### commented because it was causing problems in further tasks
 	
 	'installable': True,
 	'application':True,
 	'auto_install': False,
 	'license':'LGPL-3',
 	'data' : [
-				'security/academy_security.xml',
+				'security/academy_security.xml',  #keep sequence like this security related file,data related file,wizaed and last views 
 				'security/ir.model.access.csv',
+				'wizard/create_appointment.xml',  # watch 31.how to create wizard  in odoo (odoo meta )
+
 				'views/course_views.xml',
 				'views/academy_menuitems.xml',
 				'views/suject_details.xml',
 				'views/sale_views_inherit.xml',
+				'report/report.xml',
+				'report/print.xml'
 
 			],
 
