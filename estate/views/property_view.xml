@@ -5,6 +5,11 @@
       <field name="model">estate.property</field>
       <field name="arch" type="xml">
         <form string="Estate Property">
+          <header>
+            <button name="action_set_property_sold" type="object" string="Sold" class="oe_highlight"/>
+            <button name="action_set_property_cancel" type="object" string="Cancel" class="oe_highlight"/>
+            <field name="state" widget="statusbar"/>
+          </header>
           <sheet>
             <group>
               <group><h1><field name="name"/></h1></group>
@@ -12,10 +17,6 @@
               <group><field name="date_availability"/></group>
               <group><field name="selling_price"/></group>
             </group>
-         <!--    <group>
-              <button name="action_set_property_sold" type="object" string="Sold">
-              <button name="action_set_property_cancel" type="object" string="Cancel">
-            </group> -->
             <notebook>
               <page string="Description">
                 <group>
