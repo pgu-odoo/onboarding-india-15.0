@@ -11,7 +11,7 @@
 		<field name="context">{'search_default_groupby_state':True}</field>
 	</record>
 	<record model="ir.actions.act_window" id="estate_property_type_action">
-		<field name="name">Estate Property Type</field>
+		<field name="name">Property Type</field>
 		<field name="res_model">estate.property.type</field>
 		<field name="view_mode">tree,form,search</field>
 		<field name="help" type="html">
@@ -20,7 +20,7 @@
 		<field name="context">{'search_default_name':True}</field>
 	</record>
 	<record model="ir.actions.act_window" id="estate_property_tag_action">
-		<field name="name">Estate Property Tag</field>
+		<field name="name">Property Tag</field>
 		<field name="res_model">estate.property.tag</field>
 		<field name="view_mode">tree,form,search</field>
 		<field name="help" type="html">
