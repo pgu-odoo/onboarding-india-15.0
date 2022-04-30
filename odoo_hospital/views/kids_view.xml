@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- this xml file is  used for to view our app module in home menu (whenever we provide our action then app module visible to home menu)-->
+<odoo>
+    <data>
+        <record model="ir.actions.act_window" id="action_hospital_kids">
+            <field name="name">Kids</field>
+            <field name="res_model">hospital.patients</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="domain">['|',('age', '&lt;=',18),<!--by default here AND, to aplly OR operation put '|' at first index --> ('gender','=','male')]</field>    <!--whatever domain feild u apply here is doesn't required to be present in list view -->
+            
+            <field name="help" type="html">
+                <p class='o_view_noncontent_smiling_face'>
+                    Please Register your self!
+                </p>
+            </field>
+        </record>
+        <menuitem name="Kids"
+                  id="menu_kids"
+                  parent="menu_patients_root"
+                  action='action_hospital_kids'
+                  sequence="2"/>
+    </data>
+</odoo>

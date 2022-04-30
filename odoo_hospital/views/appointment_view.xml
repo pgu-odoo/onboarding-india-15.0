@@ -2,12 +2,12 @@
 <odoo>
     <data>
 <!-- Form view for patients data-->
-        <record model="ir.ui.view" id="hospital_patients_form">
-            <field name="name">hospital.patients.form</field>
-            <field name="model">hospital.patients</field> <!-- name="res_model" -->
+        <record model="ir.ui.view" id="view_appointment_form">
+            <field name="name">hospital.appointment.form</field>
+            <field name="model">hospital.appointmemt</field> <!-- name="res_model" -->
     
             <field name="arch" type="xml"> <!-- architecture (arch) which customises the way the model is displayed inside the view -->
-                <form string="Patient Form">
+                <form string="Appointment Form">
                     <header> <!-- for status bar(widget="stausbar" is must be) feild above the form -->
                         <button id="button_confirm" name="action_confirm" string="Confirm" 
                                     class="oe_highlight" states="draft" confirm="Are you sure that you want to confirm?" type="object"/>  
@@ -61,11 +61,11 @@
         </record>
 
 <!-- list(tree) view for patients data -->
-        <record model="ir.ui.view" id="hospital_patients_list">
-            <field name="name">hospital.patients.list</field>
-            <field name="model">hospital.patients</field> <!-- name="res_model" -->
+        <record model="ir.ui.view" id="view_appointment_list">
+            <field name="name">hospital.appointment.list</field>
+            <field name="model">hospital.appointment</field> <!-- name="res_model" -->
             
-            <field name="arch" type="xml">
+            <field name="arch" type="accessxml">
                 <tree string="Patient list"> 
                    <field name="reference" readonly="1"/> 
                    <field name="name"/>
@@ -81,9 +81,9 @@
         </record>
 
 <!--search view by default given in localhost server with only name as search feild, hence doesn't need to be specified -->
-        <record model="ir.ui.view" id="patients_view_search">
-            <field name="name">hospital.patients.search</field>
-            <field name="model">hospital.patients</field> 
+        <record model="ir.ui.view" id="view_appointment_search">
+            <field name="name">hospital.appointment.search</field>
+            <field name="model">hospital.appointment</field> 
             <field name="arch" type="xml">
                 <search>
                     <field name="name"/> 
@@ -105,9 +105,9 @@
         </record>
 
 <!-- kanban view for patients data-->
-        <record id="patients_kanban_view" model="ir.ui.view">
-            <field name="name">hospital.patients.kanban</field>
-            <field name="model">hospital.patients</field>
+        <record id="view_appointment_kanban" model="ir.ui.view">
+            <field name="name">hospital.appointment.kanban</field>
+            <field name="model">hospital.appointment</field>
             
             <field name='arch' type='xml'>
                 <kanban>

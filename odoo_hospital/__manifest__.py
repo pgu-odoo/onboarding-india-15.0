@@ -14,10 +14,14 @@
 	'depends':['base_setup','mail'],
 	'installable':True,
 	'data':[
-		'security/hospital_security.xml',
 		'security/ir.model.access.csv',
+		'security/hospital_security.xml',
+		
 		'views/patients_view.xml',	
 		'views/hospital_menuitem.xml',
+		'views/kids_view.xml',
+		'views/patients_gender_view.xml',
+		'views/appointment_view.xml',
 		
 	],
 	'demo':[

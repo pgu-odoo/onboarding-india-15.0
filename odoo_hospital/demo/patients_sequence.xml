@@ -8,5 +8,12 @@
             <field name="prefix">P-</field>
             <field name="padding">5</field>
         </record>
+
+        <record id="seq_hospital_appointment" model="ir.sequence">
+            <field name="name">appointment sequence</field>
+            <field name="code">appointmet.sequence</field>       
+            <field name="prefix">A-</field>
+            <field name="padding">5</field>
+        </record>
     </data>
 </odoo> 
