@@ -37,8 +37,12 @@
 				'views/academy_menuitems.xml',
 				'views/suject_details.xml',
 				'views/sale_views_inherit.xml',
+				'views/template.xml',
+
+
 				'report/report.xml',
-				'report/print.xml'
+				'report/print.xml',
+				#'report/inherit_in_sale.xml'
 
 			],
 

@@ -34,17 +34,17 @@
 
 
 
-
-<!-- <odoo> -->
-    <!-- <data> -->
-        <!-- <record id="create_appointment_wizard_action" model="ir.actions.act_window">
+        <record id="create_appointment_wizard_action" model="ir.actions.act_window">
             <field name="name">Create Appointment</field>  
             <field name="res_model">create.appointment.wizard</field>  
-            <field name="view_mode">form</field>   
+            <field name="view_mode">form</field>  
+
+            <field name="view_id" ref="create_appointment_wizard_form"></field>   
+            <field name="target">new</field>   
         </record>
 
         <menuitem name="Create Appointment" id="Appointment_details" parent="construction.menu_academy"/>
-        <menuitem name="Appointment" id="Appointment" parent="Appointment_details" action="create_appointment_wizard_action" /> -->
+        <menuitem name="Appointment" id="Appointment" parent="Appointment_details" action="create_appointment_wizard_action" />
     </data>
 </odoo>
  

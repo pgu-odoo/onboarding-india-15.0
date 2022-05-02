@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<template id="course_available" name="course available">
+		
+		
+			<div class="container">
+				hey Subscribe the channel .. 
+				<table style="width:100%" >
+					<thead>
+					  <tr>
+					    <th>Course name</th>
+					  </tr>
+					</thead>
+					<tbody>
+					  	<t t-foreach="coursename" t-as='nam'>
+					  		<tr>
+					  			<td><t t-esc="nam.name"/></td>
+					  		</tr>
+					  	</t>
+					</tbody>
+				</table>
+				
+					
+				
+			</div>
+	</template>
+</odoo>

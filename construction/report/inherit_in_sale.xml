@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<template id="sale_report_inherit" inherit_id="report_saleorder_document">  <!--template id="report file name" inherit_id=id of tamplate which we want to inherit-->
+		<xpath expr="//div[@class='page']/h2" position="after">
+			<h1>vdghbj</h1>
+		</xpath>
+	</template>
+</odoo>
