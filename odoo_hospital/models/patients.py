@@ -32,9 +32,16 @@ class HospitalPatients(models.Model):
 
     family_member_id=fields.Many2one(string='Family Member',comodel_name='res.partner')       #('res.partner', string='Family Member') if we write key value as first argument then we doesn't need to specify its key name- comodel_name'
     
-    reference= fields.Char(string='Number', readonly=True, default='New')
+    reference= fields.Char(string='Number', default='New')
 
-    @api.onchange('admit_fee','additional_fee') #this decorator used for live changes in feild values
+    appointment_count= fields.Integer(string='Appointment Count', compute='compute_appointment_count')
+    appointment_ids=fields.One2many('hospital.appointment','patient_id',string='Appointment ID')
+
+    def compute_appointment_count(self):
+        for rec in self:        #without for loops if we used appointment_count in list view then its gives as singleton error
+            rec.appointment_count=self.env['hospital.appointment'].search_count([('patient_id','=',rec.id)])
+
+    @api.onchange('admit_fee','additional_fee') #this decorator used for live changes in feild values,whenever change occurs in passing parameter field then _onchange_ function call automatically, first time fun auto call when click the create button.. after auto call when we change the field 
     def _onchange_total_fee(self):
         if self.admit_fee<0:
              raise UserError('Registration Fee must be greater than 0')
@@ -62,11 +69,16 @@ class HospitalPatients(models.Model):
 
     @api.model                  #used for override existing model
     def create(self,vals):      #override create method,useful during creat record, vals arg contains the record present in the form view (vals are in dict format) #invoke on create to save button 
+        
+        if vals.get('reference','New')=='New':
+            vals['reference']=self.env['ir.sequence'].next_by_code('patient.sequence')
+
+
         if not vals['description']:
             vals['description']="New Patients"
-            if vals.get('reference','New')=='New':      #it change the sequence number 'New' to latest one taken from ir.sequence model
-                vals['reference']=self.env['ir.sequence'].next_by_code('patient.sequence')  #its work after click on save button, try to finfd solution for change auto on click create
-        res= super(HospitalPatients, self).create(vals)  #when we click on create button changes will apply
+        #     if vals.get('reference','New')=='New':      #it change the sequence number 'New' to latest one taken from ir.sequence model
+        #         vals['reference']=self.env['ir.sequence'].next_by_code('patient.sequence')  #its work after click on save button, try to finfd solution for change auto on click create
+        res= super(HospitalPatients, self).create(vals)  #when we click on save button aboce changes will apply and write this part end otherwise changes will not catch
         return res
 
     # def write(self,vals):       #override write method,doen't need decorator ,useful for edit  existing record

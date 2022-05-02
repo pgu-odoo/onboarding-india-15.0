@@ -6,8 +6,8 @@
             <field name="name">Kids</field>
             <field name="res_model">hospital.patients</field>
             <field name="view_mode">tree,kanban,form</field>
-            <field name="domain">['|',('age', '&lt;=',18),<!--by default here AND, to aplly OR operation put '|' at first index --> ('gender','=','male')]</field>    <!--whatever domain feild u apply here is doesn't required to be present in list view -->
-            
+            <field name="domain">['|',('age', '&lt;=',18),('gender','=','male')]</field>    <!--whatever domain feild u apply here is doesn't required to be present in list view -->
+            <!--by default here AND operation between two tuples, to aplly OR operation put '|' at first index and doeesn't apply cmt between > annd < tag otherwise parsing error--> 
             <field name="help" type="html">
                 <p class='o_view_noncontent_smiling_face'>
                     Please Register your self!
@@ -18,6 +18,6 @@
                   id="menu_kids"
                   parent="menu_patients_root"
                   action='action_hospital_kids'
-                  sequence="2"/>
+                  sequence="5"/>
     </data>
 </odoo>

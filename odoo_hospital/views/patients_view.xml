@@ -33,6 +33,7 @@
                                 <field name="age"/>
                                 <field name="gender" invisible='context.get("hide_gender")'/>  <!-- 10:invisible is looking for context which have hide_gender key is present , if in any form its present then its hide gender feild -->
                                 <field name="family_member_id"/>
+                                <field name="appointment_count"/>
                                 
                             </group>
                             <group>
@@ -47,6 +48,12 @@
                                 <field name="description"/>
                                 
                             </page>
+                            <page string="Appointment" >
+                                <tree editable='top'>
+                                    <field name="appointment_ids"/>
+                                </tree>
+                            </page>
+                            
                         </notebook>
 
                     </sheet>
@@ -69,10 +76,9 @@
                 <tree string="Patient list"> 
                    <field name="reference" readonly="1"/> 
                    <field name="name"/>
-                   <field name="family_member_id"/>
+                   <field name="appointment_count" />
                    <field name="age"/>
                    <field name="gender"/>
-                   <field name="description"/>
                    <field name="state"/>
                    
                 </tree> 
