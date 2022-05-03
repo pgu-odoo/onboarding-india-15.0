@@ -30,6 +30,7 @@
                         <group>
                             <group>
                                 <field name="patient_id"/>
+                                <field name="patients_group" widget='many2many_tags'/>
                                 <field name="age"/>
                                 <field name="gender"/>  
                                 <field name="family_member_id"/>
@@ -49,7 +50,7 @@
                             </page>
                             <page string='Medicine' name="Medicine">
                                 <field name="prescription_line_ids">
-                                    <tree editable='bottom'>    <!-- using editable attribute we can add data info form  without pop-up view and we can directly add it -->
+                                    <tree editable='bottom'>    <!-- using editable attribute we can add data into form  without pop-up view and we can directly add it -->
                                         <field name="name"/>
                                         <field name="qty"/>
                                     </tree>
@@ -141,6 +142,45 @@
                 </kanban>
             </field>
         </record>
+<!-- cohort view -->
+        <record id="view_appointment_cohort" model="ir.ui.view">
+            <field name="name">hospital.appointment.cohort</field>
+            <field name="model">hospital.appointment</field>
+            <field name="arch" type="xml">
+                <cohort string="Cohorn Record" date_start="create_date" date_stop="date_closed" interval="week" mode="churn" >
+                    <!-- <field name="date_appointment"/>
+                    <field name="name"/>
+                    <field name="prescription_line_ids"/> -->
+                </cohort>
+            </field>
+        </record>
+<!-- gantt view for project scheduling(viewing the project progress) -->
+
+        <record id="view_appointment_gantt" model="ir.ui.view">
+        <field name="name">hospital.appointment.gantt</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <gantt   date_start="date_start" date_stop="date_closed" string="Appointments" default_group_by="date_appointment">
+                
+                
+                <field name="state"/>
+
+                    <templates>
+                        <div t-name="gantt-popover" class="container-fluid">
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <ul class="pl-1 mb-0 list-unstyled">
+                                        <li><strong>Start Date: </strong> <t t-esc="userTimezoneStartDate.format('L LTS')"/></li>
+                                        <li><strong>Stop Date: </strong> <t t-esc="userTimezoneStopDate.format('L LTS')"/></li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </templates>
+            </gantt>
+        </field>
+    </record>
 
     </data>
     

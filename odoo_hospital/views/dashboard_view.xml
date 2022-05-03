@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="act_patient_graph" model="ir.actions.act_window">
+            <field name="name">Patient Appointment</field>
+            <field name="res_model">hospital.patients</field>
+            <field name="view_mode">graph</field>
+            <field name='view_id' ref="odoo_hospital.view_patient_graph"/>
+        </record>
+        
+        <record model="ir.actions.act_window" id="act_patient_list">
+            <field name="name">Patient Record</field>
+            <field name="res_model">hospital.patients</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="odoo_hospital.hospital_patients_list"/>
+        </record>
+        
+        <!--My Dashboard-->
+        <record model="ir.ui.view" id="board_my_dash_view">
+            <field name="name">My Dashboard</field>
+            <field name="model">board.board</field>
+            <field name="arch" type="xml">
+                <form string="My Dashboard">
+                    <board style="2-1">  <!-- style is for view layout -->
+                        <column>
+                            <action string="Patient Appointments"
+                                    name="%(odoo_hospital.act_patient_graph)d"/>
+                            <action string="Patient Record"
+                                name="%(odoo_hospital.act_patient_list)d" />
+                        </column>
+                    </board>
+                </form>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="open_board_my_dash_action">
+            <field name="name">My Dashboard</field>
+            <field name="res_model">board.board</field>
+            <field name="view_mode">form</field>
+            <field name="usage">menu</field>
+            <field name="view_id" ref="board_my_dash_view"/>
+        </record> 
+
+        <menuitem 
+            name="Dashboard"
+            id="menu_board_my_dash"
+            parent="odoo_hospital.menu_hospital_root"
+            action="open_board_my_dash_action"
+            sequence="5"/>
+    </data>
+</odoo>

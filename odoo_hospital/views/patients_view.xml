@@ -17,6 +17,8 @@
                                     class="oe_highlight" states="cancel"  type="object"/>
                         <button id="button_cancel" name="action_cancel" string="Cancel"  
                                      states="draft,done,confirm" confirm="Are you sure that you want to cancel?" type="object"/> <!--confirm is provide confirmation msg on button click -->
+                        <button id="button_create_appointment" name="%(action_create_appointment)d" string="Create Appointment"  
+                                                                class="oe_highlight" type='action'/>
                         <field name="state" widget="statusbar" 
                                statusbar_visible="draft,done,confirm" /> <!--options="{'clickable':'1'}"  -->
                     </header>
@@ -138,6 +140,88 @@
             </field>
         </record>
 
+<!-- pivot view for patient data -->
+        <record id="view_patient_pivot" model="ir.ui.view">
+            <field name="name">hospital.patients.pivot</field>
+            <field name="model">hospital.patients</field>
+            
+            <field name='arch' type='xml'>
+        
+
+                <pivot string="Patient Pivot" sample="1">
+                            <field name="admit_fee"/>
+                            <field name="additional_fee"/>
+                            <field name="total_fee" force_save='1' type='measure'/>
+                </pivot>
+            </field>
+        </record>
+<!-- graph view for patient data-->
+        <record id="view_patient_graph" model="ir.ui.view">
+            <field name="name">hospital.patients.graph</field>
+            <field name="model">hospital.patients</field>
+            
+            <field name='arch' type='xml'>
+                <graph string="patient Graph" sample="1" type="pie">
+                    <!-- <field name="appointment_ids"/> One2many feilds are not allowed -->
+                    <field name="family_member_id"/>
+                    <field name="total_fee" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+<!-- activity view of patient data -->
+        <record id="view_patient_activity" model="ir.ui.view">
+            <field name="name">hospital.patients.activity</field>
+            <field name="model">hospital.patients</field>
+            
+            <field name='arch' type='xml'>
+                <activity string="Patient Activity">
+                            <templates>
+                                <div t-name="activity-box">
+                                    <div>
+                                        <field name="name" display="full"/>
+                                        <field name="appointment_ids"  display="full"/>
+                                    </div>
+                                </div>
+                            </templates>
+                </activity>
+            </field>
+        </record>
+
+<!-- dash boared view
+        <record model="ir.ui.view" id="simple_dashboard_view">
+            <field name="name">Simple Dashboard</field>
+            <field name="model">board.board</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="My Dashboard">
+                    <board style="1-1">
+                        
+                        <column>
+                            <action name="%(simple_dashboard.action_sale_order_graph)d" string="Patient Graph"/>
+                            <action name="%(simple_dashboard.action_sale_order_pivot)d" string="Patient Pivot"/>
+                        </column>
+                    </board>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="open_board_my_dash_action">
+            <field name="name">Simple Dashboard</field>
+            <field name="res_model">board.board</field>
+            <field name="view_mode">form,graph,pivot</field>
+            <field name="usage">menu</field>
+            <field name="view_id" ref="simple_dashboard_view"/>
+        </record> 
+    </data>
+    <data>
+
+        
+        <menuitem 
+            id="menu_board_my_dash"
+            parent="base.menu_board_root"
+            action="open_board_my_dash_action"
+            sequence="7"/> -->
     </data>
     
 </odoo>

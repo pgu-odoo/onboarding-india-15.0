@@ -27,7 +27,7 @@
             <field name="gender">male</field>
             <field name="description">bike accident</field>
         </record>
-        <record id="p_401" model="hospital.appointment">
+        <record id="p_501" model="hospital.appointment">
             <field name="name">Demo-sanjay sharma </field>
             <field name="age">26</field>
             <field name="gender">male</field>

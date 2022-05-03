@@ -5,7 +5,7 @@
         <record model="ir.actions.act_window" id="patients_list_action">
             <field name="name">Patients</field>
             <field name="res_model">hospital.patients</field>
-            <field name="view_mode">tree,kanban,form</field>
+            <field name="view_mode">tree,kanban,form,pivot,graph,activity</field>
             <field name="context">{'search_default_male':1,'search_default_female':1}</field> <!--used for default search but we can't used direct selection type field for that we have to used it with key value -->
             <!-- <field name="context">{'search_default_patient_name':1}</field> grup by feild not applicable-->
             <!-- <field name="context">{'search_default_female':1}</field> --> <!--if i add this field to here then this field taken as default due to interpreter read line by line , so its taken last context name-->
@@ -40,7 +40,7 @@
         <record model="ir.actions.act_window" id="action_hospital_appointment">
             <field name="name">Appointment</field>
             <field name="res_model">hospital.appointment</field>
-            <field name="view_mode">tree,kanban,form</field>
+            <field name="view_mode">tree,kanban,form,cohort,gantt</field>
             <field name="context">{'hide_gender':1}</field> <!--used for default search but we can't used direct selection type field for that we have to used it with key value -->
             <!-- <field name="context">{'search_default_patient_name':1}</field> grup by feild not applicable-->
             <!-- <field name="context">{'search_default_female':1}</field> --> <!--if i add this field to here then this field taken as default due to interpreter read line by line , so its taken last context name-->
@@ -55,6 +55,7 @@
                   sequence="2"/> -->
         <menuitem name="Appointment" id="menu_appointment_root" parent="menu_hospital_root" sequence="2"/>
         <menuitem name="Appointment" id="menu_hospital_appointment" parent="menu_appointment_root" sequence="1" action="action_hospital_appointment"/>
+        <menuitem name="Create Appointment" id="menu_create_appointment" parent="menu_appointment_root" sequence="2" action="action_create_appointment"/>
     </data>
 </odoo>
                   

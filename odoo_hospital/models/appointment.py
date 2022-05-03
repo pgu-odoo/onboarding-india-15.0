@@ -29,6 +29,8 @@ class HospitalAppointment(models.Model):
 
     date_appointment= fields.Date(string='Date')  
     date_appointment_time= fields.Datetime(string='Checkup Time')
+    date_closed= fields.Datetime(string='Date end')
+    date_start= fields.Datetime(string='Date Start')
 
     active= fields.Boolean(string='Active',default=True)
     
@@ -37,6 +39,8 @@ class HospitalAppointment(models.Model):
     reference= fields.Char(string='Number', readonly=True, default='New')  # for a sequece number
 
     prescription_line_ids= fields.One2many('appointment.prescription.lines','appointment_id',string='Prescription Line')
+
+    patients_group= fields.Many2many('hospital.patients', string='Patient Group')
 
 
     def action_confirm(self):       ##its used for Confirm button given in form view inside header ,control status bar
