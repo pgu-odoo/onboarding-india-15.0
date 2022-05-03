@@ -17,7 +17,7 @@
 			<field name="perm_unlink" eval="True"/>
 
 			<!--create domain for recordrules-->
-			<field name="domain_force">[('active','=',True)]</field>  <!--permission of write and delete are apply when active=True-->
+			<field name="domain_force">[('active','=',True)]</field>  <!--all permission of write,read,create and delete are apply when active fiels =True-->
 
 			<!--this specify the model on which this recordrules are applied remeber that ref attribute take externam id-->
 			<field name="model_id" ref="model_academy_course"/>

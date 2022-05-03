@@ -5,8 +5,9 @@
 		<record id="course_list_actions" model="ir.actions.act_window">
 			<field name="name">Courses</field>  
 			<field name="res_model">academy.course</field>  
-			<field name="view_mode">tree,kanban,form,calendar,pivot,graph</field> 
-			<field name="context">{'search_default_Beginner':1}</field> <!--1 for sequence-->
+			<field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>  
+			<field name="context">{'search_default_Beginner':1}</field>  <!--1 for ?-->
+			<!--we can also use default group by {'search_default_"use any name field form view->search->group"':1}-->
 
 			<field name="help" type="html">
 				<p class="o_view_nocontent_smiling_face">
@@ -24,7 +25,7 @@
 		<menuitem name="Courses" id="menu_academy_courses" parent="menu_academy_sub" sequence="3" action="course_list_actions"/>
 
 
-<!-- 
+
 		<record id="create_appointment_wizard_action" model="ir.actions.act_window">
             <field name="name">Create Appointment</field>  
             <field name="res_model">create.appointment.wizard</field>  
@@ -35,7 +36,7 @@
         </record>
 
         <menuitem name="Create Appointment" id="Appointment_details" parent="construction.menu_academy"/>
-        <menuitem name="Appointment" id="Appointment" parent="Appointment_details" action="create_appointment_wizard_action" /> -->
+        <menuitem name="Appointment" id="Appointment" parent="Appointment_details" action="create_appointment_wizard_action" />
 	</data>
 </odoo>
 

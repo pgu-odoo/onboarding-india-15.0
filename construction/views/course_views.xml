@@ -192,13 +192,6 @@
 
 
 
-
-
-
-
-
-
-
 <!--it is a search view 	-->
 
 	<record id="course_view_search" model="ir.ui.view"> <!--we are create a form views into this model (ir.ui.view)-->
@@ -212,13 +205,13 @@
 				 <field name="level"/>
 				 <separator/>
 
-				 <filter string="Filter for Beginner" name="Beginner" domain="[('level', '=', 'beginner')]"/>
+				 <filter string="Filter for Beginner" name="Beginner" domain="[('level', '=', 'beginner')]"/> <!--if u use default by filter use name filed-->
 				 <filter string="Filter for Intermediate" name="Intermediate" domain="[('level', '=', 'intermediate')]"/>
 				 <filter string="Filter for Advanced" name="Advanced" domain="[('level', '=', 'advanced')]"/>
 
 
 				 <group expand="1" string="Group By">
-				 	<filter string="level" name="level" context="{'group_by':'level'}"/>
+				 	<filter string="level" name="level" context="{'group_by':'level'}"/>     <!--if u use default by filter use name filed-->
 				 	<filter string="course name" name="name" context="{'group_by':'name'}"/>	
 				 </group>
 
