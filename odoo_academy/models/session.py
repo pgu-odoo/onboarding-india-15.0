@@ -15,7 +15,7 @@ class Session(models.Model):
 	duration=fields.Integer(string='Session Days',default=1)
 	end_date=fields.Date(string='End Date',compute='_compute_end_date',inverse='_inverse_end_date',store=True)
 
-	@api.depends('start_date','duration')
+	@api.depends('start_date','duration','end_date')
 	def _compute_end_date(self):
 		for record in self:
 			if not(record.start_date and record.duration):
@@ -26,7 +26,7 @@ class Session(models.Model):
 				
 	def _inverse_end_date(self):
 		for record in self:
-			if record.start_date and end_date:
+			if record.start_date and record.end_date:
 				record.duration=(record.end_date-record.start_date).days+1
 			else:
 				continue
