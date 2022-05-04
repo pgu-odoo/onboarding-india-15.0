@@ -24,10 +24,10 @@
 		'views/patients_gender_view.xml',
 		'views/appointment_view.xml',
 		'views/dashboard_view.xml',
+		'demo/patients_sequence.xml',
 		
 	],
 	'demo':[
 		'demo/hospital_demo.xml',
-		'demo/patients_sequence.xml',
 	]
 }

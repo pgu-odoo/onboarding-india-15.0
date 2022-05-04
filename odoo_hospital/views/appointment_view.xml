@@ -44,10 +44,10 @@
                             </group>
                         </group>
                         <notebook>
-                            <page string="Description">
+                            <!-- <page string="Description">
                                 <field name="description"/>
                                 
-                            </page>
+                            </page> -->
                             <page string='Medicine' name="Medicine">
                                 <field name="prescription_line_ids">
                                     <tree editable='bottom'>    <!-- using editable attribute we can add data into form  without pop-up view and we can directly add it -->
@@ -129,11 +129,10 @@
                     <templates>
                         <t t-name="kanban-box">
                             <div t-attf-class="oe_kanban_card oe_kanban_global_click">
-                                <div class="oe_kanban_details">
-                            
+                                <div class="oe_kanban_details">                            
                                     <ul>
-                                            <li>Name:<field name="name"/></li>
-                                            <li>Age:<field name="description"/></li>
+                                        <li>Name:<field name="name"/></li>
+                                        <li>Age:<field name="description"/></li>
                                     </ul>
                                 </div>
                             </div>
@@ -160,8 +159,7 @@
         <field name="name">hospital.appointment.gantt</field>
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
-            <gantt   date_start="date_start" date_stop="date_closed" string="Appointments" default_group_by="date_appointment">
-                
+            <gantt   date_start="date_start" date_stop="date_closed" string="Appointments" default_group_by="date_appointment">                
                 
                 <field name="state"/>
 

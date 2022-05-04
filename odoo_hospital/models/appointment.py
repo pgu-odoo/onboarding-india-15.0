@@ -26,22 +26,15 @@ class HospitalAppointment(models.Model):
         ('done', 'Done'),
         ('cancel','Cancelled'),
     ], default='draft', tracking=True)
-
     date_appointment= fields.Date(string='Date')  
     date_appointment_time= fields.Datetime(string='Checkup Time')
     date_closed= fields.Datetime(string='Date end')
     date_start= fields.Datetime(string='Date Start')
-
-    active= fields.Boolean(string='Active',default=True)
-    
-    family_member_id=fields.Many2one(string='Family Member',comodel_name='res.partner',related='patient_id.family_member_id')       #('res.partner', string='Family Member') if we write key value as first argument then we doesn't need to specify its key name- comodel_name'
-    
+    active= fields.Boolean(string='Active',default=True)    
+    family_member_id=fields.Many2one(string='Family Member',comodel_name='res.partner',related='patient_id.family_member_id')       #('res.partner', string='Family Member') if we write key value as first argument then we doesn't need to specify its key name- comodel_name'    
     reference= fields.Char(string='Number', readonly=True, default='New')  # for a sequece number
-
     prescription_line_ids= fields.One2many('appointment.prescription.lines','appointment_id',string='Prescription Line')
-
     patients_group= fields.Many2many('hospital.patients', string='Patient Group')
-
 
     def action_confirm(self):       ##its used for Confirm button given in form view inside header ,control status bar
         self.state = 'confirm'
@@ -55,14 +48,14 @@ class HospitalAppointment(models.Model):
     def action_cancel(self):
         self.state = 'cancel'
 
-    # @api.model                  #used for override existing model
-    # def create(self,vals):      #override create method,useful during creat record, vals arg contains the record present in the form view (vals are in dict format) #invoke on create to save button 
-    #     if not vals['description']:
-    #         vals['description']="New Patients"
-    #         if vals.get('reference','New')=='New':      #it change the sequence number 'New' to latest one taken from ir.sequence model
-    #             vals['reference']=self.env['ir.sequence'].next_by_code('appointment.sequence')  #its work after click on save button, try to find solution for change auto on click create
-    #     res= super(HospitalAppointment, self).create(vals)  #when we click on create button changes will apply
-    #     return res
+    @api.model                  #used for override existing model
+    def create(self,vals):      #override create method,useful during creat record, vals arg contains the record present in the form view (vals are in dict format) #invoke on create to save button 
+        # if not vals['description']:
+        #     vals['description']="New Patients"
+        if vals.get('reference','New')=='New':      #it change the sequence number 'New' to latest one taken from ir.sequence model
+            vals['reference']=self.env['ir.sequence'].next_by_code('appointment.sequence')  #its work after click on save button, try to find solution for change auto on click create
+        res= super(HospitalAppointment, self).create(vals)  #when we click on create button changes will apply
+        return res
 
     #alternative of  attribute related=patient_id.gender in gender field 
     @api.onchange('patient_id')  #it's invoke _onchange_ fun when any changes appear in patient_id
@@ -72,6 +65,7 @@ class HospitalAppointment(models.Model):
                 self.gender = self.patient_id.gender
         else:
             self.gender = None  #if patient_id is empty then gender also set to none
+
 
 class AppointmentPrescriptionLines(models.Model):
     _name = "appointment.prescription.lines"     
