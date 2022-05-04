@@ -18,7 +18,6 @@
 			<field name="help" type="html">
 				<p class="o_view_noncontent_smiling_face">create the first session</p>
 			</field>
-
 		</record>
 		<menuitem name="Odoo Academy" id="menu_academy" sequence="1"/>
 		<menuitem id="menu_academy_sub" name="Odoo Academy" parent="menu_academy" sequence="2"/>

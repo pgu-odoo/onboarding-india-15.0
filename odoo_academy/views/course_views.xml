@@ -64,7 +64,6 @@
 					<field name="base_price" type="measure"/>
 					<field name="additional_fee" type="measure"/>
 					<field name="total_price" type="measure"/>
-
 				</pivot>
 			</field>
 		</record>
