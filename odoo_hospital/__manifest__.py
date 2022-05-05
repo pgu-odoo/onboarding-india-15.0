@@ -12,9 +12,9 @@
 	'category':'Training',
 	'author':'Vishal Sakariya(visa)',	
 	'version':'0.1',
-	'depends':['base_setup','mail','web_cohort','base','board'],
+	'depends':['base_setup','mail','web_cohort','base','board','sale'],
 	'installable':True,
-	'data':[ #security>data>wizard>views
+	'data':[ #security>data>wizard>views>report
 		'security/ir.model.access.csv',
 		'security/hospital_security.xml',
 		'wizard/create_appointment.xml',
@@ -24,7 +24,12 @@
 		'views/patients_gender_view.xml',
 		'views/appointment_view.xml',
 		'views/dashboard_view.xml',
+		'views/doctor_view.xml',
+		'views/sale.xml',
 		'demo/patients_sequence.xml',
+		'report/report.xml',
+		'report/patient_card.xml',
+		'report/patient_detail_template.xml',
 		
 	],
 	'demo':[

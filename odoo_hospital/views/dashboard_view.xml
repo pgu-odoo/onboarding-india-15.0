@@ -24,7 +24,7 @@
                     <board style="2-1">  <!-- style is for view layout -->
                         <column>
                             <action string="Patient Appointments"
-                                    name="%(odoo_hospital.act_patient_graph)d"/>
+                                name="%(odoo_hospital.act_patient_graph)d"/>
                             <action string="Patient Record"
                                 name="%(odoo_hospital.act_patient_list)d" />
                         </column>

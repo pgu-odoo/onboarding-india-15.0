@@ -32,6 +32,7 @@ class HospitalPatients(models.Model):
     reference= fields.Char(string='Number', default='New')   #lambda self: self.env['ir.sequence'].next_by_code('patient.sequence')
     appointment_count= fields.Integer(string='Appointment Count', compute='compute_appointment_count')
     appointment_ids=fields.One2many('hospital.appointment','patient_id',string='Appointment ID')
+    image= fields.Binary(string='Patient Image')
 
     def compute_appointment_count(self):
         for rec in self:        #without for loops if we used appointment_count in list view then its gives as singleton error
@@ -40,7 +41,7 @@ class HospitalPatients(models.Model):
     @api.onchange('admit_fee','additional_fee') #this decorator used for live changes in feild values,whenever change occurs in passing parameter field then _onchange_ function call automatically, first time fun auto call when click the create button.. after auto call when we change the field 
     def _onchange_total_fee(self):
         if self.admit_fee<0:
-             raise UserError('Registration Fee must be greater than 0')
+            raise UserError('Registration Fee must be greater than 0')
         self.total_fee=self.admit_fee+self.additional_fee
 
     @api.constrains('additional_fee') 

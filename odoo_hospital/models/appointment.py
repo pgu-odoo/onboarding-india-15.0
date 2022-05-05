@@ -35,6 +35,7 @@ class HospitalAppointment(models.Model):
     reference= fields.Char(string='Number', readonly=True, default='New')  # for a sequece number
     prescription_line_ids= fields.One2many('appointment.prescription.lines','appointment_id',string='Prescription Line')
     patients_group= fields.Many2many('hospital.patients', string='Patient Group')
+    image_101=fields.Binary(string='Patient Image')
 
     def action_confirm(self):       ##its used for Confirm button given in form view inside header ,control status bar
         self.state = 'confirm'

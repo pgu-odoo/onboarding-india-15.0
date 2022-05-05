@@ -4,8 +4,7 @@
 <!-- Form view for patients data-->
         <record model="ir.ui.view" id="hospital_patients_form">
             <field name="name">hospital.patients.form</field>
-            <field name="model">hospital.patients</field> <!-- name="res_model" -->
-    
+            <field name="model">hospital.patients</field> <!-- name="res_model" -->    
             <field name="arch" type="xml"> <!-- architecture (arch) which customises the way the model is displayed inside the view -->
                 <form string="Patient Form">
                     <header> <!-- for status bar(widget="stausbar" is must be) feild above the form -->
@@ -16,76 +15,67 @@
                         <button id="button_draft" name="action_draft" string="Set To Draft" 
                                     class="oe_highlight" states="cancel"  type="object"/>
                         <button id="button_cancel" name="action_cancel" string="Cancel"  
-                                     states="draft,done,confirm" confirm="Are you sure that you want to cancel?" type="object"/> <!--confirm is provide confirmation msg on button click -->
+                                    states="draft,done,confirm" confirm="Are you sure that you want to cancel?" type="object"/> <!--confirm is provide confirmation msg on button click -->
                         <button id="button_create_appointment" name="%(action_create_appointment)d" string="Create Appointment"  
                                                                 class="oe_highlight" type='action'/>
                         <field name="state" widget="statusbar" 
-                               statusbar_visible="draft,done,confirm" /> <!--options="{'clickable':'1'}"  -->
+                                    statusbar_visible="draft,done,confirm" /> <!--options="{'clickable':'1'}"  -->
                     </header>
                     <sheet>
                         <div class="oe_title">
                         <h1>
                             <field name="reference" readonly="1"/>
                         </h1>
-                        </div>
-                        
+                        </div>                        
                         <group>
                             <group>
                                 <field name="name"/>
                                 <field name="age"/>
                                 <field name="gender" invisible='context.get("hide_gender")'/>  <!-- 10:invisible is looking for context which have hide_gender key is present , if in any form its present then its hide gender feild -->
                                 <field name="family_member_id"/>
-                                <field name="appointment_count"/>
-                                
+                                <field name="appointment_count"/>                               
                             </group>
                             <group>
                                 <field name="admit_fee"/>
                                 <field name="additional_fee"/>
-                                <field name="total_fee" force_save='1'/> <!--here we do force_save due to total_fee attribute we mention readonly=True in patients.py file -->  
-                                
+                                <field name="total_fee" force_save='1'/> <!--here we do force_save due to total_fee attribute we mention readonly=True in patients.py file -->                                  
                             </group>
-                        </group>
-                        <notebook>
+                            </group>
+                            <notebook>
                             <page string="Description">
-                                <field name="description"/>
-                                
+                                <field name="description"/>                                
                             </page>
                             <page string="Appointment" >
                                 <tree editable='top'>
                                     <field name="appointment_ids"/>
                                 </tree>
-                            </page>
-                            
+                            </page>                            
                         </notebook>
-
                     </sheet>
+                    <field name="image" widget="image" class="oe_avatar"/>
                     <div class="oe_chatter">
                         <!-- <field name="message_follower_ids"/> --> <!--used to show follower -->
                         <field name="activity_ids"/> <!--  used for schedule activity -->
                         <field name="message_ids"/>  <!-- used for send msg and log -->
                     </div>
                 </form> 
-            </field>
-            
+            </field>            
         </record>
 
 <!-- list(tree) view for patients data -->
         <record model="ir.ui.view" id="hospital_patients_list">
             <field name="name">hospital.patients.list</field>
-            <field name="model">hospital.patients</field> <!-- name="res_model" -->
-            
+            <field name="model">hospital.patients</field> <!-- name="res_model" -->            
             <field name="arch" type="xml">
                 <tree string="Patient list"> 
-                   <field name="reference" readonly="1"/> 
-                   <field name="name"/>
-                   <field name="appointment_count" />
-                   <field name="age"/>
-                   <field name="gender"/>
-                   <field name="state"/>
-                   
-                </tree> 
-            </field>
-            
+                    <field name="reference" readonly="1"/> 
+                    <field name="name"/>
+                    <field name="appointment_count" />
+                    <field name="age" optional="show"/>
+                    <field name="gender" optional="show"/>
+                    <field name="state" optional="show"/>                   
+                </tree>
+            </field>            
         </record>
 
 <!--search view by default given in localhost server with only name as search feild, hence doesn't need to be specified -->
@@ -106,17 +96,14 @@
                         <filter string="Patient name" name="patient_name" context="{'group_by':'name'}"/>
                     </group>
                     <!-- <field name="context">{'search_default_gender':1}</field> --> <!--we can't write it here because search bar model='ir.action.act_window' hence we have to write it in menuitem.xml file-->
-
                 </search>
-
             </field>
         </record>
 
 <!-- kanban view for patients data-->
         <record id="patients_kanban_view" model="ir.ui.view">
             <field name="name">hospital.patients.kanban</field>
-            <field name="model">hospital.patients</field>
-            
+            <field name="model">hospital.patients</field>            
             <field name='arch' type='xml'>
                 <kanban>
                     <field name="name"/>
@@ -126,11 +113,10 @@
                     <templates>
                         <t t-name="kanban-box">
                             <div t-attf-class="oe_kanban_card oe_kanban_global_click">
-                                <div class="oe_kanban_details">
-                            
+                                <div class="oe_kanban_details">                            
                                     <ul>
-                                            <li>Name:<field name="name"/></li>
-                                            <li>Age:<field name="description"/></li>
+                                        <li>Name:<field name="name"/></li>
+                                        <li>Age:<field name="description"/></li>
                                     </ul>
                                 </div>
                             </div>
@@ -143,23 +129,19 @@
 <!-- pivot view for patient data -->
         <record id="view_patient_pivot" model="ir.ui.view">
             <field name="name">hospital.patients.pivot</field>
-            <field name="model">hospital.patients</field>
-            
+            <field name="model">hospital.patients</field>            
             <field name='arch' type='xml'>
-        
-
                 <pivot string="Patient Pivot" sample="1">
-                            <field name="admit_fee"/>
-                            <field name="additional_fee"/>
-                            <field name="total_fee" force_save='1' type='measure'/>
+                    <field name="admit_fee"/>
+                    <field name="additional_fee"/>
+                    <field name="total_fee" force_save='1' type='measure'/>
                 </pivot>
             </field>
         </record>
 <!-- graph view for patient data-->
         <record id="view_patient_graph" model="ir.ui.view">
             <field name="name">hospital.patients.graph</field>
-            <field name="model">hospital.patients</field>
-            
+            <field name="model">hospital.patients</field>            
             <field name='arch' type='xml'>
                 <graph string="patient Graph" sample="1" type="pie">
                     <!-- <field name="appointment_ids"/> One2many feilds are not allowed -->
@@ -172,8 +154,7 @@
 <!-- activity view of patient data -->
         <record id="view_patient_activity" model="ir.ui.view">
             <field name="name">hospital.patients.activity</field>
-            <field name="model">hospital.patients</field>
-            
+            <field name="model">hospital.patients</field>            
             <field name='arch' type='xml'>
                 <activity string="Patient Activity">
                             <templates>

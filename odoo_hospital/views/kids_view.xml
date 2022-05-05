@@ -15,9 +15,9 @@
             </field>
         </record>
         <menuitem name="Kids"
-                  id="menu_kids"
-                  parent="menu_patients_root"
-                  action='action_hospital_kids'
-                  sequence="5"/>
+            id="menu_kids"
+            parent="menu_patients_root"
+            action='action_hospital_kids'
+            sequence="5"/>
     </data>
 </odoo>

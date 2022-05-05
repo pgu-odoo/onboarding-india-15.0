@@ -16,11 +16,12 @@
                         <button id="button_draft" name="action_draft" string="Set To Draft" 
                                     class="oe_highlight" states="cancel"  type="object"/>
                         <button id="button_cancel" name="action_cancel" string="Cancel"  
-                                     states="draft,done,confirm" confirm="Are you sure that you want to cancel?" type="object"/> <!--confirm is provide confirmation msg on button click -->
+                                    states="draft,done,confirm" confirm="Are you sure that you want to cancel?" type="object"/> <!--confirm is provide confirmation msg on button click -->
                         <field name="state" widget="statusbar" 
-                               statusbar_visible="draft,done,confirm" /> <!--options="{'clickable':'1'}"  -->
+                            statusbar_visible="draft,done,confirm" /> <!--options="{'clickable':'1'}"  -->
                     </header>
                     <sheet>
+                        <field name="image_101" widget="image" class="oe_avatar"/>
                         <div class="oe_title">
                         <h1>
                             <field name="reference" readonly="1"/>
@@ -75,16 +76,19 @@
             <field name="model">hospital.appointment</field> <!-- name="res_model" -->
             
             <field name="arch" type="xml">
-                <tree string="Patient list"> 
-                   <field name="reference" readonly="1"/> 
-                   <!-- <field name="patient_id"/> -->
-                   <field name="name"/>
-                   <field name="family_member_id"/>
-                   <field name="age"/>
-                   <field name="gender"/>
-                   <field name="description"/>
-                   <field name="state"/>
-                   
+                <tree string="Appointment list"> 
+                    <header>
+                        <button name="action_done" string="Mark As Done" 
+                                    class="oe_highlight"  type="object"/>
+                    </header>
+                    <field name="reference" readonly="1"/> 
+                    <!-- <field name="patient_id"/> -->
+                    <field name="name"/>
+                    <field name="family_member_id"/>
+                    <field name="age"/>
+                    <field name="gender"/>
+                    <field name="description"/>
+                    <field name="state"/>                   
                 </tree> 
             </field>
             
