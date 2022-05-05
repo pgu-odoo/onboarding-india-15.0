@@ -32,9 +32,12 @@
 			  'security/ir.model.access.csv',
 			  'views/patient.xml',
 			  'views/views_of_hospital_patient.xml',
-
+			  'views/appointment.xml',
+			  'views/views_of_hospital_appointment.xml',
+			  'views/doctor.xml',
+			  'views/views_of_hospital_doctor.xml',
 			  ],
 
 
-	'demo' : ['demo/patient_demodata.xml',],
+	'demo' : ['demo/demodata.xml',],
 }

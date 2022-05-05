@@ -18,10 +18,11 @@
 
 
 		<menuitem name="Hospital" id="hospital_root" sequence="1" />
-
 		<menuitem name="Patients" id="hospital_patient_root" parent="hospital_root" sequence="2" />
-
 		<menuitem name="Patients" id="hospital_patient" parent="hospital_patient_root" sequence="3" action="patient_action"/>
+
+
+		
 
 	</data>
 </odoo>

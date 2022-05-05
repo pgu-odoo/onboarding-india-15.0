@@ -9,8 +9,8 @@
 			<form string="subject form">  <!--odoo will understand its form view using <form>-->
 				<sheet> <!--for getting a sheet in backgroud -->
 					<group> <!--for getting a label for corresponding fields -->
-						<field name="subject"/>
 						<field name="book"/>
+						<field name="subject"/>
 						<field name="author"/>
 					</group>
 				</sheet>
@@ -27,8 +27,8 @@
 		<field name="model">subject.details</field>   <!--we are going to create form view for this mode --><!--we can use this models fields inside the form tag-->
 		<field name="arch" type="xml"> 
 			<tree>
-				<field name="subject"/>
 				<field name="book"/>
+				<field name="subject"/>	
 				<field name="author"/>
 			</tree>
 

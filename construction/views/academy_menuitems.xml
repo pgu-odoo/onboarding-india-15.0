@@ -5,7 +5,7 @@
 		<record id="course_list_actions" model="ir.actions.act_window">
 			<field name="name">Courses</field>  
 			<field name="res_model">academy.course</field>  
-			<field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>  
+			<field name="view_mode">tree,kanban,form,calendar,pivot,graph,cohort</field>  
 			<field name="context">{'search_default_Beginner':1}</field>  <!--1 for ?-->
 			<!--we can also use default group by {'search_default_"use any name field form view->search->group"':1}-->
 

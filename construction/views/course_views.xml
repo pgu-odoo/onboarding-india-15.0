@@ -25,6 +25,7 @@
 						<!--taking a two group for split form -->
 
 						<group>
+							<!-- <field name="subject_ids"/> -->
 							<field name="base_price"/>
 							<field name="additional_fee"/>
 							<field name="total_price"/>
@@ -39,8 +40,9 @@
 						<page string="Subject">
 							<field name='add_subject_ids' string="Subject">
 								<tree>
+									<field name='book'/>	
 									<field name='subject'/>
-									<field name='book'/>
+									
 								</tree>
 								<!-- <form>
 									<group>
@@ -162,17 +164,19 @@
 
  <!--it is a cohort view 	-->
 
-	<!-- <record id="course_view_cohort" model="ir.ui.view">
+	<record id="course_view_cohort" model="ir.ui.view">
         <field name="name">academy.course.cohort</field>
         <field name="model">academy.course</field>
-        <field name="arch" type="xml"> -->
-            <!-- <cohort date_start="lecture_date" date_start="lecture_date" string="this is  cohort view" mode="churn"> --> <!--There are two modes: "churn" and "retention".Churn mode will start at 0% and increase over time whereas retention will start at 100% and decrease over time.-->
+        <field name="arch" type="xml">
+            <cohort date_start="lecture_date" date_stop="lecture_endtime" string="this is  cohort view" mode="churn"> 
+
+          	<!-- There are two modes: "churn" and "retention".Churn mode will start at 0% and increase over time whereas retention will start at 100% and decrease over time. -->
           
-                <!-- <field name="level"/> -->
-                <!-- <field name="name"/> -->
-            <!-- </cohort>
+                <field name="level"/>
+                <field name="name"/>
+            </cohort>
         </field>
-    </record> -->
+    </record>
 
 
 

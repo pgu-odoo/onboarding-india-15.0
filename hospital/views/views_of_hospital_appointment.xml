@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<record id="appointment_view_form" model="ir.ui.view"> 
+		<field name="name">hospital.appointment.form</field>  
+		<field name="model">hospital.appointment</field>   
+		<field name="arch" type="xml"> 
+
+			<form string="hospital appointment">  
+				<sheet>
+					<h1><field  name="Appointmentid"/></h1>
+
+					<group>
+						<group>
+							<field  name="datetime"/>
+						</group>
+							
+						<group>
+							<field  name="treatment_price"/>
+							<field  name="additional_price"/>
+							<field  name="total_price"/>
+						</group>
+					</group>
+
+					<notebook>
+						<page string="Notes">
+							<field  name="description"/>
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+		</field>  	
+	</record>
+
+
+	<record id="appointment_view_tree" model="ir.ui.view">
+		<field name="name">hospital.appointment.tree</field>
+		<field name="model">hospital.appointment</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="Appointmentid"/>
+				<field name="description"/>
+			</tree>
+		</field>
+	</record>
+</odoo>

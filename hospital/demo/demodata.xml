@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data noupdate="1">  <!--noupdate=1 bacause we do not want to data update consistently-->
+		<record model="hospital.patient" id="raj_01">
+			<field name="name">Raj</field>
+			<field name="description">feeling not weel since longtime,Headaches</field>
+			<field name="gender">male</field>
+			<field name="age">22</field>
+		</record>  
+
+		<record model="hospital.patient" id="luckey_02">
+			<field name="name">luckey</field>
+			<field name="description">low fever </field>
+			<field name="gender">male</field>
+			<field name="age">27</field>
+		</record>
+
+		<record model="hospital.patient" id="man_03">
+			<field name="name">mansi</field>
+			<field name="description">Allergies </field>
+			<field name="gender">female</field>
+			<field name="age">11</field>
+		</record>
+
+		<record model="hospital.patient" id="sakshi_04">
+			<field name="name">sakshi</field>
+			<field name="description">feeling not weel since longtime,Headaches</field>
+			<field name="gender">female</field>
+			<field name="age">17</field>
+		</record>
+
+		<record model="hospital.patient" id="mukesh_05">
+			<field name="name">mukesh</field>
+			<field name="description">Colds and Flu. </field>
+			<field name="gender">male</field>
+			<field name="age">78</field>
+		</record>	
+		
+		<!--#####################################################################-->
+
+		<record model="hospital.doctor" id="sam_01">
+			<field name="doctor_name">sam</field>
+			<field name="description">physicians</field>
+			<field name="gender">male</field>
+			<field name="age">32</field>
+		</record>  
+
+		<record model="hospital.doctor" id="rahul_02">
+			<field name="doctor_name">rahul</field>
+			<field name="description">Dermatologists</field>
+			<field name="gender">male</field>
+			<field name="age">27</field>
+		</record>
+
+		<record model="hospital.doctor" id="jackey_03">
+			<field name="doctor_name">jackey</field>
+			<field name="description">Cardiologists </field>
+			<field name="gender">female</field>
+			<field name="age">26</field>
+		</record>
+
+
+		<!--#####################################################################-->
+
+		<record model="hospital.appointment" id="0001">
+			<field name="Appointmentid">0001</field>
+			<field name="description">physicians</field>
+		</record>  
+
+		<record model="hospital.appointment" id="0002">
+			<field name="Appointmentid">0002</field>
+			<field name="description">Dermatologists</field>
+		</record>
+
+		<record model="hospital.appointment" id="0003">
+			<field name="Appointmentid">0003</field>
+			<field name="description">Cardiologists </field>
+		</record>
+
+
+	</data> 
+</odoo>
+

@@ -12,9 +12,9 @@
 		<record id="only_activate_modify" model="ir.rule"> <!--admin is user who have a full access-->
 			<field name="name">only admin can be modified</field>
 			<field name="perm_read" eval="True"/>
-			<field name="perm_write" eval="False"/>
+			<field name="perm_write" eval="True"/>
 			<field name="perm_create" eval="True"/>	
-			<field name="perm_unlink" eval="False"/>
+			<field name="perm_unlink" eval="True"/>
 
 			<!--create domain for recordrules-->
 			<!-- <field name="domain_force">[('active','=',True)]</field> -->  <!--all permission are apply when active=True-->

@@ -30,7 +30,7 @@ class Course(models.Model):
 
 	duration=fields.Integer(string="Lecture duration")
 
-
+ 
 	base_price=fields.Float(string="Base Price",default=0.00)
 	additional_fee=fields.Float(string="Additional_fee",default=10.00)
 	total_price=fields.Float(string="Total_Price",compute='_compute_total_price')
@@ -38,8 +38,10 @@ class Course(models.Model):
 	subjects = fields.Many2one(comodel_name='subject.details',string="Subject")                  # ids_name = fields.Many2one('relation_model_name',string='',ondelete='cascade')
 	add_subject_ids = fields.One2many('subject.details','details_id',string="Subject Options")      # ids_name = fields.One2many('relation_model_name','inverse_name',string='')
 
+	# subject_ids = fields.Many2many(string="Subjects",'subject.details')      # ids_name = fields.One2many('relation_model_name','inverse_name',string='')
 
-	# @api.onchange('base_price','additional_fee')  # invoke when we  change in  "additional_fee"  and "base_price" and we can changes in total_price
+
+	# @api.onchange('base_price','additional_fee')  # invoke when wenchange in  "additional_fee"  and "base_price", we also can changes in total_price
 	# def _onchange_total_price(self):
 	# 	print("ssssssssssssssssssssss",self.base_price)
 	# 	if self.base_price<0.00:
@@ -50,10 +52,19 @@ class Course(models.Model):
 	@api.depends('base_price','additional_fee') # invoke when we  change in  "additional_fee"  and "base_price" and we can't changes in total_price due to @api.depends 
 	def _compute_total_price(self):
 		print("base_price------------------>",self.base_price)
-		if self.base_price < 0.00:
+		if self.base_price < 0.0:
 			raise UserError('base price cannot be set as nagative')
 
 		self.total_price = self.base_price +  self.additional_fee
+
+
+	# @api.ondelete(at_uninstall=False)
+	# def _check_active(self):
+	# 	for rec2 in self:
+	# 		if rec2.active:  #you can't delete this appointment if datetime is assing
+	# 			raise UserError("You can't delete this record")
+
+
 
 
 	@api.depends('lecture_starttime','duration') # everytime when we  change in  "lecture_starttime"  and "duration" this will update in enddate 
@@ -76,12 +87,12 @@ class Course(models.Model):
 
 
 
-	# @api.onchange('additional_fee') # invoke when we  change in  "additional_fee" 
-	# def _check_additional_fee(self):
-	# 	for record in self:
-	# 		print('self ------------------>',record)
-	# 		if record.additional_fee<10.00:
-	# 			raise ValidationError('additional_fee cannot be less than 10: %s'%record.additional_fee)
+	@api.onchange('additional_fee') # invoke when we  change in  "additional_fee" 
+	def _check_additional_fee(self):
+		for record in self:
+			print('self ------------------>',record)
+			if record.additional_fee<10.00:
+				raise ValidationError('additional_fee cannot be less than 10: %s'%record.additional_fee)
 
 	# @api.model
 	# def create(self,vals): # invoke when we click on create+save button 
@@ -110,16 +121,87 @@ class Course(models.Model):
 
 
 
-	# @api.onchange('base_price','additional_fee')  # invoke when we  change in  "additional_fee"  and "base_price" and we can changes in total_price
-	# def _onchange_total_price(self):
-	# 	browse_method=self.env['academy.course'].browse([15,14,1])
+	@api.onchange('base_price','additional_fee')  # invoke when we  change in  "additional_fee"  and "base_price" and we can changes in total_price
+	def _onchange_total_price(self):
+		browse_method=self.env['academy.course'].browse([3,2,1]) #browse(3) when we provide single record id
 		
-	# 	print('-------------------------------------->>>',browse_method) #browse_method=academy.course(15, 14, 1)
+		print('-------------------------------------->>>',browse_method) #browse_method=academy.course(15, 14, 1)
 
-	# 	for i in browse_method: # i=academy.course(1,) ,i=academy.course(15,),i=academy.course(14,) 
-	# 		print(i.additional_fee)  
+		for i in browse_method: # i=academy.course(1,) ,i=academy.course(15,),i=academy.course(14,) 
+			print(i.additional_fee)  
 
-	# 	# search_method=self.env['academy.course'].search([('partner_id', '=', seller.id)])
+		# search_method=self.env['academy.course'].search([('partner_id', '=', seller.id)])
+
+
+	@api.onchange('name')
+	def _onchange_name(self):
+
+		#search method
+		courses=self.env['academy.course'].search([]) 
+		print(courses) #it(empty domain) will return all recordset ex- courses=academy.course(1, 2, 3)
+
+		#search "AND" condition
+		price_check=self.env['academy.course'].search([('base_price','<=','100'),('additional_fee','=','10')]) #if we changes in any record name 
+		print('base_price_check is',price_check)#base_price_check is academy.course(1, 2)
+
+
+		#search "OR" condition
+		price_check=self.env['academy.course'].search(['|',('base_price','<','100'),('additional_fee','=','10')]) #if we changes in any record name 
+		print('base_price_check is',price_check)#base_price_check is academy.course(1, 2,3)
+
+
+
+		#search_count method
+		Beginner_course=self.env['academy.course'].search_count([('level','=','beginner')]) 
+		print('Beginner_course is',Beginner_course)#Beginner_courses where level is beginner "number of record"
+
+
+		#ref method
+
+		# course_id=self.env['Odoo___Academy.course_view_form'] #External ID of view "modulename.modelname"
+		# print('course_id is ',course_id) #record object of this view  if you print "course_id.id" it will be return a id of record
+
+
+		#browse method
+
+		#browse_method1=self.env['academy.course'].browse([3,2,1]) #browse(3) when we provide single record id
+		# print(browse_method1)
+
+
+		#exists method   #it use  for checking a given recordid is exists or not
+
+		browse_method2=self.env['academy.course'].browse(1) #browse(3) when we provide single record id
+		if browse_method2.exists():
+			print(browse_method2,"recordID is exists")
+		else:
+			print("not exists")
+
+
+		#create method #it is use for craete a record 
+
+		vals={'name':"accounting","description":"description using craete method"} 
+		self.env['academy.course'].create(vals)
+
+		vals={'name':"accounting","description":"description using craete method"} 
+		new_record=self.env['academy.course'].create(vals)	
+		print('new_record is ',new_record,new_record.id) # new_record=academy.course(10,), new_record.id=10
+
+
+		#write method use for edit a record
+
+		record_update=browse_method2=self.env['academy.course'].browse(1)
+		if record_update.exists():
+			vals1={'name':"HTML course","description":"description using Edit method"}
+			record_update.write(vals1)
+
+
+		#copy method use for craete duplicate record
+		# copy_this_record=browse_method2=self.env['academy.course'].browse(3)
+		# copy_this_record.copy()
+
+
+
+
         
 
 

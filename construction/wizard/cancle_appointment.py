@@ -14,4 +14,4 @@ class CancleLectureWizard(models.TransientModel):
 	
 
 	def action_create_appointment(self):
-		print('buuton click ')
+		print('button click ')

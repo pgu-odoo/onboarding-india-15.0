@@ -8,6 +8,8 @@ from datetime import timedelta
 class HospitalPatient(models.Model):
 	_name='hospital.patient'
 	_description='for hospital patient'
+	_rec_name = "name"
+	
 
 	name=fields.Char(string='Name', required=True)
 	age=fields.Char(string='Age')

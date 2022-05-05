@@ -7,14 +7,14 @@ class SubjectDetails(models.Model):
 
 	_name = 'subject.details'
 	_description = 'Subject Details'
-	_rec_name = "subject"
-
-
-
-	subject = fields.Char('Subject')
+	# _rec_name = "subject"
 
 
 	book = fields.Char('Book Name')
+	subject = fields.Char('Subject')
+
+
+	
 	
 	author = fields.Char("Author")
 	details_id = fields.Many2one('academy.course',string="details")	# id = fields.Many2one('relational.object.name',string='')

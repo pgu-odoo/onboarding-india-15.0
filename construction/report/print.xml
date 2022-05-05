@@ -3,14 +3,7 @@
 <odoo>
 
 
-    <!-- <template id="report_card_print">
-        <t t-call="web.html_container">
-            <t t-foreach="docs" t-as="doc">
-                <h2>jhfbwehcGWVHSAUN</h2>
-            </t>
-        </t>
-    </template> -->
-
+    
 
     <template id="report_card">  <!--template id="report file name"-->
         <t t-call="web.html_container">
@@ -18,45 +11,30 @@
                 <t t-call="web.external_layout"> <!--header and footer is coming through t-call="web.external_layout" and we also use t-call="web.internal_layout"-->
                     
                     <table style="width:100%">
-                      <h3><strong>course name </strong><t t-esc="doc.name"/></h3>
-                      <br/>
-                      <br/>
-                      <br/>
-                      <br/>
-                      <br/>
-                      <br/>
-                        <table style="width:100%">
-                          <tr>
-                            <th>Base Price</th>
-                            <th>Addition fees</th>
-                            <th>Total Price</th>
-                          </tr>
-                          <tr>
-                            <td><t t-esc="doc.base_price"/></td>
-                            <td><t t-esc="doc.additional_fee"/></td>
-                            <td><t t-esc="doc.total_price"/></td>
-                          </tr>
-                          
-                        </table>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <br/>
-
-
-                        <p><strong>Course Description</strong><t t-esc="doc.description"/></p>
+                          <h3><strong>course name </strong><t t-esc="doc.name"/></h3>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                          <br/>
+                            <table style="width:100%">
+                              <tr>
+                                <th>Base Price</th>
+                                <th>Addition fees</th>
+                                <th>Total Price</th>
+                              </tr>
+                              <tr>
+                                <td><t t-esc="doc.base_price"/></td>
+                                <td><t t-esc="doc.additional_fee"/></td>
+                                <td><t t-esc="doc.total_price"/></td>
+                              </tr>
+                              
+                            </table>
+                            <p><strong>Course Description</strong><t t-esc="doc.description"/></p>
 
                     </table>
-
-
-
-
-
-
-
+                    
                     <t t-esc="doc.name"/>
                     
                     
