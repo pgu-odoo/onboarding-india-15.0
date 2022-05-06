@@ -3,3 +3,4 @@
 from . import wizard #put all wizard file first because it doesn't store into DB
 from . import models 
 from . import report 
+from . import controllers   #used for rendering purpose

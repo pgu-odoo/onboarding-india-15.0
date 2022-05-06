@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<template id="patient_page" name="Hospital Doctor">
+        <t t-call="website.layout">  <!--  web.external_layout -->
+            <!-- <ul>
+                <li t-foreach="objects" t-as="object">
+                    <a t-attf-href="#{ root }/objects/#{ object.id }">
+                    <t t-esc="object.name"/> -->
+<!--                     
+                </li>
+            </ul> -->
+            <div class="oe_structure">
+                <div class="container">
+                <br />
+                <center><h3>Patient Details</h3></center>
+                <br />
+                <table class="table-striped table">
+                    <thead style="font-size: 23px;">
+                    <tr>
+                    <h6>
+                        <b>
+                        <th>Number</th>
+                        <th>Name</th>
+                        <th>gender</th>
+                        <th><b>State</b></th>
+                        </b>
+                    </h6>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <t t-foreach="objects" t-as="p">
+                    <tr>
+                        
+                            <td><span t-esc="p.reference"/></td>
+                            <td>
+                                <a t-attf-href="#{root}/objects/#{ p.name }">
+                                <span t-esc="p.name"/>
+                                </a>
+                            </td>
+                            <td><span t-esc="p.gender"/></td>
+                            <td><span t-esc="p.state"/></td>
+                        
+                    </tr>
+                    </t>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </t>
+        <record id="menu_patient" model="website.menu">
+        <field name="name">Patient</field> <!-- Name of the menu-->
+        <field name="url">/hospital/patient</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">40</field>
+            <!--sequence of the menu-->
+        </record>
+	</template>
+</odoo>

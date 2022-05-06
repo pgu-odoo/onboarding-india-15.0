@@ -24,7 +24,7 @@
                         <field name="image_101" widget="image" class="oe_avatar"/>
                         <div class="oe_title">
                         <h1>
-                            <field name="reference" readonly="1"/>
+                            <field name="reference" readonly="1" force_save='1'/>
                         </h1>
                         </div>
                         

@@ -11,7 +11,7 @@ class HospitalAppointment(models.Model):
     _inherit = ['mail.thread','mail.activity.mixin']    #inherit mail models for chatter to form view in patient
 
     name = fields.Char(string='Name',related='patient_id.name') #if u set required=True here then u have to must include this field into form and u have to fill it
-    patient_id = fields.Many2one('hospital.patients',string='patient',required=True)
+    patient_id = fields.Many2one('hospital.patients',string='patient')
     age = fields.Integer(string='Age',related='patient_id.age') #related used for to automatically get the age of that patient
     # gender = fields.Selection(string="Gender",related='patient_id.gender') 
     gender = fields.Selection(string="Gender",selection=[  # selection= is required when we want access key(male,female,other) in xml file
