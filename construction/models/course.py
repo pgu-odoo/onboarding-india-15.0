@@ -12,7 +12,7 @@ class Course(models.Model):
 	_description='Course info'
 	_rec_name = "name"
 
-	# _inherits = {'subject.details': 'related_subject'}  # we inherit all fiels and  methods that is define in "academy.course" to "subject.details"
+	# _inherits = {'subject.details': 'related_subject'}  # we inherit all fiels and  methods which is define in "subject.details" to "subject.details"
 
 	# related_subject=fields.Char(string="related_subject")
 
@@ -203,15 +203,3 @@ class Course(models.Model):
 
 
         
-
-
-# class SubjectDetails(models.Model):
-
-# 	_name = 'subject.details'
-# 	_description = 'Subject Details'
-# 	_rec_name = "subject"
-
-# 	subject = fields.Char('Subject')
-# 	book = fields.Char('Book Name')
-# 	author = fields.Char("Author")
-# 	details_id = fields.Many2one('academy.course',string="details")	# id = fields.Many2one('relational.object.name',string='')
