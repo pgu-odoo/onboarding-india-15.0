@@ -1,0 +1,1 @@
+1. note : take (step :/Value/) and (offset + /value/) otherwise duplication will occurs

@@ -1,0 +1,1 @@
+1. **kw : whenever in our website if user give some data (like form-submit) then its store in **kw(in dictionary formate)

@@ -12,6 +12,7 @@
             </ul> -->
             <div class="oe_structure">
                 <div class="container">
+                    
                 <br />
                 <center><h3>Patient Details</h3></center>
                 <br />
@@ -29,12 +30,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <t t-foreach="objects" t-as="p">
+                    <t t-foreach="customer_details" t-as="p">
                     <tr>
                         
                             <td><span t-esc="p.reference"/></td>
                             <td>
-                                <a t-attf-href="#{root}/objects/#{ p.name }">
+                                <a t-attf-href="#{root}/#{ p.id }">
                                 <span t-esc="p.name"/>
                                 </a>
                             </td>
@@ -45,15 +46,125 @@
                     </t>
                     </tbody>
                 </table>
+                <div class="products_pager form-inline justify-content-center mt-3">
+                        <t t-call="website.pager">
+                        <t t-set="_classes">mt-2 ml-md-2</t>
+                        </t>
+                </div>
             </div>
             </div>
         </t>
+    </template>
+
+    <template id="patient_form_page" name="Patient">
+    <t t-call="website.layout">
+        <div class="oe_structure">
+            <div class="container">               
+                <center><h3>Patient : 
+                            <span t-esc="object.name"/>
+                        </h3>
+                </center>
+                <table class="table-striped table">
+                    <tbody style="font-size: 23px;">
+                        <tr>
+                            <td>Name</td>
+                            <td>:</td>
+                            <td><span t-esc="object.name"/></td>
+                        </tr>
+                        <tr>
+                            <td>Gender</td>
+                            <td>:</td>
+                            <td><span t-esc="object.gender"/></td>
+                        </tr>
+                        <tr>
+                            <td>Age</td>
+                            <td>:</td>
+                            <td><span t-esc="object.age"/></td>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>:</td>
+                            <td><span t-esc="object.description"/></td>
+                        </tr>
+                        <tr>
+                        <td>Appointments</td>
+                        <td>:</td>
+                        <td>
+                            <t t-foreach="object.appointment_ids" t-as="rec">
+                                <a t-attf-href="#{root}/#{rec.id}">
+                                <span t-field="rec.reference"/></a>
+                                <br/>
+                            </t>
+                        </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </t>
+    </template>
+
+     <template id="appointment_page" name="Appointment">
+    <t t-call="website.layout">
+        <div class="oe_structure">
+            <div class="container">               
+                <center><h3>Patient : 
+                            <span t-esc="appo.patient_id.name"/>
+                        </h3>
+                </center>
+                <table class="table-striped table">
+                    <tbody style="font-size: 23px;">
+                        <tr>
+                            <td>Name</td>
+                            <td>:</td>
+                            <td><span t-esc="appo.patient_id.name"/></td>
+                        </tr>
+                        <tr>
+                            <td>Gender</td>
+                            <td>:</td>
+                            <td><span t-esc="appo.gender"/></td>
+                        </tr>
+                        <tr>
+                            <td>Age</td>
+                            <td>:</td>
+                            <td><span t-esc="appo.age"/></td>
+                        </tr>
+                        <!-- <tr>
+                            <td>Description</td>
+                            <td>:</td>
+                            <td><span t-esc="obj.description"/></td>
+                        </tr> -->
+                        <!-- <tr>
+                        <td>Appointments</td>
+                        <td>:</td>
+                        <td>
+                            <t t-foreach="object.appointment_ids" t-as="rec">
+                                <a t-attf-href="#{root}/#{ p.id }">
+                                <span t-field="rec.reference"/>
+                                <br/>
+                            </t>
+                                   <t t-foreach="appointment_ids" t-as="rec">
+                                       <tr>
+                                           <td><span t-esc="rec.age"/></td>
+                                           <td><span t-esc="rec.description"/></td>
+                                       </tr>-->
+<!--                                    </t>-->
+                        <!-- </td>
+                        </tr> -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </t>
+    </template>
+
         <record id="menu_patient" model="website.menu">
         <field name="name">Patient</field> <!-- Name of the menu-->
         <field name="url">/hospital/patient</field>
         <field name="parent_id" ref="website.main_menu"/>
         <field name="sequence" type="int">40</field>
-            <!--sequence of the menu-->
         </record>
-	</template>
+	
 </odoo>

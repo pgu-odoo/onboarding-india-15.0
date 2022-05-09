@@ -1,0 +1,2 @@
+1. related :
+lets we have patient and appointment two model and in patient_id is many2one(appoinyment) so if we select name in appointment model then we want to get age value automatically from patient model , so in appointment age(related="/many2one_feild_name.field_name/")(in field_name we can add any feild of patient model)

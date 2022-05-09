@@ -62,7 +62,7 @@ class HospitalAppointment(models.Model):
     @api.onchange('patient_id')  #it's invoke _onchange_ fun when any changes appear in patient_id
     def _onchange_patient_id(self):
         if self.patient_id:
-            if self.patient_id.gender:    #its looks for Patient_id(manytoone) gender field
+            if self.patient_id.gender:    #its looks for Patient_id(Many2one) gender field
                 self.gender = self.patient_id.gender
         else:
             self.gender = None  #if patient_id is empty then gender also set to none
