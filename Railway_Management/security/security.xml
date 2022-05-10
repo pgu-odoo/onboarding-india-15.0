@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--GROUP FOR RAILWAY ADMIN-->
+<odoo>
+    <record id="railway_admin_grp" model="res.groups">
+        <field name="name">Railway Admin</field>
+    </record>
+</odoo>
