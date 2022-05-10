@@ -7,13 +7,18 @@ class Course(models.Model):
 	_name='academy.course'
 	_description='course Infod'
 
-	name=fields.Char(string='Title',required=True)
+	name=fields.Char(string='Title',required=True,size=4)
 	description=fields.Text(string='Description')
+	gender = fields.Selection([('male','Male'),('female','Female'),('other','Other')],help='Choose a gender', copy=False)
+	country_code=fields.Integer(string="enter your country code",required=True)
+	dhtml=fields.Html(string="html data",required=True)
+	bina=fields.Binary(string="binary data",required=True)
 	level=fields.Selection(string='Level',selection=[('beginner','Beginner'),('intermediate','Intermediate'),('advanced','Advanced')],copy=False)
-	active=fields.Boolean(string='Active',default=True)
-	base_price=fields.Float(string='Base price',default=0.00)
+	active=fields.Boolean(string='Active')
+	base_price=fields.Float(string='Base price',default=True,digits=(4,3))
 	additional_fee=fields.Float(string='Additional fee',default=10.00)
 	total_price=fields.Float(string='total price',readonly=True)
+	passw=fields.Char(string="pwd",size=6)
 	session_ids=fields.One2many(comodel_name='academy.session',inverse_name='course_id',string='Sessions')
 
 	@api.onchange('base_price','additional_fee')
