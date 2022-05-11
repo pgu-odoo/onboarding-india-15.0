@@ -12,7 +12,7 @@
 		-Private Housing
 		-Skyhigh Projects
 	""",
-
+	
 	'author' : 'Odoo',
 
 	'website' : 'https://www.odoo.com',
@@ -20,7 +20,7 @@
 	'category' : 'Sales',
 	'version' : '1.0',
 
-	'depends' : ['sale','sale_management'],  #we want to inherit from "sale" 
+	'depends' : ['sale','sale_management'],#our model is depends on the sale
     
 
 	

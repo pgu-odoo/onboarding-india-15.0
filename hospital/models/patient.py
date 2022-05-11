@@ -11,10 +11,11 @@ class HospitalPatient(models.Model):
 	_rec_name = "name"
 	
 
-	name=fields.Char(string='Name', required=True)
+	name=fields.Char(string='Name')
 	age=fields.Char(string='Age')
 
 	gender=fields.Selection([('male','Male'),('female','Female'),('other','Other')], required=True , default='male')
 
 
 	description=fields.Text(string='Description')	
+	

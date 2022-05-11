@@ -45,3 +45,4 @@
 	<menuitem name="Subject" id="subject_course" parent="subject_details" action="subject_list_actions" />
 			
 </odoo>
+

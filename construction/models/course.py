@@ -158,7 +158,7 @@ class Course(models.Model):
 
 		#ref method
 
-		# course_id=self.env['Odoo___Academy.course_view_form'] #External ID of view "modulename.modelname"
+		# course_id=self.env['Odoo___Academy.course_view_form'] #External ID of view "modulename.templateid"
 		# print('course_id is ',course_id) #record object of this view  if you print "course_id.id" it will be return a id of record
 
 

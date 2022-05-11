@@ -7,6 +7,20 @@
 		<field name="arch" type="xml"> 
 
 			<form string="hospital appointment">  
+				<header>
+					<field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/><!--options="{'clickable':'1'}"-->
+
+					<button id="button_confirm" name="action_confirm" string="Confirm" class="btn-primary" type="object" 
+					states="draft,cancle"/> 
+					<!--two type of button 1)object 2)action, name="action_confirm (funtion name in 'hospital.appointment' model)"-->
+
+					<button id="button_done" name="action_done" string="Done" class="btn-primary" type="object"                  states="draft,confirm,cancle"/> 
+
+					<button id="button_draft" name="action_draft" string="Draft" class="btn-primary" type="object"                  states="confirm,cancle"/> 
+
+					<button id="button_cancel" name="action_cancel" string="Cancle" type="object" states="draft,confirm,done"/> 
+
+				</header>
 				<sheet>
 					<h1><field  name="Appointmentid"/></h1>
 
@@ -40,6 +54,8 @@
 			<tree>
 				<field name="Appointmentid"/>
 				<field name="description"/>
+				<field name="datetime"/>
+				<field name="state"/>
 			</tree>
 		</field>
 	</record>

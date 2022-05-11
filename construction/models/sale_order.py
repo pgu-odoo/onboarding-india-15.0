@@ -8,5 +8,7 @@ class Saleorder(models.Model):
 
 	title12 =fields.Char(string='Title')
 	
-
+	# def action_confirm(self):
+	# 	super(Saleorder,self).action_confirm()
+	# 	print("success...........")
 	

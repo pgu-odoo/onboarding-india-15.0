@@ -44,13 +44,15 @@
 			<field name="description">physicians</field>
 			<field name="gender">male</field>
 			<field name="age">32</field>
+			<!-- <field name="related_patients" eval="[(4, ref('hospital.sakshi_04'))]"/> -->
 		</record>  
 
-		<record model="hospital.doctor" id="rahul_02">
+		<!-- <record model="hospital.doctor" id="rahul_02">
 			<field name="doctor_name">rahul</field>
 			<field name="description">Dermatologists</field>
 			<field name="gender">male</field>
 			<field name="age">27</field>
+			<field name="related_patients" eval="[(4, ref('hospital.sakshi_04'))]"/>
 		</record>
 
 		<record model="hospital.doctor" id="jackey_03">
@@ -58,7 +60,8 @@
 			<field name="description">Cardiologists </field>
 			<field name="gender">female</field>
 			<field name="age">26</field>
-		</record>
+			<field name="related_patients" eval="[(4, ref('hospital.sakshi_04'))]"/>
+		</record> -->
 
 
 		<!--#####################################################################-->
