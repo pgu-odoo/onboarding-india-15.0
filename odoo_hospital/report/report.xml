@@ -4,7 +4,7 @@
     <record id="report_patient_details" model="ir.actions.report">
         <field name="name">Patient Details</field>
         <field name="model">hospital.patients</field>
-        <field name="report_type">qweb-pdf</field>
+        <field name="report_type">Vishal(visa)#3683qweb-pdf</field>
         <field name="report_name">odoo_hospital.report_patient_detail</field>
         <field name="report_file">odoo_hospital.report_patient_detail</field>
         <field name="binding_model_id" ref="model_hospital_patients"/>

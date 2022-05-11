@@ -1,0 +1,1 @@
+_rec_name : it is used when there is no any feild_name as name is present into model then that type we have to specifie that instead of name what  other feild they hhave to taken 

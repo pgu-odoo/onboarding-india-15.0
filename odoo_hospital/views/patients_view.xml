@@ -53,7 +53,7 @@
                             </page>                            
                         </notebook>
                     </sheet>
-                    <field name="image" widget="image" class="oe_avatar"/>
+                    <!-- <field name="image" widget="image" class="oe_avatar"/> -->
                     <div class="oe_chatter">
                         <!-- <field name="message_follower_ids"/> --> <!--used to show follower -->
                         <field name="activity_ids"/> <!--  used for schedule activity -->

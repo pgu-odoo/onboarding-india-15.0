@@ -7,6 +7,8 @@ class HospitalController(http.Controller):
     @http.route(['/hospital/patient','/hospital/patient/page/<int:page>'], website=True, auth='public')  #three type auth value : auth='public' (page is access by anyone),auth='user'(page is access by login user ),auth='non'
     def hospital_patient(self,page=0, **kw):
         # return "Welcome To My Odoo !"
+        import pdb
+        pdb.set_trace()
         patient_model=request.env['hospital.patients']
         customer_obj = request.env['hospital.patients'].sudo().search([])
         total =customer_obj.sudo().search_count([])
@@ -44,8 +46,6 @@ class HospitalController(http.Controller):
 
     @http.route('/hospital/appointment/<model("hospital.appointment"):obj>/', auth='public', website=True)
     def hospital_appoitment(self,obj,**kw):
-        # import pdb
-        # pdb.set_trace()
         return http.request.render('odoo_hospital.appointment_page',{
             'appo': obj
         })

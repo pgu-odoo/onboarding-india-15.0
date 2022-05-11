@@ -1,0 +1,1 @@
+1. sampple="1" : is used for show blur image of some sample data if no record data is present (like help message during no data is present) is present inside tree,kanban...view(not applicable for form view)

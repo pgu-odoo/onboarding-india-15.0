@@ -1,0 +1,1 @@
+used for to open new window(without it pop-up window not shown,just form view is shown in current window)

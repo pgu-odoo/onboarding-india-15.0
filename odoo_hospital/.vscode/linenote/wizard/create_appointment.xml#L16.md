@@ -1,0 +1,1 @@
+special='cancel' : it provide button cancel , and on lick cancel we can destroy the pop-up

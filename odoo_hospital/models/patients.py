@@ -30,7 +30,7 @@ class HospitalPatients(models.Model):
     ], default='draft', tracking=True)
     active= fields.Boolean(string='Active',default=True)
     admit_fee= fields.Float(string='Registration Fee',default=0.0)
-    additional_fee= fields.Float(string='Additional Fee',default=100.0)
+    additional_fee= fields.Float(string='Additional Fee',default=10.0)
     total_fee= fields.Integer(string='Total Fee',readonly=True)
     family_member_id=fields.Many2one(string='Family Member',comodel_name='res.partner')       #('res.partner', string='Family Member') if we write key value as first argument then we doesn't need to specify its key name- comodel_name'   
     reference= fields.Char(string='Number', default='New', copy=False)   #lambda self: self.env['ir.sequence'].next_by_code('patient.sequence')
@@ -48,11 +48,11 @@ class HospitalPatients(models.Model):
             raise UserError('Registration Fee must be greater than 0')
         self.total_fee=self.admit_fee+self.additional_fee
 
-    @api.constrains('additional_fee') 
-    def _check_additional_fee(self):  #its will check for all records
-            for record in self:
-                if record.additional_fee<100.0:
-                    raise ValidationError(_("Additional Fee should be greater than 100.0 your enter Additional Fee is : %s",record.additional_fee))
+    # @api.constrains('additional_fee') 
+    # def _check_additional_fee(self):  #its will check for all records
+    #         for record in self:
+    #             if record.additional_fee<100.0:
+    #                 raise ValidationError(_("Additional Fee should be greater than 100.0 your enter Additional Fee is : %s" %record.additional_fee))
 
     def action_confirm(self):       ##its used for Confirm button given in form view inside header ,control status bar
         self.state = 'confirm'
@@ -87,10 +87,13 @@ class HospitalPatients(models.Model):
     #     res= super(HospitalPatients, self).write(vals)
     #     return res
 
-    # def unlink(self):      #usefull when we delete record(by action menu)
-    #     res= super(HospitalPatients,self).unlink()
-    #     raise UserError("Are you sure you want to delete this patient?")
-    #     return res
+    def unlink(self):      #usefull when we delete record(by action menu) ::its override unlink method
+
+        if self.state == 'done':
+            raise ValidationError(_("You can't delete %s as it is in DONE state" % self.name))
+        res= super(HospitalPatients,self).unlink()
+        
+        return res
 
     # @api.model
     # def default_get(self,fields):  #invole when click on creat button
@@ -105,15 +108,29 @@ class HospitalPatients(models.Model):
 
 # solution for to get the sequence number correctly without changes two times and without new keyword
     def copy(self,default=None):
-        if default is None:
+        if default is None: 
            default = {}
         if not default.get('name'):
            default['name'] = '%s (copy)' %self.name
         default['description']='Copied Record'
         
         res=super(HospitalPatients,self).copy(default)
-        # res.reference=self.env['ir.sequence'].next_by_code('patient.sequence')
+        # res.reference=self.env['ir.sequence'].next_by_code('patient.sequence') 
         return res
+
+
+    @api.constrains('name') 
+    def check_name(self):  #its will check for all records
+            for record in self:
+                patient=self.env['hospital.patients'].search([('name','=', record.name),('id',"!=",record.id)])
+                if patient:
+                    raise ValidationError(_("Name %s is already in exists" % record.name))
+
         
+    @api.constrains('age') 
+    def check_age(self):  #its will check for all records
+            for record in self:                
+                if record.age==0:
+                    raise ValidationError(_("Age can't be ZERO"))
 
         

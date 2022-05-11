@@ -1,0 +1,1 @@
+widget=many2many_tags: used in mmany2many fields to enter a record in tag formate(without it field looks like a form view)

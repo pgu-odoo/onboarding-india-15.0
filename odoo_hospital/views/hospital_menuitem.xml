@@ -18,7 +18,7 @@
         <menuitem name="Odoo Hospital"
             id="menu_hospital_root"
             sequence="1"
-            web_icon="odoo_hospital,static/description/icon.png"/>
+            web_icon="odoo_hospital,static/description/hospital logo1.jpg"/>
         <menuitem name="Patients" id="menu_patients_root" parent="menu_hospital_root" sequence="1"/>
         <menuitem name="Patients" id="menu_hospital_patients" parent="menu_patients_root" sequence="1" action="patients_list_action"/>
         <!-- <record model="ir.actions.act_window" id="action_hospital_kids"> <!- if i create action for this kids separatly its doesn't work why? sol:solving parsing error text mismatch ->

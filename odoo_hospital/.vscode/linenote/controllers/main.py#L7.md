@@ -1,0 +1,2 @@
+1. auth= :three type of auth='public' (page is access by anyone),auth='user'(page is access by login user ),auth='non'(The method is always active, even if there is no database. Mainly used by the framework and authentication modules.)
+2. website=True : it means controller is linked to the webpage
