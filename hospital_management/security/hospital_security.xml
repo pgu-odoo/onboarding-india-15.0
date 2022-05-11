@@ -1,0 +1,20 @@
+<odoo>
+    <!--GROUP FOR HOSPITAL ADMIN-->
+    <record id="hospital_admin_grp" model="res.groups">
+        <field name="name">Hospital Admin</field>
+    </record>
+
+    <!--RECORD RULE FOR PATIENT MODEL-->
+    <record id="Only_Alive_Person's_Details_Can_Modify" model="ir.rule">
+        <field name="name"> Only Alive Person's Details Can Modify</field>
+        <field name="groups" eval="[(4,ref('hospital_management.hospital_admin_grp'))]"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+        <field name="domain_force">[('gender','=','male')]</field>
+        <field name="model_id" ref="model_hospital_patient"/>
+    </record>
+
+
+</odoo>

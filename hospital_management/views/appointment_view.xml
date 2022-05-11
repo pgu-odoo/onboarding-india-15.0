@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--FORM VIEW OF APPOINTMENT MODEL-->
+     <record id="view_appointment_form" model="ir.ui.view">
+        <field name="name">hospital.appointment.form</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button id="button_create" name="action_create" string="Create Appointment" class="btn-primary"
+                            confirm="Are you sure want create appointment ?"
+                            type="object" groups="hospital_management.hospital_admin_grp"/>
+                    <button id="button_confirm" name="action_confirm" string="Mark As Confirm" class="btn-primary"
+                            type="object" confirm="Are you sure want to confirm Appointment" groups="hospital_management.hospital_admin_grp"/>
+                    <button id="button_done" name="action_done" string="Mark As Done" class="btn-primary"
+                            type="object" groups="hospital_management.hospital_admin_grp"/>
+                    <button id="button_cancel" name="action_cancel" string="Cancel"
+                            confirm="Are you sure that you need to cancel ?"
+                            type="object" groups="hospital_management.hospital_admin_grp"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                            <h1>
+                                <field name="reference" readonly="1"/>
+                            </h1>
+                    </div>
+                    <group>
+                            <field name="patient_id"/>
+                             <widget name="web_ribbon" title="Confirmed" bg_color="bg-success" attrs="{'invisible': [('state', '!=','confirm')]}"/>
+                            <widget name="web_ribbon" title="Done" bg_color="bg-success" attrs="{'invisible':[('state', '!=','done')]}"/>
+                            <widget name="web_ribbon" title="Cancel" bg_color="bg-danger" attrs="{'invisible':[('state', '!=','cancel')]}"/>
+                            <field name="age"/>
+                            <field name="doctor_id"/>
+                            <field name="date_appointment"/>
+                            <field name="date_checkup"/>
+                    </group>
+                    <notebook>
+                        <page string="Doctor Prescription" name="doctor_prescription">
+                            <group>
+                                <field name="prescription"/>
+                            </group>
+                        </page>
+                        <page string="Medicine" name="medicine">
+                            <field name="prescription_line_ids" groups="hospital_management.hospital_admin_grp">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="qty"/>
+                                </tree>
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="name"/>
+                                        </group>
+                                        <group>
+                                            <field name="qty"/>
+                                        </group>
+                                    </group>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Other Info" name="other_info">
+                            <field name="note"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!--TREE VIEW OF APPOINTMENT MODEL-->
+     <record id="view_appointment_tree" model="ir.ui.view">
+        <field name="name">hospital.appointment.tree</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <tree> <!--multi_edit="1"-->
+                <field name="name"/>
+                <field name="doctor_id"/>
+                <field name="patient_id"/>
+                <field name="age" optional="show"/>
+                <field name="date_appointment" optional="show"/>
+                <field name="date_checkup" optional="hide"/>
+                <field name="note" optional="show"/>
+                <field name="state" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--SEARCH VIEW OF APPOINTMENT MODEL-->
+        <record id="view_appointment_search" model="ir.ui.view">
+        <field name="name">hospital.appointment.search</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <search string="Patients">
+                <field name="name"/>
+                <field name="patient_id"/>
+                <separator/>
+
+                <!--FOR ADDING CUSTOM FILTERS-->
+                <filter string="Confirmed" name="confirm" domain="[('state', '=', 'confirm')]"/>
+                <filter string="Cancelled" name="cancel" domain="[('state', '=', 'cancel')]"/>
+                <filter string="Done" name="done" domain="[('state', '=', 'done')]"/>
+
+                <!-- FOR ADDING CUSTOM GROUPS-->
+                <group expand="1" string="Group By">
+                    <filter string="Patient" name="patient_id" context="{'group_by':'patient_id'}"/>
+                    <filter string="Age" name="age" context="{'group_by':'age'}"/>
+                </group>
+
+                <!--FOR ADDING SEARCH PANEL-->
+                  <searchpanel>
+                            <field name="state" icon="fa-cogs"/>
+                  </searchpanel>
+            </search>
+        </field>
+    </record>
+
+
+    <!--CALENDAR VIEW OF APPOINTMENT MODEL-->
+    <record id="view_appointment_calendar" model="ir.ui.view">
+            <field name="name">view.appointment.calendar</field>
+            <field name="model">hospital.appointment</field>
+            <field name="arch" type="xml">
+                <calendar mode="month" date_start="date_appointment" date_stop="date_checkup"
+                      event_limit="5"  color="state"> <!--editable=bottom-->
+                            <field name="doctor_id" filters="1"/>
+                            <field name="patient_id"/>
+                            <field name="state" filters="1"/>
+                </calendar>
+            </field>
+     </record>
+
+    <!--ACTION OF APPOINTMENT MODEL-->
+       <record id="action_hospital_appointment" model="ir.actions.act_window">
+            <field name="name">Appointments</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hospital.appointment</field>
+            <field name="view_mode">tree,form,search,calendar</field>
+        </record>
+
+
+    <!--MENU OF APPOINTMENT MODEL-->
+    <menuitem id="menu_appointment_root"
+              name="Appointments"
+              parent="hospital_root"/>
+
+    <menuitem id="menu_appointment"
+              name="Appointments"
+              parent="menu_appointment_root"
+              action="action_hospital_appointment"
+              sequence="10"/>
+
+</odoo>

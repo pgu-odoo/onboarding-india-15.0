@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!--FORM VIEW OF DOCTOR MODEL-->
+    <record id="view_doctor_form" model="ir.ui.view">
+        <field name="name">hospital.doctor.form</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(hospital_management.action_hospital_appointment)d" type="action"
+                                class="oe_stat_button" icon="fa-calendar">
+                            <div class="o_stat_info">
+                                <field name="appointment_count" class="o_stat_value"/>
+                                <span class="o_stat_text">Appointments</span>
+                            </div>
+                        </button>
+                    </div>
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <label for="name"/>
+                    <h1>
+                        <field name="name" placeholder="E.g Doctor Name like Milan Ruthava"/>
+                    </h1>
+                    <group>
+                        <group cospan="3" col="3">
+                            <field name="age" string="Age"/>
+                            <field name="department" string="Department Name"/>
+                            <field name="doj"/>
+                            <field name="salary"/>
+                            <field name="available" string="Available" widget="boolean_toggle"/>
+                        </group>
+                        <group>
+                            <field name="gender" string="Gender"/>
+                        </group>
+                        <group>
+                            <field name="color" string="Color"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="pg_Description" string="Description">
+                            <field name="note"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!--TREE VIEW OF DOCTOR MODEL-->
+    <record id="view_doctor_tree" model="ir.ui.view">
+        <field name="name">hospital.doctor.tree</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="age"/>
+                <field name="department"/>
+                <field name="doj"/>
+                <field name="color"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--SEARCH VIEW OF DOCTOR MODEL-->
+    <record id="view_doctor_search" model="ir.ui.view">
+        <field name="name">hospital.doctor.search</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="doj"/>
+                <field name="age"/>
+                <field name="department"/>
+                <searchpanel>
+                    <field name="gender" icon="fa-users"/>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <!--KANBAN VIEW OF DOCTOR MODEL-->
+    <record id="view_doctor_kanban" model="ir.ui.view">
+        <field name="name">hospital.doctor.kanban</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="id"/>
+                <field name="name"/>
+                <field name="color"/>
+                <field name="image"/>
+                <field name="gender"/>
+                <field name="dob"/>
+                <field name="age"/>
+                <field name="department"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''} oe_kanban_card oe_kanban_global_click">
+                            <div>
+                                <field name="image" widget="image" class="oe_avatar" height="200" width="200"/>
+                            </div>
+                            <span class="pull-left text-left" style="font-size:13px; color:black; font-weight: bold;">
+                                <ul>
+                                    <li>
+                                        Name:
+                                        <field name="name"/>
+                                    </li>
+                                    <li>
+                                        Date_of_Birth:
+                                        <field name="dob"/>
+                                    </li>
+                                    <li>
+                                        Age:
+                                        <field name="age"/>
+                                    </li>
+                                    <li>
+                                        Gender:
+                                        <field name="gender"/>
+                                    </li>
+                                    <li>
+                                        Department:
+                                        <field name="department"/>
+                                    </li>
+                                </ul>
+                            </span>
+                            <div class="o_dropdown_kanban o_dropdown">
+                                <!-- Getting an icon of elipsis to have the dropdown menu -->
+                                <a class="dropdown-toggle o-no-caret btn" role="button" data-toggle="dropdown"
+                                   data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+                                    <span class="fa fa-ellipsis-v"/>
+                                </a>
+                                <div class="dropdown-menu" role="menu">
+                                    <!-- type="open" is used to open the form view in non editable mode -->
+                                    <a role="menuitem" type="open" class="dropdown-item">Open</a>
+                                    <div role="separator" class="dropdown-divider"/>
+                                    <!-- type="edit" is used to open the form view in editable mdoe -->
+                                    <t t-if="widget.editable">
+                                        <a role="menuitem" type="edit" class="dropdown-item">Edit</a>
+                                    </t>
+                                    <div role="separator" class="dropdown-divider"/>
+                                    <!-- type="delete" is used to delete the record -->
+                                    <t t-if="widget.deletable">
+                                        <a role="menuitem" type="delete" class="dropdown-item">Delete</a>
+                                    </t>
+                                    <!-- Adding separator -->
+                                    <div role="separator" class="dropdown-divider"/>
+                                    <!-- Color Picker on the Kanban view -->
+                                    <ul class="oe_kanban_colorpicker" data-field="color"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!--CALENDAR VIEW OF DOCTOR MODEL-->
+    <record id="view_doctor_calendar" model="ir.ui.view">
+        <field name="name">hospital.doctor.calendar</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <calendar date_start="dob">
+                <field name="name"/>
+                <field name="gender"/>
+                <field name="age"/>
+                <field name="department"/>
+            </calendar>
+        </field>
+    </record>
+
+    <!--ACTION OF DOCTOR MODEL-->
+    <record id="action_doctor" model="ir.actions.act_window">
+        <field name="name">Doctors</field>
+        <field name="res_model">hospital.doctor</field>
+        <field name="view_mode">kanban,tree,form,calendar</field>
+        <field name="help" type="html">
+            <p>
+                Create Your First Doctor
+            </p>
+        </field>
+    </record>
+
+    <!--MENU OF DOCTOR MODEL-->
+    <menuitem id="menu_doctor_root"
+              name="Doctor"
+              parent="hospital_root"/>
+
+    <menuitem id="menu_doctor"
+              parent="menu_doctor_root"
+              action="action_doctor"/>
+
+</odoo>

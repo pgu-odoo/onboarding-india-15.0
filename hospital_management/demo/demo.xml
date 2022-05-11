@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--DEMO DATA FOR PATIENT 1-->
+    <record id="patient_1" model="hospital.patient">
+        <field name="name">Virat</field>
+        <field name="address">Ahmedabad</field>
+        <field name="age">37</field>
+    </record>
+
+    <!--DEMO DATA FOR PATIENT 2-->
+     <record id="patient_2" model="hospital.patient">
+        <field name="name">Keshri</field>
+        <field name="address">Odhisha</field>
+        <field name="age">25</field>
+    </record>
+
+    <!--DEMO DATA FOR PATIENT 3-->
+     <record id="patient_3" model="hospital.patient">
+        <field name="name">Nidhi</field>
+        <field name="address">Jaipur</field>
+        <field name="age">22</field>
+    </record>
+
+    <!-- DEMO DATA FOR DOCTOR 1-->
+    <record id="doctor_1" model="hospital.doctor">
+        <field name="name">Zecil Gupta</field>
+        <field name="gender">male</field>
+        <field name="age">29</field>
+    </record>
+
+    <!-- DEMO DATA FOR DOCTOR 2-->
+    <record id="doctor_2" model="hospital.doctor">
+        <field name="name">Pranshu joshi</field>
+        <field name="gender">male</field>
+        <field name="age">24</field>
+    </record>
+
+    <!-- DEMO DATA FOR DOCTOR 3-->
+    <record id="doctor_3" model="hospital.doctor">
+        <field name="name">Rachna Agrawal</field>
+        <field name="gender">female</field>
+        <field name="age">24</field>
+    </record>
+
+    <!--DEMO DATA FOR BILL 1-->
+    <record id="bill_1" model="hospital.bill">
+        <field name="no">5464</field>
+        <field name="doctor_charges">8033</field>
+        <field name="medicine_charges">150.99</field>
+        <field name="p_name" ref="hospital_management.patient_1"/>
+    </record>
+
+    <!--DEMO DATA FOR BILL 2-->
+    <record id="bill_2" model="hospital.bill">
+        <field name="no">5467</field>
+        <field name="doctor_charges">8033</field>
+        <field name="medicine_charges">150.99</field>
+        <field name="p_name" ref="hospital_management.patient_2"/>
+    </record>
+
+    <!--DEMO DATA FOR BILL 3-->
+    <record id="bill_3" model="hospital.bill">
+        <field name="no">5488</field>
+        <field name="doctor_charges">8033</field>
+        <field name="medicine_charges">150.99</field>
+        <field name="p_name" ref="hospital_management.patient_3"/>
+    </record>
+
+    <!--DEMO DATA FOR APPOINTMENT-->
+    <record id="appointment_1" model="hospital.appointment">
+        <field name="patient_id" ref="hospital_management.patient_1"/>
+        <field name="doctor_id" ref="hospital_management.doctor_2"/>
+        <field name="state">done</field>
+        <field name="date_checkup" eval="(DateTime.today())"/>
+        <field name="date_appointment" eval="(DateTime.today())"/>
+    </record>
+
+</odoo>

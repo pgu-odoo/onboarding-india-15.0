@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--FORM VIEW OF PATIENT MODEL-->
+    <record id="view_patient_form" model="ir.ui.view">
+            <field name="name">view.patient.form</field>
+            <field name="model">hospital.patient</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <field name="state" widget="statusbar" clickable="1"/> <!--statusbar_visible="draft,done,confirm" , clickable=1-->
+                    </header>
+                    <sheet>
+                        <field name="image" widget="image" class="oe_avatar"/>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="reference" readonly="1"/>
+                            </h1>
+                        </div>
+
+                        <!--USED FOR RIBBON-->
+                        <widget name="web_ribbon" title="Draft" bg_color="bg-warning" attrs="{'invisible': [('state', '!=','draft')]}"/>
+                            <widget name="web_ribbon" title="Confirm" bg_color="bg-success" attrs="{'invisible': [('state', '!=','confirm')]}"/>
+                            <widget name="web_ribbon" title="Done" bg_color="bg-success" attrs="{'invisible':[('state', '!=','done')]}"/>
+                            <widget name="web_ribbon" title="Dead" bg_color="bg-danger" attrs="{'invisible': [('state', '!=','dead')]}"/>
+
+                        <!--BASIC AND RELATIONAL FIELDS-->
+                        <group colspan="4" col="4">
+                            <field name="name" string="Patient Name" placeholder="Enter Your Name"/>
+                            <field name="age"/>
+                            <field name="gender" widget="radio"/>
+                            <field name="status" widget="boolean_toggle"/>
+                            <field name="weight"/>
+                            <field name="address" placeholder="Enter Your detailed address"/>
+                            <field name="contact_no"/>
+                            <field name="email_id" widget="url"/>
+                            <field name="password" password="1"/>
+                            <field name ="al_contact_no"/>
+                            <field name="date_of_admit"/>
+                            <field name="date_of_discharge"/>
+                            <field name="doctor" options="{'no_create':True}" widget="many2many_tags"/>
+                            <field name="disease"/>
+                            <field name="file_name" invisible="1"/>
+                            <field name="document" filename="file_name"/>
+                            <field name="color" widget="color_picker"/>
+                        </group>
+                         <separator string="Notes" placeholder="Enter if Any Notes"/>
+<!--                                   attrs = "{'invisible' : [('status','=',False)]}"/>-->
+                        <field name="note"/>
+                            <notebook>
+                                <page name="pg_bill" string="Bill Amount">
+                                <field name="bill"/>
+                                </page>
+
+                                <page name="pg_parent" string="Parent">
+                                <field name="partner_id"/>
+                                </page>
+                            </notebook>
+                    </sheet>
+                    <!-- FOR ADDING CHATTER-->
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
+                    </div>
+                </form>
+            </field>
+    </record>
+
+    <!--TREE VIEW OF PATIENT MODEL-->
+    <record id="view_patient_tree" model="ir.ui.view">
+        <field name="name">view.patient.tree</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+                <tree>
+                            <field name="name" string="Patient Name"/>
+                            <field name="doctor"/>
+                            <field name="age"/>
+                            <field name="gender"/>
+                            <field name="date_of_admit"/>
+                            <field name="date_of_discharge"/>
+                            <field name="state" string="Status"/>
+                            <field name="disease"/>
+                            <field name="activity_ids"/>
+                            <field name="color" widget="color_picker"/>
+                </tree>
+        </field>
+    </record>
+
+
+    <!--KANBAN VIEW OF PATIENT MODEL-->
+    <record id="view_patient_kanban" model="ir.ui.view">
+        <field name="name">hospital.patient.kanban</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <kanban>
+                            <field name="name" string="Patient Name" />
+                            <field name="age"/>
+                            <field name="partner_id"/>
+                            <field name="color"/>
+                            <field name="gender"/>
+                            <field name="date_of_admit"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''} oe_kanban_card oe_kanban_global_click">
+                            <div>
+                                <!--ADDING AN IMAGE-->
+                                <field name="image" widget="image" class="oe_avatar" height="200" width="200" background-color="blue"/>
+                            </div>
+                            <span class="pull-left text-left" style="font-size:13px; color:black; font-weight: bold;">
+                                <ul>
+                                    <li>
+                                        Patient Name: <field name="name"/>
+                                    </li>
+                                    <li>
+                                        Age: <field name="age"/>
+                                    </li>
+                                    <li>
+                                        Gender: <field name="gender"/>
+                                    </li>
+                                    <li>
+                                        Date: <field name="date_of_admit"/>
+                                    </li>
+                                </ul>
+                               </span>
+                            <div class="o_dropdown_kanban o_dropdown">
+                                <!-- Getting an icon of elipsis to have the dropdown menu -->
+                                <a class="dropdown-toggle o-no-caret btn" role="button" data-toggle="dropdown" data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
+                                    <span class="fa fa-ellipsis-v"/>
+                                </a>
+                                <div class="dropdown-menu" role="menu">
+                                    <!-- type="open" is used to open the form view in non editable mode -->
+                                    <a role="menuitem" type="open" class="dropdown-item">Open</a>
+                                    <div role="separator" class="dropdown-divider"/>
+                                    <!-- type="edit" is used to open the form view in editable mdoe -->
+                                    <t t-if="widget.editable"><a role="menuitem" type="edit" class="dropdown-item">Edit</a></t>
+                                    <div role="separator" class="dropdown-divider"/>
+                                    <!-- type="delete" is used to delete the record -->
+                                    <t t-if="widget.deletable"><a role="menuitem" type="delete" class="dropdown-item">Delete</a></t>
+                                    <!-- Adding separator -->
+                                    <div role="separator" class="dropdown-divider"/>
+                                    <!-- Color Picker on the Kanban view -->
+                                    <ul class="oe_kanban_colorpicker" data-field="color"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!--SEARCH VIEW OF PATIENT MODEL-->
+    <record id="view_patient_search" model="ir.ui.view">
+            <field name="name">view.patient.search</field>
+            <field name="model">hospital.patient</field>
+            <field name="arch" type="xml">
+                    <search>
+                            <field name="name"/>
+                            <field name="doctor"/>
+                            <field name="age"/>
+                            <field name="gender"/>
+                            <filter name="by_gender" string="Gender"
+                                    context="{'group_by':'gender'}"/>
+                            <filter name="by_age" string="Age"
+                                    context="{'group_by':'age'}"/>
+                        <searchpanel>
+                            <field name="gender" icon="fa-users"/>
+                        </searchpanel>
+                    </search>
+            </field>
+     </record>
+
+    <!-- CALENDAR VIEW OF PATIENT MODEL-->
+    <record id="view_patient_calendar" model="ir.ui.view">
+            <field name="name">view.patient.calendar</field>
+            <field name="model">hospital.patient</field>
+            <field name="arch" type="xml">
+                <calendar string="patient_calender"  date_start="date_of_admit"  >
+                    <field name="name"/>
+                </calendar>
+            </field>
+     </record>
+
+    <!--GRAPH VIEW OF PATIENT MODEL-->
+        <record id="view_patient_calendar" model="ir.ui.view">
+            <field name="name">view.patient.calendar</field>
+            <field name="model">hospital.patient</field>
+            <field name="arch" type="xml">
+                <graph type="line">
+                    <field name="name" type="row"/>
+                    <field name="age" type="measure"/>
+                </graph>
+            </field>
+     </record>
+
+    <!--PIVOT VIEW OF PATIENT MODEL-->
+    <record id="view_patient_pivot" model="ir.ui.view">
+        <field name="name">view.patient.pivot</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="name" type="row"/>
+                <field name="gender" type="col"/>
+                <field name="age" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+    <!--ACTIVITY VIEW OF PATIENT MODEL-->
+    <record id="view_patient_activity" model="ir.ui.view">
+        <field name="name">view.patient.activity</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <activity string="Extra Activity">
+                <templates>
+                    <div t-name="activity-box">
+                        <field name="name"/>
+                    </div>
+                </templates>
+            </activity>
+        </field>
+    </record>
+
+    <!--ACTION MENU OF PATIENT MODEL-->
+    <record id="action_patient" model="ir.actions.act_window">
+            <field name="name">Patient</field>
+            <field name="res_model">hospital.patient</field>
+            <field name="view_mode">kanban,tree,form,calendar,graph,pivot,search,activity</field>
+            <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create The First Patient
+            </p>
+            </field>
+    </record>
+
+    <!--MENU OF HOSPITAL-->
+    <menuitem id="hospital_root"
+                       name="Hospital"
+                        sequence="10"/>
+
+    <!--MENU OF PATIENT-->
+    <menuitem id="hospital_patient_root"
+                       name="Patient"
+                       parent="hospital_root"
+                        sequence="10"/>
+
+    <!--MENU OF PATIENTS-->
+    <menuitem id="hospital_patient"
+                       name="Patients"
+                        parent="hospital_patient_root"
+                        action="action_patient"/>
+
+</odoo>
