@@ -24,14 +24,15 @@
                     </h1>
                     <group>
                         <group cospan="3" col="3">
-                            <field name="age" string="Age"/>
+                            <field name="age"/>
                             <field name="department" string="Department Name"/>
                             <field name="doj"/>
                             <field name="salary"/>
                             <field name="available" string="Available" widget="boolean_toggle"/>
                         </group>
                         <group>
-                            <field name="gender" string="Gender"/>
+                            <field name="gender"/>
+                            <field name="rating" widget="priority"/>
                         </group>
                         <group>
                             <field name="color" string="Color"/>
@@ -176,11 +177,24 @@
         </field>
     </record>
 
+    <!--PIVOT VIEW OF DOCTOR MODEL-->
+    <record id="view_doctor_pivot" model="ir.ui.view">
+        <field name="name">view.doctor.pivot</field>
+        <field name="model">hospital.doctor</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="name" type="row"/>
+                <field name="gender" type="row"/>
+                <field name="age" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
     <!--ACTION OF DOCTOR MODEL-->
     <record id="action_doctor" model="ir.actions.act_window">
         <field name="name">Doctors</field>
         <field name="res_model">hospital.doctor</field>
-        <field name="view_mode">kanban,tree,form,calendar</field>
+        <field name="view_mode">kanban,tree,form,calendar,pivot</field>
         <field name="help" type="html">
             <p>
                 Create Your First Doctor

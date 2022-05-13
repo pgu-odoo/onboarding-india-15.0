@@ -6,8 +6,8 @@
     'description': """Hospital Mangement Software""",
     'category': 'Management',
     'website': 'https://www.odoo.com',
-    'license': 'AGPL-3',
-    'depends': ['base','mail'],
+    'license': 'LGPL-3',
+    'depends': ['base','mail','board','sale'],
     'data': [
         'security/hospital_security.xml',
         'security/ir.model.access.csv',
@@ -16,6 +16,9 @@
         'views/bill_view.xml',
         'views/configuration_view.xml',
         'views/appointment_view.xml',
+        'views/dashboard_view.xml',
+        'views/sale_inherited_view.xml',
+        'views/product_views_inherit.xml',
         ],
 'demo': [
     'demo/demo.xml',

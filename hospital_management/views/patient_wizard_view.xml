@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="patient_wizard_view" model="ir.ui.view">
+        <field name="name">patient.wizard.view</field>
+        <field name="model">hospital.patient</field>
+        <field name="arch" type="xml">
+            <form string="Patient Wizard Form">
+                <field name="patient_name_bill"/>
+            </form>
+        </field>
+    </record>
+</odoo>

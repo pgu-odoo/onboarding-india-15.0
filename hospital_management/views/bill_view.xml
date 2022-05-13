@@ -6,7 +6,7 @@
         <field name="name">hospital.bill.form</field>
         <field name="model">hospital.bill</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Bill_Form">
                 <sheet>
                     <header>
                         <field name="image" widget="image" height="100" width="100"/>
@@ -37,7 +37,7 @@
         <field name="name">hospital.bill.tree</field>
         <field name="model">hospital.bill</field>
         <field name="arch" type="xml">
-            <tree sample="1">
+            <tree sample="1" string="Bill_Tree">
                             <field name="no" string="Bill No."/>
                             <field name="p_name" string="Patient_Name"/>
                             <field name="doctor_charges"/>
@@ -62,12 +62,24 @@
             </field>
     </record>
 
+    <!--PIVOT VIEW OF BILL MODEL-->
+    <record id="view_bill_pivot" model="ir.ui.view">
+        <field name="name">view.bill.pivot</field>
+        <field name="model">hospital.bill</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="p_name" type="row"/>
+                <field name="total" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
 
     <!-- ACTION MENU OF BILL MODEL -->
     <record id="action_Bill" model="ir.actions.act_window">
             <field name="name">Bill</field>
             <field name="res_model">hospital.bill</field>
-            <field name="view_mode">tree,form,graph</field>
+            <field name="view_mode">tree,form,graph,pivot</field>
             <field name="help" type="html">
                 <p>
                     Create Bill

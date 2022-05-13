@@ -13,7 +13,8 @@ class HospitalDoctor(models.Model):
     age = fields.Integer(string='Age', tracking=True, copy=False)
     doj = fields.Datetime(string='Date Of Joining')
     available = fields.Boolean(string="Available", default=True)
-    salary = fields.Float(string="Salary",digit=(5,6))
+    salary = fields.Float(string="Salary",digits=(5,6))
+    rating = fields.Selection([(str(ele),str(ele)) for ele in range(6)],'Ratings')
     color = fields.Integer(string="Color")
     department = fields.Selection([('param','Paramedical Department'),
                                    ('surge','Surgical Department'),

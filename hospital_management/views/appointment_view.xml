@@ -6,7 +6,7 @@
         <field name="name">hospital.appointment.form</field>
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Appointment_Form">
                 <header>
                     <button id="button_create" name="action_create" string="Create Appointment" class="btn-primary"
                             confirm="Are you sure want create appointment ?"
@@ -30,12 +30,12 @@
                             </h1>
                     </div>
                     <group>
-                            <field name="patient_id"/>
+                            <field name="patient_ids"/>
                              <widget name="web_ribbon" title="Confirmed" bg_color="bg-success" attrs="{'invisible': [('state', '!=','confirm')]}"/>
                             <widget name="web_ribbon" title="Done" bg_color="bg-success" attrs="{'invisible':[('state', '!=','done')]}"/>
                             <widget name="web_ribbon" title="Cancel" bg_color="bg-danger" attrs="{'invisible':[('state', '!=','cancel')]}"/>
                             <field name="age"/>
-                            <field name="doctor_id"/>
+                            <field name="doctor_ids"/>
                             <field name="date_appointment"/>
                             <field name="date_checkup"/>
                     </group>
@@ -82,10 +82,10 @@
         <field name="name">hospital.appointment.tree</field>
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
-            <tree> <!--multi_edit="1"-->
+            <tree string="Appointment_Tree"> <!--multi_edit="1"-->
                 <field name="name"/>
-                <field name="doctor_id"/>
-                <field name="patient_id"/>
+                <field name="doctor_ids"/>
+                <field name="patient_ids"/>
                 <field name="age" optional="show"/>
                 <field name="date_appointment" optional="show"/>
                 <field name="date_checkup" optional="hide"/>
@@ -100,9 +100,9 @@
         <field name="name">hospital.appointment.search</field>
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
-            <search string="Patients">
+            <search string="Appointment_Search">
                 <field name="name"/>
-                <field name="patient_id"/>
+                <field name="patient_ids"/>
                 <separator/>
 
                 <!--FOR ADDING CUSTOM FILTERS-->
@@ -112,7 +112,7 @@
 
                 <!-- FOR ADDING CUSTOM GROUPS-->
                 <group expand="1" string="Group By">
-                    <filter string="Patient" name="patient_id" context="{'group_by':'patient_id'}"/>
+                    <filter string="Patient" name="patient_ids" context="{'group_by':'patient_ids'}"/>
                     <filter string="Age" name="age" context="{'group_by':'age'}"/>
                 </group>
 
@@ -131,9 +131,9 @@
             <field name="model">hospital.appointment</field>
             <field name="arch" type="xml">
                 <calendar mode="month" date_start="date_appointment" date_stop="date_checkup"
-                      event_limit="5"  color="state"> <!--editable=bottom-->
-                            <field name="doctor_id" filters="1"/>
-                            <field name="patient_id"/>
+                      event_limit="5"  color="state" string="Appointment_Tree"> <!--editable=bottom-->
+                            <field name="doctor_ids" filters="1"/>
+                            <field name="patient_ids"/>
                             <field name="state" filters="1"/>
                 </calendar>
             </field>
