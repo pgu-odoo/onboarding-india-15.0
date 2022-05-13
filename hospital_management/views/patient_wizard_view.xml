@@ -2,11 +2,36 @@
 <odoo>
     <record id="patient_wizard_view" model="ir.ui.view">
         <field name="name">patient.wizard.view</field>
-        <field name="model">hospital.patient</field>
+        <field name="model">patient.wizard</field>
         <field name="arch" type="xml">
             <form string="Patient Wizard Form">
+                <group>
                 <field name="patient_name_bill"/>
+                </group>
+                <footer>
+                    <button name="open_patient"
+                            string="Open"
+                            type="object"
+                            class="btn-success"/>
+                            <button special="cancel"
+                                    string="Close"
+                                    class="btn-danger"/>
+                </footer>
             </form>
         </field>
     </record>
+
+    <!--ACTION OF THE PATIENT WIZARD-->
+<record id="action_update_patient_wizard" model="ir.actions.act_window">
+<field name="name">PATIENT </field>
+<field name="res_model">patient.wizard</field>
+<field name="view_mode">form</field>
+<field name="target">new</field>
+</record>
+
+<menuitem id="menu_patient_wizard"
+          name="Patient Wizard"
+          parent="hospital_root"
+          action="action_update_patient_wizard"
+          sequence="3"/>
 </odoo>

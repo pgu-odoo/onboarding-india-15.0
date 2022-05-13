@@ -1,7 +1,5 @@
 from odoo import api, fields, models, _
 
-
-
 class HospitalAppointment(models.Model):
 
     #CLASS ATTRIBUTES
@@ -38,6 +36,14 @@ class HospitalAppointment(models.Model):
 
     def action_done(self):
         self.state='done'
+
+    #SEQUENCE METHOD
+    @api.model
+    def create(self,vals):
+         if vals.get('name', _('New')) == _('New'):
+             vals['name'] = self.env['ir.sequence'].next_by_code('hospital.appointment') or _('New')
+         res = super(HospitalAppointment, self).create(vals)
+         return res
 
 
 class AppointmentPrescriptionLines(models.Model):

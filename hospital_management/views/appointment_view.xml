@@ -25,9 +25,6 @@
                         <h1>
                             <field name="name" readonly="1"/>
                         </h1>
-                            <h1>
-                                <field name="reference" readonly="1"/>
-                            </h1>
                     </div>
                     <group>
                             <field name="patient_ids"/>
@@ -82,7 +79,7 @@
         <field name="name">hospital.appointment.tree</field>
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
-            <tree string="Appointment_Tree"> <!--multi_edit="1"-->
+            <tree string="Appointment_Tree" sample="1"> <!--multi_edit="1"-->
                 <field name="name"/>
                 <field name="doctor_ids"/>
                 <field name="patient_ids"/>

@@ -5,5 +5,6 @@ access_hospital_bill_grp,access.hospital.bill.grp,model_hospital_bill,hospital_a
 access_hospital_configuration_grp,access.hospital.configuration.grp,model_hospital_configuration,,1,1,1,1
 access_hospital_appointment_grp,access.hospital.appointment.grp,model_hospital_appointment,,1,1,1,1
 access_appointment_prescription_lines,access.appointment.prescription.lines,model_appointment_prescription_lines,,1,1,1,1
+access_patient_wizard,access.patient.wizard,model_patient_wizard,,1,1,1,1
 
 

@@ -12,7 +12,11 @@
                 </header>
                 <sheet>
                     <field name="image" widget="image" class="oe_avatar"/>
-                    <field name="reference" readonly="1"/>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="reference" readonly="1"/>
+                        </h1>
+                    </div>
 
                     <!--USED FOR RIBBON-->
                     <widget name="web_ribbon" title="Draft" bg_color="bg-warning"
@@ -45,7 +49,7 @@
                         <field name="color" widget="color_picker"/>
                     </group>
                     <separator string="Notes" placeholder="Enter if Any Notes"/>
-                    <!--                                   attrs = "{'invisible' : [('status','=',False)]}"/>-->
+                    <!--attrs = "{'invisible' : [('status','=',False)]}"/>-->
                     <field name="note"/>
                     <notebook>
                         <page name="pg_bill" string="Bill Amount">

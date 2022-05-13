@@ -9,6 +9,7 @@ class HospitalPatient(models.Model):
         _order = 'name'
 
         #BASIC FIELDS
+        reference = fields.Char(string='Order Reference',readonly=True,copy=False,required=True,default=lambda self: _('New Patient'))
         name = fields.Char(string='Name',tracking=True,required=True,placeholder="Enter Your Name",size=3)
         age = fields.Integer(string='Age',tracking=True,required=True)
         weight = fields.Integer(string='Weight',tracking=True)
@@ -52,4 +53,12 @@ class HospitalPatient(models.Model):
 
         def action_dead(self):
                         self.state = "dead"
+
+
+        @api.model
+        def create(self, vals):
+                if vals.get('reference', _('New')) == _('New'):
+                        vals['reference'] = self.env['ir.sequence'].next_by_code('hospital.patient') or _('New')
+                res = super(HospitalPatient, self).create(vals)
+                return res
 
