@@ -7,11 +7,12 @@
     'category': 'Management',
     'website': 'https://www.odoo.com',
     'license': 'LGPL-3',
-    'depends': ['base','mail','board','sale'],
+    'depends': ['base','mail','board','sale','website'],
     'data': [
         'security/hospital_security.xml',
         'security/ir.model.access.csv',
         'data/patient_sequence.xml',
+        'data/hospital.patient.csv',
         'views/patient_view.xml',
         'views/doctor_view.xml',
         'views/bill_view.xml',
@@ -21,6 +22,8 @@
         'views/sale_inherited_view.xml',
         'views/product_views_inherit.xml',
         'views/patient_wizard_view.xml',
+        'views/addenda_test.xml',
+        'reports/patient_report.xml',
         ],
 'demo': [
     'demo/demo.xml',

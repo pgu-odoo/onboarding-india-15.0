@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--SERVER ACTION TO CHANGE THE STATE OF PATIENT(E.G) CONFIRM STATE-->
+    <record id="patient_server_action" model="ir.actions.server">
+        <field name="name">Confirm Patient</field>
+        <field name="model_id"></field>
+        <field name="binding_model_id"></field>
+    </record>
+</odoo>
