@@ -29,6 +29,9 @@ class HospitalDoctor(models.Model):
     image = fields.Binary(string="Patient Image")
     appointment_count = fields.Integer(string='Appointment Count', compute='_compute_appointment_count')
 
+    @api.model
+    def _cron_hospital_doctor_availability(self):
+        print("Doctor is Available")
 
     def _compute_appointment_count(self):
         """
@@ -37,7 +40,7 @@ class HospitalDoctor(models.Model):
         """
         for rec in self:
             appointment_count = self.env['hospital.appointment'].\
-                        search_count([('doctor_id', '=', rec.id)])
+                        search_count([('doctor_ids', '=', rec.id)])
             rec.appointment_count = appointment_count
 
 

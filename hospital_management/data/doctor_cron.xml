@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--SCHEDULER FOR CHECK DOCTOR AVAILABILITY-->
+    <record id="doctor_status_cron" model="ir.cron">
+        <field name="name">Doctor Availability</field>
+        <field name="model_id" ref="model_hospital_doctor"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_hospital_doctor_availability()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="True"/>
+    </record>
+</odoo>

@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <!--SERVER ACTION TO CHANGE THE STATE OF PATIENT(E.G) CONFIRM STATE-->
-    <record id="patient_server_action" model="ir.actions.server">
+    <!--SERVER ACTION TO CHANGE THE STATE OF APPOINTMENTS(E.G) CONFIRM STATE-->
+    <record id="confirm_appointment_server_action" model="ir.actions.server">
         <field name="name">Confirm Patient</field>
-        <field name="model_id"></field>
-        <field name="binding_model_id"></field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="hospital_management.model_hospital_appointment"/>
+        <field name="binding_model_id" ref="hospital_management.model_hospital_appointment"/>
+        <field name="binding_view_types">list</field>
+        <field name="sequence">-100</field>
+        <field name="state">code</field>
+        <field name="code">records.write({'state':'confirm'})</field>
+    </record>
+
+    <!--SERVER ACTION FOR UPDATE PATIENT DETAIL-->
+    <record id="update_patient_server_action" model="ir.actions.server">
+        <field name="name">Update Patient</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="hospital_management.model_hospital_patient"/>
+        <field name="binding_model_id" ref="hospital_management.model_hospital_patient"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">records.write({'name':'virat','age':24})</field>
     </record>
 </odoo>

@@ -9,6 +9,14 @@
                 <header>
                     <field name="state" widget="statusbar"
                            clickable="1"/> <!--statusbar_visible="draft,done,confirm" , clickable=1-->
+                    <button name="get_patient_bill"
+                            string="Patient Bill"
+                            type="object"
+                            class="btn-primary"/>
+                    <button name="test"
+                            string="Test"
+                            type="object"
+                            class="btn-primary"/>
                 </header>
                 <sheet>
                     <field name="image" widget="image" class="oe_avatar"/>
@@ -33,6 +41,8 @@
                         <field name="name" string="Patient Name" placeholder="Enter Your Name"/>
                         <field name="age"/>
                         <field name="gender" widget="radio"/>
+                        <field name="dob"/>
+                        <field name="currency_id"/>
                         <field name="status" widget="boolean_toggle"/>
                         <field name="weight"/>
                         <field name="address" placeholder="Enter Your detailed address"/>
@@ -48,7 +58,7 @@
                         <field name="document" filename="file_name"/>
                         <field name="color" widget="color_picker"/>
                     </group>
-                    <separator string="Notes" placeholder="Enter if Any Notes"/>
+                    <separator string="Description" placeholder="Enter if Any Notes"/>
                     <!--attrs = "{'invisible' : [('status','=',False)]}"/>-->
                     <field name="note"/>
                     <notebook>
@@ -80,12 +90,14 @@
                 <field name="name" string="Patient Name"/>
                 <field name="doctor_ids"/>
                 <field name="age"/>
+                <field name="dob"/>
                 <field name="gender"/>
                 <field name="date_of_admit"/>
                 <field name="date_of_discharge"/>
                 <field name="state" string="Status"/>
                 <field name="disease"/>
                 <field name="activity_ids"/>
+                <field name="state"/>
                 <field name="color" widget="color_picker"/>
             </tree>
         </field>
@@ -171,6 +183,7 @@
         <field name="arch" type="xml">
             <search string="Patient_Search">
                 <field name="name"/>
+                <field name="dob"/>
                 <field name="doctor_ids"/>
                 <field name="age"/>
                 <field name="gender"/>
