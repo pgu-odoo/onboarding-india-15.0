@@ -1,5 +1,5 @@
 {
-    'name': 'Test',
+    'name': 'odoo_academy',
     'version': '15.0',
     'summary': 'day one technical training',
     'description': 'description for the module',
