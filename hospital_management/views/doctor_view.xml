@@ -35,7 +35,9 @@
                             <field name="rating" widget="priority"/>
                         </group>
                         <group>
-                            <field name="color" string="Color"/>
+                            <field name="color" string="Color" widget="color_picker"/>
+                            <field name="url" widget="url"/>
+                            <field name="doctor_code"/>
                         </group>
                     </group>
                     <notebook>
@@ -205,6 +207,7 @@
     <!--MENU OF DOCTOR MODEL-->
     <menuitem id="menu_doctor_root"
               name="Doctor"
+              sequence="0"
               parent="hospital_root"/>
 
     <menuitem id="menu_doctor"

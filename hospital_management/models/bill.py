@@ -41,7 +41,7 @@ class HospitalBill(models.Model):
         self.total = self.doctor_charges + self.medicine_charges+ self.room_charge + self.medicine_charges + self.nursing_charge
 
 
-    @api.constrains('doctor_charges','medicine_charges')
-    def check_charges(self):
-        if self.medicine_charges or self.doctor_charges < 1:
-            raise ValidationError("Values Or Charges Cannot be less then 1")
+    # @api.constrains('doctor_charges','medicine_charges')
+    # def check_charges(self):
+    #     if self.medicine_charges or self.doctor_charges < 1:
+    #         raise ValidationError("Values Or Charges Cannot be less then 1")

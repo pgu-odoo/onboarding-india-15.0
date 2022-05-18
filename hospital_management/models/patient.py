@@ -112,8 +112,9 @@ class HospitalPatient(models.Model):
                 """
                 print("Hello!!!!")
                 patients = self.search([])
+                doctors = self.env['hospital.doctor'].search([])
                 print("Patients",patients)
-
+                print("Doctors",doctors)
                 #RECORDSET METHODS
 
                 #Filtering based on some specific value in the field.
@@ -186,6 +187,7 @@ class HospitalPatient(models.Model):
 
 
         #ORM METHODS
+        #CREATE METHOD
         def create_record(self):
                 """
                 This method is used to demonstrate the ORM method create
@@ -193,12 +195,243 @@ class HospitalPatient(models.Model):
                 :return:
                 """
                 vals_list = []
+                #A dictionary containing fields and their respective values
                 vals = {
                         'name':'Nisha Gupta',
                         'age' : 34,
                         'gender':'male',
-                        'notes':'<h1>This is a test Template</h1>',
+                        'address':'Kanoj',
+                        'note':'<h1>This is a test Template</h1>',
                         'date_of_admit':fields.Datetime.now(),
+                        'bill_ids':[(0,0, {
+                                'no':4655,
+                                'p_name':self.id,
+                                'doctor_charges':345.98,
+                                'medicine_charges':465.98,
                         })],
+                        # 'doctor_ids':[(6,0,4)] #ERROR
                 }
                 vals_list.append(vals)
+                patient = self.create(vals_list)
+                print("New Patient",patient)
+
+                #CREATING RECORD IN ANOTHER MODEL
+
+                doc_obj = self.env['hospital.doctor']
+                vals_list = [
+                        {
+                        'name':'Kunal Chabra',
+                        'age' : 34,
+                        'gender':'male',
+                        'department':'pharm',
+                        'doj':fields.Datetime.today()
+                        }
+                ]
+                doctor = doc_obj.create(vals_list)
+                print("New Doctor",doctor)
+
+
+        #WRITE METHOD
+        def update_record(self):
+                """
+                This method demonstrates the usage of write() and browse() method
+                ------------------------------------------------------------------------------------------
+                :return:
+                """
+
+                vals = {
+                        'note':'<h3>The Record is Updated</h3>',
+                        'gender':'male',
+                }
+                res = self.write(vals)
+                print(res)
+
+        #UPDATE RECORD USING BROWSE METHOD
+                doc_obj = self.env['hospital.doctor']
+                doctor = doc_obj.browse(2)
+        #UPDATING RECORD OF ANOTHER MODEL
+                res = doctor.write({
+                'age':45,
+                'gender':'female'
+                })
+                print(res)
+
+        #COPY METHOD
+        def copy_record(self):
+                """
+                This method demonstrates the copy method
+                ----------------------------------------------------------
+                :return:
+                """
+                default = {
+                    'dob' : fields.Date.today()
+                }
+                new_rec = self.copy(default=default)
+                print("Copy Done",new_rec)
+
+        #READ METHOD
+        def read_record(self):
+                """
+                This method demonstrates read method
+                :return:
+                """
+                patient_dict = self.read()
+                print("Read Patient",patient_dict)
+
+                patient_dict = self.read(
+                        fields=['name',
+                                'age',
+                                'gender',
+                                'bill_ids',
+                                'doctor_ids'
+                                ],load='')
+                print("Reading Patient's Details Based on some specific Field",patient_dict)
+
+                #READING ANOTHER MODEL FIELD'S DATA
+                doctor_obj  =self.env['hospital.doctor'].browse(1)
+                doctor = doctor_obj.read(
+                        fields=[
+                                'name',
+                                'age',
+                                'doj',
+                                'salary'
+                        ]
+                )
+                print('Read Doctor',doctor)
+
+        #UNLINK METHOD
+        def delete_record(self):
+                """
+                This method demonstrates the unlink() method
+                ---------------------------------------------------------------
+                :return:
+                """
+                self.unlink()
+
+                #DELETING ANOTHER MODEL'S RECORD
+                doc_obj = self.env['hospital.doctor'].browse(2)
+                doctor = doc_obj.unlink()
+                print("Record is deleted",doctor)
+
+        #SEARCH METHOD
+        def search_record(self):
+                """
+                This method demonstrates the search() and search_count() method
+                ----------------------------------------------------------------------------------------
+                :return:
+                """
+
+                #EMPTY DOMAIN WILL GIVE ALL THE RECORDS
+                patients =self.search([])
+                print("All Patients List",patients)
+
+                #FOR DIFFERENT MODEL
+                #DOMAIN WILL RETURN SPECIFIC RECORD
+                doctor_obj = self.env['hospital.doctor'].search([('gender','=','male')])
+                print('Male Doctor', doctor_obj)
+
+                #OFFSET USED TO SKIP NO OF RECORDS
+                patients_skipped = self.search([],offset=2)
+                print('Patients Skipped',patients_skipped)
+
+                #LIMIT USE DTO VIEW SPECIFIC NO OF RECORDS
+                patients_limited = self.search([],limit=2)
+                print("Limited Patients",patients_limited)
+
+                #USING LIMIT AND OFFSET TOGETHER
+                patients_skip_limited = self.search([],offset=1,limit=3)
+                print('Patients Skip and Limited',patients_skip_limited)
+
+                #OREDR USED TO VIEW SORT THE RECORDS
+                patients_mixed = self.serach([],offset=1,limit=4,order='age')
+                print("Mixed Patients",patients_mixed)
+
+                #COUNT TO GET THE NO OF RECORDS USING SEARCH METHOD
+                no_of_male_patients = self.search([('gender','=','male')],count=True)
+                print("Male Patients",no_of_male_patients)
+
+                #COUNT TO GET THE NO OF RECORDS USING SEARCH_COUNT METHOD
+                no_of_female_patients = self.search_count([('gender', '=', 'male')])
+                print("Male Patients", no_of_female_patients)
+
+        #SEARCH READ METHOD
+        def search_read_record(self):
+                """
+                This method demonstrates the search_read() method
+                ----------------------------------------------------------------------
+                :return:
+                """
+                res = self.search_read()
+                print(res)
+
+                #SEARCH_READ WITH SPECIFIC DOMAIN
+                res = self.search_read(domain=[('gender','=','female')])
+                print("Female Patients",res)
+
+                #SEARCH_READ WITH SPECIFIC DOMAIN AND FIELDS AND CONDITION
+                res = self.search_read(domain=[('gender','=','male')],
+                                       fields=['name','age','dob'],
+                                       offset=1,
+                                       limit=3,
+                                       order='name')
+                print('Male Patients with Some Specific Condition and fields',res)
+
+
+        #READ_GROUP METHOD
+        def read_group_record(self):
+                """
+                This Method demonstrates the read-group method
+                -------------------------------------------------------------------
+                :return:
+                """
+                patients = self.read_group(domain=[],
+                                           fields=['age','state','status'],
+                                           groupby=['gender','state'],
+                                           lazy=True)
+                print("Patients By Read_group Method",patients)
+
+                #Note:-Lazy=True means it is also count gender also
+
+                patients = self.read_group(domain=[],
+                                           fields=['age', 'state', 'status'],
+                                           groupby=['gender', 'state'],
+                                           lazy=False)
+                print("Patients By Read_group Method", patients)
+
+        # @api.model
+        # def default_get(self, fields_list):
+        #         """
+        #         Overridden default_get method to update the default values
+        #         :param self:
+        #         :param fields_list: List of all fields passed to get the default value
+        #         :return: A dictionary containing fields and their default values
+        #         """
+        #         print("Fields",fields_list)
+        #         doc_obj = self.env['hospital.doctor']
+        #         doctor= doc_obj.super().default_get(fields_list)
+        #         if 'age' in doctor:
+        #                 doctor['url'] = 'https://www.odoo.com'
+        #                 print(doctor)
+        #         return doctor
+
+        @api.onchange('gender')
+        def onchange_gender(self):
+                """
+                Onchange method to set fees based on gender
+                :return:
+                """
+                res = {}
+                for patient in self:
+                        if patient.gender == 'male':
+                                patient.age = 67
+                        elif patient.gender == 'female':
+                                patient.age = 45
+                        else:
+                                res = {
+                                        'warning': {
+                                                'title' : 'Warning!',
+                                                'message' : 'You should select a gender!'
+                                        }
+                                }
+                        patient.age = 0.0
+                return res
