@@ -7,8 +7,9 @@
     'website': 'odoo.com',
     'depends': ['base'],
     'data': [
-
     ],
+    'demo':
+    'demo/academy_demo.xml',
 
     'installable': True,
     'auto_install': False
