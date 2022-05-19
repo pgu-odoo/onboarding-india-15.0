@@ -5,7 +5,7 @@ class HospitalBill(models.Model):
     _name = "hospital.bill"
     _description  = "Patient Bill"
     _inherit = ['mail.thread', 'mail.activity.mixin']
-    _rec_name = "bill_ids"
+    _rec_name = "p_name"
 
     no = fields.Integer(string='Bill_No..', required=True)
     image = fields.Binary(string='Patient_Image')
@@ -16,7 +16,7 @@ class HospitalBill(models.Model):
     room_charge = fields.Float(string="Room Charges",tracking=True)
     operation_charge = fields.Float(string="Operation Charges",tracking=True)
     nursing_charge = fields.Float(string="Nursing Charges",tracking=True)
-    total = fields.Float(string="Total", readonly=True) #,compute="_total"
+    total = fields.Float(string="Total", readonly=True,group_operator='avg') #,compute="_total"
     note = fields.Html(string="Note")
 
 

@@ -17,19 +17,23 @@
         'views/patient_view.xml',
         'views/doctor_view.xml',
         'views/bill_view.xml',
-        'views/configuration_view.xml',
         'views/appointment_view.xml',
         'views/dashboard_view.xml',
         'views/sale_inherited_view.xml',
         'views/product_views_inherit.xml',
-        # 'views/patient_wizard_view.xml',
+        'views/patient_wizard_view.xml',
         # 'views/addenda_test.xml',
-        'reports/patient_report.xml',
+        'report/patient_report(1).xml',
         ],
 'demo': [
     'demo/demo.xml',
     'demo/hospital.patient.csv',
 ],
+'assets' : {
+    'web.assets_backend' : [
+        'hospital_management/static/src/scss/hospital.scss',
+    ]
+},
     'installable': True,
     'application': True,
     'auto_install': False,

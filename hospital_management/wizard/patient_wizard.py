@@ -7,8 +7,8 @@ class PatientWizard(models.TransientModel):
     _description = 'Patient wizard to see the patient name with their bills'
 
 
-    # def _default_patient(self):
-    #     return self.env['hospital.patient'].browse(self._context_get('active_id'))
+    def open_patient(self):
+        return self.env['hospital.patient'].browse()
 
 
     patient_name_bill = fields.Many2one(comodel_name='hospital.patient',

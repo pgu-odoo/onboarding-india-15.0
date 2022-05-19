@@ -11,7 +11,8 @@ class HospitalPatient(models.Model):
         _description = "Hospital Patient Model"
         # _table = 'patient_patient'
         _auto = True
-        _order = 'name'
+        # _order = 'name'
+        _order = 'sequence'
 
         #FOR ADDING SQL CONSTRAINTS THROUGH CLASS ATTRIBUTE
         _sql_constraints = [
@@ -37,6 +38,7 @@ class HospitalPatient(models.Model):
                                    ('done', 'Done'),
                                   ('dead','Dead')], default='draft',tracking=True)
         file_name = fields.Char('File_Name')
+        sequence = fields.Integer('Sequence')
         document = fields.Binary('Document')
         image = fields.Binary(string="Patient Image")
         address = fields.Char(string="Address",required=True)
@@ -44,11 +46,16 @@ class HospitalPatient(models.Model):
         password = fields.Char(string='Password')
         email_id = fields.Char(string='Email_ID')
         al_contact_no = fields.Char(string="Alternative Contact No.")
-        date_of_admit = fields.Date(string="Date of Admit",index=True)
+        date_of_admit = fields.Datetime(string="Date of Admit",index=True)
         date_of_discharge = fields.Datetime(string="Date of Discharge")
         note = fields.Html(string='Description')
         color = fields.Integer(string="Color_Box")
         currency_id = fields.Many2one(comodel_name='res.currency', string='Currency')
+        amount = fields.Monetary(currency_fields=currency_id,string='Amount')
+        ref_id = fields.Reference(selection= [
+                        ('hospital_patient','name'),
+                        ('hospital_appointment','reference')
+                                        ])
 
         #RELATIONAL FIELDS
         partner_ids = fields.Many2one('res.partner', string='Parent_Name')
@@ -111,6 +118,17 @@ class HospitalPatient(models.Model):
                 :return:
                 """
                 print("Hello!!!!")
+                print("Current Language Of System",self.env.lang)
+                print("Company Name",self.env.company)
+                print("Current_User",self.env.user)
+                print("Context",self.env.context)
+                print("recordset",self.env.ref('hospital_management.view_appointment_form'))
+                print("Metadata",self.get_metadata())
+
+                #CURRENT_USER
+                current_user  = self.env['res.users'].search([('login','=','admin')])
+                print("Current User",current_user)
+
                 patients = self.search([])
                 doctors = self.env['hospital.doctor'].search([])
                 print("Patients",patients)
@@ -197,7 +215,7 @@ class HospitalPatient(models.Model):
                 vals_list = []
                 #A dictionary containing fields and their respective values
                 vals = {
-                        'name':'Nisha Gupta',
+                        'name':'Vishal Singhaniya',
                         'age' : 34,
                         'gender':'male',
                         'address':'Kanoj',
@@ -209,7 +227,7 @@ class HospitalPatient(models.Model):
                                 'doctor_charges':345.98,
                                 'medicine_charges':465.98,
                         })],
-                        # 'doctor_ids':[(6,0,4)] #ERROR
+                        'doctor_ids':[(6,0,[4,6])]
                 }
                 vals_list.append(vals)
                 patient = self.create(vals_list)
@@ -309,7 +327,7 @@ class HospitalPatient(models.Model):
                 self.unlink()
 
                 #DELETING ANOTHER MODEL'S RECORD
-                doc_obj = self.env['hospital.doctor'].browse(2)
+                doc_obj = self.env['hospital.doctor'].browse()
                 doctor = doc_obj.unlink()
                 print("Record is deleted",doctor)
 
@@ -397,7 +415,23 @@ class HospitalPatient(models.Model):
                                            groupby=['gender', 'state'],
                                            lazy=False)
                 print("Patients By Read_group Method", patients)
+        @api.model
+        def name_searc(self,name='',args=None,operator='ilke',limit=10):
+                """
+                Overridden name_search method to search based on name and type
+                -----------------------------------------------------------------------------------------
+                :param name:
+                :param args:
+                :param operator:
+                :param limit:
+                :return:
+                """
 
+                domain = ['|',('gender',operator,name)]
+                if args:
+                        domain += args
+                patient = self.search(domain, limit=limit)
+                return patient.name_get()
         # @api.model
         # def default_get(self, fields_list):
         #         """

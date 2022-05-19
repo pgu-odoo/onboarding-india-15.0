@@ -20,7 +20,7 @@
                     <field name="image" widget="image" class="oe_avatar"/>
                     <label for="name"/>
                     <h1>
-                        <field name="name" placeholder="E.g Doctor Name like Milan Ruthava"/>
+                        <field name="name" placeholder="E.g Doctor Name like Milan Ruthava" class="test_color"/>
                     </h1>
                     <group>
                         <group cospan="3" col="3">
@@ -197,6 +197,9 @@
         <field name="name">Doctors</field>
         <field name="res_model">hospital.doctor</field>
         <field name="view_mode">kanban,tree,form,calendar,pivot</field>
+        <!--USING CONTEXT IN ACTION-->
+        <field name="context">{'search_default_gender':'male'}</field>
+<!--        <field name="context">{'search_default_age':21, search_default_male_filter':1</field>-->
         <field name="help" type="html">
             <p>
                 Create Your First Doctor
@@ -207,7 +210,7 @@
     <!--MENU OF DOCTOR MODEL-->
     <menuitem id="menu_doctor_root"
               name="Doctor"
-              sequence="0"
+              sequence="5"
               parent="hospital_root"/>
 
     <menuitem id="menu_doctor"

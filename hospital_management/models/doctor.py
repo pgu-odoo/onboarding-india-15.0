@@ -1,4 +1,5 @@
 from odoo import  fields, models,_,api
+from odoo.exceptions import ValidationError
 
 class HospitalDoctor(models.Model):
 
@@ -59,3 +60,49 @@ class HospitalDoctor(models.Model):
                 res = super().create(vals_list)
                 print("Create Override",res)
                 return res
+
+    #OVERRIDE UNLINK METHOD
+    def unlink(self):
+        """
+        This method overridden the unlink() method
+        :return:
+        """
+        if self.available == True:
+            raise ValidationError("Doctor is Available You Cannot delete The record")
+        return super().unlink()
+
+    #OVERRIDE WRITE METHOD
+    def write(self,vals):
+        """
+        This Method overridden write() method
+        :param vals:
+        :return:
+        """
+        if vals.get('name',False):
+            vals['doctor_code'] = vals.get('name')[:3].upper() + vals.get('gender')[2].lower()
+            res = super().write(vals)
+            print("Successfully Override Write Method",res)
+            return res
+
+    #OVERRIDE COPY METHOD
+    def copy(self,default=None):
+        """
+        This method overridden Duplicate() or Copy() method
+        :param default:
+        :return:
+        """
+        default = {
+            'name' : self.name + '(copied)'
+        }
+        res = super().copy(default=default)
+        print("Successfully Override Copy Method",res)
+        return res
+    #
+    # @api.constrains('note')
+    # def check_note_length(self):
+    #     """
+    #     This method checks the length of client_id
+    #     :return:
+    #     """
+    #     if len(self.note) > 5:
+    #         raise ValidationError("Entered Value should not be more than 5")

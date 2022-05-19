@@ -11,13 +11,17 @@
                     <header>
                         <field name="image" widget="image" height="100" width="100"/>
                     </header>
-                    <group colspan="3" col="3">
+                    <group>
+                        <group>
                             <field name="no" string="Bill No."/>
                             <field name="p_name" string="Patient_Name"/>
+                        </group>
+                        <group>
                             <field name="doctor_charges"/>
-                            <field name="medicine_charges"/>
+                            <field name="medicine_charges" groups="base.group_multi_company"/>
                             <field name="room_charge"/>
                             <field name="operation_charge"/>
+                        </group>
                             <field name="nursing_charge"/>
                             <field name="total" widget="progressbar"/>
                             <field name="note"/>

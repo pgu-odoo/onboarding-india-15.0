@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--PATIENT REPORT - HTML REGISTRATION-->
+    <record id="patient_report_html" model="ir.actions.report">
+        <field name="name">Patient Report(HTML)</field>
+        <field name="model">hospital.patient</field>
+        <field name="report_type">qweb-html</field>
+        <field name="report_name">hospital_management.report_patient</field>
+        <field name="report_file">hospital_management.report_patient</field>
+        <field name="binding_model_id" ref="model_hospital_patient"/>
+        <field name="binding_type">report</field>
+        <field name="groups_id" eval="[(4,ref('hospital_management.hospital_admin_grp'))]"/>
+    </record>
+
+    <!--PATIENT REPORT -PDF REGISTRATION-->
+    <record id="patient_report_pdf" model="ir.actions.report">
+        <field name="name">Patient Report(PDF)</field>
+        <field name="model">hospital.patient</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">hospital_management.report_patient</field>
+        <field name="report_file">hospital_management.report_patient</field>
+        <field name="binding_model_id" ref="model_hospital_patient"/>
+        <field name="binding_type">report</field>
+        <field name="groups_id" eval="[(4,ref('hospital_management.hospital_admin_grp'))]"/>
+    </record>
+</odoo>

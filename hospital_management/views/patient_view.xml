@@ -19,12 +19,20 @@
                             class="btn-primary"/>
                 </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(action_Bill)d"
+                                string="Bill"
+                                type="action"
+                                class="oe_stat_button"
+                                icon="fa-table"/>
+                    </div>
                     <field name="image" widget="image" class="oe_avatar"/>
                     <div class="oe_title">
                         <h1>
                             <field name="reference" readonly="1"/>
                         </h1>
                     </div>
+
 
                     <!--USED FOR RIBBON-->
                     <widget name="web_ribbon" title="Draft" bg_color="bg-warning"
@@ -42,32 +50,40 @@
                         <field name="age"/>
                         <field name="gender" widget="radio"/>
                         <field name="dob"/>
-                        <field name="currency_id"/>
                         <field name="status" widget="boolean_toggle"/>
                         <field name="weight"/>
                         <field name="address" placeholder="Enter Your detailed address"/>
                         <field name="contact_no"/>
-                        <field name="email_id" widget="url"/>
+                        <field name="email_id" widget="url" attrs="{'readonly' : [('state','=','dead')]}"/>
                         <field name="password" password="1"/>
-                        <field name="al_contact_no"/>
+                        <field name="al_contact_no" attrs="{'required' : [('contact_no','=','null')]}"/>
                         <field name="date_of_admit"/>
                         <field name="date_of_discharge"/>
-                        <field name="doctor_ids" options="{'no_create':True}" widget="many2many_tags"/>
+                        <field name="doctor_ids" options="{'no_create':True}" widget="many2many_checkboxes"/>
                         <field name="disease"/>
                         <field name="file_name" invisible="1"/>
                         <field name="document" filename="file_name"/>
+                        <field name="currency_id"/>
+                        <field name="amount"/>
                         <field name="color" widget="color_picker"/>
+                        <field name="ref_id"/>
                     </group>
-                    <separator string="Description" placeholder="Enter if Any Notes"/>
-                    <!--attrs = "{'invisible' : [('status','=',False)]}"/>-->
-                    <field name="note"/>
+                    <separator string="Description" placeholder="Enter if Any Notes"
+                            attrs = "{'invisible' : [('status','=',False)]}"/>
+                    <field name="note"  attrs = "{'invisible' : [('status','=',False)]}"/>
                     <notebook>
                         <page name="pg_bill" string="Bill Amount">
                             <field name="bill_ids"/>
                         </page>
 
                         <page name="pg_parent" string="Parent">
-                            <field name="partner_ids"/>
+                            <field name="partner_ids"
+                                    options="{'no_create':1,'no_open':1}"/>
+                        </page>
+
+                        <page name="pg_sequence" string="Sequence">
+                            <field name="sequence"
+                                    options="{'no_create':1,'no_open':1}"/>
                         </page>
                     </notebook>
                 </sheet>
@@ -123,18 +139,23 @@
         <field name="name">view.patient.tree</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
-            <tree string="Patient_Tree" sample="1">
+            <tree string="Patient_Tree" sample="1" default_order="name"
+                                    decoration-warning="state=='draft'"
+                                    decoration-info="state=='confirm'"
+                                    decoration-muted="state=='dead'"
+                                    decoration-it="state=='done'">
                 <field name="name" string="Patient Name"/>
                 <field name="doctor_ids"/>
-                <field name="age"/>
-                <field name="dob"/>
-                <field name="gender"/>
+                <field name="age" avg="Average Age"/>
+                <field name="sequence" widget="handle"/>
+                <field name="dob" optional="show"/>
+                <field name="gender" optional="hide"/>
                 <field name="date_of_admit"/>
                 <field name="date_of_discharge"/>
-                <field name="state" string="Status"/>
                 <field name="disease"/>
                 <field name="activity_ids"/>
                 <field name="state"/>
+                <field name="amount" sum="Total Amount"/>
                 <field name="color" widget="color_picker"/>
             </tree>
         </field>
@@ -146,7 +167,7 @@
         <field name="name">hospital.patient.kanban</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
-            <kanban string="Patient_Kanaban">
+            <kanban string="Patient_Kanban">
                 <field name="name" string="Patient Name"/>
                 <field name="age"/>
                 <field name="partner_ids"/>
@@ -154,8 +175,10 @@
                 <field name="gender"/>
                 <field name="date_of_admit"/>
                 <templates>
+                    <!--CREATING A KANBAN CARD -->
                     <t t-name="kanban-box">
-                        <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''} oe_kanban_card oe_kanban_global_click">
+                        <!--MAKING THE CARD CLICKABLE AND HAVING THE IMAGE-->
+                        <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''} oe_kanban_card oe_kanban_global_click o_kanban_has_image_fill">
                             <div>
                                 <!--ADDING AN IMAGE-->
                                 <field name="image" widget="image" class="oe_avatar" height="200" width="200"
@@ -181,8 +204,9 @@
                                     </li>
                                 </ul>
                             </span>
+                            <!--ADDING A DROPDOWN ON KANBAN CARD-->
                             <div class="o_dropdown_kanban o_dropdown">
-                                <!-- GETTING AN ICON OF ELIPSIS TO HAVE THE DROPDOWN MENU-->
+                                <!-- GETTING AN ICON OF ELLIPSIS TO HAVE THE DROPDOWN MENU-->
                                 <a class="dropdown-toggle o-no-caret btn" role="button" data-toggle="dropdown"
                                    data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">
                                     <span class="fa fa-ellipsis-v"/>
@@ -195,6 +219,9 @@
                                     <t t-if="widget.editable">
                                         <a role="menuitem" type="edit" class="dropdown-item">Edit</a>
                                     </t>
+                                    <div role="separator" class="dropdown-divider"/>
+                                    <!--USING ANCHOR TAG AS BUTTON OF OBJECT TYPE TO CALL A METHOD-->
+                                    <a role="menuitem" type="object" name="update_record" class="dropdown-item">Update</a>
                                     <div role="separator" class="dropdown-divider"/>
                                     <!-- TYPE="DELETE" IS USED TO DELETE THE RECORD -->
                                     <t t-if="widget.deletable">
@@ -224,11 +251,26 @@
                 <field name="doctor_ids"/>
                 <field name="age"/>
                 <field name="gender"/>
+                <!--FILTERING RECORD USING CONTEXT-->
                 <filter name="by_gender" string="Gender"
                         context="{'group_by':'gender'}"/>
                 <filter name="by_age" string="Age"
                         context="{'group_by':'age'}"/>
-                <!--FOR CREATING SEARCH PANNEL-->
+                <!--FILTERING RECORD USING DOMAIN-->
+                <filter name="male_filter"
+                        string="Male"
+                        domain="[('gender','=','male')]"/>
+                <!--ADDING SEPARATOR TO ADD LINE BETWEEN FILTERS-->
+                <separator name="filter_sep_1"/>
+                <filter name="female_filter"
+                        string="Female"
+                        domain="[('gender','=','female')]"/>
+                <separator name="filter_sep_1"/>
+                <!--FILTER OF DATE-->
+                <filter name="dob_filter"
+                        string="Birth Date"
+                        date="dob"/>
+                <!--FOR CREATING SEARCH PANEL-->
                 <searchpanel>
                     <field name="gender" icon="fa-users"/>
                 </searchpanel>
@@ -241,8 +283,12 @@
         <field name="name">view.patient.calendar</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
-            <calendar string="Patient_Calender" date_start="date_of_admit">
+            <calendar string="Patient_Calender" date_start="date_of_admit"
+                      date_stop="date_of_discharge"
+                        color="gender">
                 <field name="name"/>
+                <field name="gender" filters="1"/>
+                <field name="state" filters="1"/>
             </calendar>
         </field>
     </record>
@@ -252,9 +298,9 @@
         <field name="name">view.patient.calendar</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
-            <graph type="line" string="Patient_Graph">
-                <field name="name" type="row"/>
-                <field name="age" type="measure"/>
+            <graph string="Patient_Graph">
+                <field name="gender" type="row"/>
+                <field name="amount" type="measure"/>
             </graph>
         </field>
     </record>
@@ -265,9 +311,9 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <pivot>
-                <field name="name" type="row"/>
+                <field name="dob" type="row" interval="week"/>
                 <field name="gender" type="col"/>
-                <field name="age" type="col"/>
+                <field name="amount" type="measure"/>
             </pivot>
         </field>
     </record>
@@ -304,7 +350,7 @@
     <record id="action_patient" model="ir.actions.act_window">
         <field name="name">Patient</field>
         <field name="res_model">hospital.patient</field>
-        <field name="view_mode">kanban,tree,form,calendar,graph,pivot,search,activity</field>
+        <field name="view_mode">tree,form,calendar,kanban,graph,pivot,search,activity</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create The First Patient
@@ -321,7 +367,7 @@
     <menuitem id="hospital_patient_root"
               name="Patient"
               parent="hospital_root"
-              sequence="10"/>
+              sequence="4"/>
 
     <!--MENU OF PATIENTS-->
     <menuitem id="hospital_patient"

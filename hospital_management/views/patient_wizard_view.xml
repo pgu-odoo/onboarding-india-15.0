@@ -13,9 +13,9 @@
                             string="Open"
                             type="object"
                             class="btn-success"/>
-                            <button special="cancel"
-                                    string="Close"
-                                    class="btn-danger"/>
+                    <button special="cancel"
+                            string="Close"
+                            class="btn-danger"/>
                 </footer>
             </form>
         </field>
@@ -33,5 +33,5 @@
           name="Patient Wizard"
           parent="hospital_root"
           action="action_update_patient_wizard"
-          sequence="3"/>
+          sequence="10"/>
 </odoo>
