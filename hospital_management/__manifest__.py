@@ -7,7 +7,7 @@
     'category': 'Management',
     'website': 'https://www.odoo.com',
     'license': 'LGPL-3',
-    'depends': ['base','mail','board','sale','website'],
+    'depends': ['base','mail','board','sale','website','hr'],
     'data': [
         'security/hospital_security.xml',
         'security/ir.model.access.csv',

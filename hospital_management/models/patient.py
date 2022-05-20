@@ -50,15 +50,15 @@ class HospitalPatient(models.Model):
         date_of_discharge = fields.Datetime(string="Date of Discharge")
         note = fields.Html(string='Description')
         color = fields.Integer(string="Color_Box")
-        currency_id = fields.Many2one(comodel_name='res.currency', string='Currency')
-        amount = fields.Monetary(currency_fields=currency_id,string='Amount')
+        currency_id = fields.Many2one(comodel_name='res.currency',string='Currency')
+        amount = fields.Monetary(currency_fields='currency_id',string='Amount')
         ref_id = fields.Reference(selection= [
                         ('hospital_patient','name'),
                         ('hospital_appointment','reference')
                                         ])
 
         #RELATIONAL FIELDS
-        partner_ids = fields.Many2one('res.partner', string='Parent_Name')
+        partner_ids = fields.Many2one(comodel_name='res.partner', string='Parent_Name')
         doctor_ids = fields.Many2many("hospital.doctor","patient_doctor_rel","patient_id","doctor_id",string='Doctor Name')
         bill_ids = fields.One2many("hospital.bill","p_name",string='Bill Amount',ondelete="restrict")
 
@@ -256,7 +256,6 @@ class HospitalPatient(models.Model):
                 ------------------------------------------------------------------------------------------
                 :return:
                 """
-
                 vals = {
                         'note':'<h3>The Record is Updated</h3>',
                         'gender':'male',

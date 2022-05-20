@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- ADDING TWO FIELDS IN THE FORM OF HR MODULE-->   <record id="view_hr_employee" model="ir.ui.view">
+        <field name="name">view.hr.employee</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="">
+                <field name="aadhar_no"/>
+            </xpath>
+
+            <xpath expr="">
+                <field name="pan"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
