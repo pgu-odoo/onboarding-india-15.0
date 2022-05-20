@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+         <record id="course_view_form" model="ir.ui.view">
+            <field name="name">academy.course.form</field>
+            <field name="model">academy.course</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <h1><field name="name"/></h1>
+                        <group>
+                            <group>
+                                <field name="active" string="Active"/>
+                                <field name="level"/>  
+                            </group>
+                        </group>
+                        <group>
+                        <notebook>
+                            <page string="Description">
+                                <field name="description" />
+                            </page>
+                        </notebook>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="course_view_list" model="ir.ui.view">
+            <field name="name">academy.course.list</field>
+            <field name="model">academy.course</field>
+            <field name="arch" type='xml'>
+                <tree string="Course list">
+                    <field name="name" />
+                    <field name="description" />
+                    <field name="level" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="course_view_search" model="ir.ui.view">
+            <field name="name" >academy.course.search</field>
+            <field name = "model">academy.course</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" />
+                    <field name="description" />
+                </search>
+            </field>
+        </record> 
+
+
+        <record model="ir.actions.act_window" id="course_list_action">
+            <field name="name">Courses</field>
+            <field name="res_model">academy.course</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type='html'>
+                <p class="o_view_nocontent_smiling_face">
+                    Create first course
+                </p>
+            </field>
+        </record>
+    </data>
+
+        <menuitem
+            id="menu_academy"
+            name="Odoo Academy"
+            sequence="1"/>
+
+        <menuitem
+            id="menu_academy_sub"
+            name="Odoo Academy"
+            sequence="2"
+            parent="menu_academy"
+            />
+        <menuitem
+            id="menu_academy_courses"
+            name="Courses"
+            sequence="3"
+            parent="menu_academy_sub"
+            action="course_list_action"
+            />    
+
+</odoo>

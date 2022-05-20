@@ -6,22 +6,22 @@
         <record model="academy.course" id="erp_101">
             <field name="name" >ERP 101</field>
             <field name="description" >Learn ERP System</field>
-            <field name="level" >beginner</field>
+            <field name="level">beginner</field>
             
         </record>
        
-        <!-- <record id="accounting_200" model="academy.course">
-             <field name="name" >Accounting 200</field>
+        <record id="accounting_200" model="academy.course">
+             <field name="name">Accounting 200</field>
             <field name="description" >Accounting 200 : intermediate accounting course
             </field>
-            <field name="level" >intermediate</field>
+            <field name="level">intermediate</field>
         </record>
 
         <record model="academy.course" id="website">
             <field name="name" >Website</field>
             <field name="description" ></field>
             <field name="level" >Advanced</field>
-        </record> -->
+        </record>
     </data>
     
     
