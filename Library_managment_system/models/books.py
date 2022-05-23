@@ -7,9 +7,13 @@ class Books(models.Model):
     _description = 'library management system'
 
     name = fields.Char(string='name', required=True)
-    desciption = fields.Text(string='description')
+    description = fields.Text(string='description')
 
     price = fields.Integer(string='price')
     category = fields.Selection(
         selection=[('fiction', 'Fiction',), ('action', 'Action')])
     isbn = fields.Integer()
+    active = fields.Boolean(string='Active', default=True)
+
+    level = fields.Selection(string='Level', selection=[(
+        'beginner', 'Beginner'), ('intermediate', 'Intermediate'), ('advanced', 'Advanced')], copy=False)

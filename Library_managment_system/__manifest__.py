@@ -7,8 +7,11 @@
     'website': 'http://odoo.com',
     'depends': ['base'],
     'data': [
-
+        'security/library_security.xml',
+        'security/ir.model.access.csv',
+        'views/books_views.xml',
     ],
+
     'installable':  True,
     'auto_install': False
 }
