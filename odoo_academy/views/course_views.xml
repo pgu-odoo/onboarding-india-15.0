@@ -25,6 +25,11 @@
                             <page string="Description">
                                 <field name="description" />
                             </page>
+                            
+                            <page string="Sessions">
+                                <field name="session_ids" />
+                            </page>
+
                         </notebook>
                         </group>
                     </sheet>
@@ -66,6 +71,17 @@
                 </p>
             </field>
         </record>
+
+        <record id="session_list_action" model="ir.actions.act_window">
+            <field name="name">Sessions</field>
+            <field name="res_model">academy.session</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class = "o_view_nocontent_smiling_face">
+                    Create first session
+                </p>
+            </field>
+        </record>
     </data>
 
         <menuitem
@@ -85,6 +101,13 @@
             sequence="3"
             parent="menu_academy_sub"
             action="course_list_action"
+            />    
+        <menuitem
+            id="menu_academy_session"
+            name="Sessions"
+            sequence="4"
+            parent="menu_academy_sub"
+            action="session_list_action"
             />    
 
 </odoo>
