@@ -60,11 +60,25 @@
             </field>
         </record> 
 
+        <record model="ir.ui.view" id="course_view_pivot">
+            <field name="name">academy.course.pivot</field>
+            <field name="model">academy.course</field>
+            <field name="arch" type="xml">
+                <pivot>
+                    <field name="level" type="row"/>
+                    <field name="name" type="row"/>
+                    <field name="base_price" type="measure"/>
+                    <field name="additional_fee" type="measure"/>
+                    <field name="total_price" type="measure"/>
+                </pivot>
+          </field>
+        </record>
+
 
         <record model="ir.actions.act_window" id="course_list_action">
             <field name="name">Courses</field>
             <field name="res_model">academy.course</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,pivot</field>
             <field name="help" type='html'>
                 <p class="o_view_nocontent_smiling_face">
                     Create first course
@@ -75,7 +89,7 @@
         <record id="session_list_action" model="ir.actions.act_window">
             <field name="name">Sessions</field>
             <field name="res_model">academy.session</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,calendar</field>
             <field name="help" type="html">
                 <p class = "o_view_nocontent_smiling_face">
                     Create first session
