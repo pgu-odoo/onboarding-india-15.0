@@ -1,0 +1,32 @@
+class Item extends Core 
+{
+    data = {};
+   
+      
+    fetch_to_cart() 
+    {   
+        fetch('/add_to_cart',{
+            method:'POST',
+            headers : {'Content-Type':'application/json'},
+            body : JSON.stringify({'price':this.data['price'], 'quantity':"1", 'product_id':this.data['id']})
+        })
+        .then(res=>{
+            return res.json();
+        })
+        .then(data=>{
+            this.trigger('update_cart',data['order']);
+            console.log(data);
+        });
+     
+    }
+
+    product_render()
+    {
+        let addbtn = `btn_${this.data.id}`
+        this.template = `<div id="products_details"> ${this.data.name}, ${this.data.price}<button id=${addbtn} style='margin-top: 5px;'>Add to cart</button></div>` ;
+        console.log(this.data.name);
+        super.render();
+        document.getElementById(addbtn).addEventListener('click', (e)=>{this.fetch_to_cart()});
+    } 
+    
+}
