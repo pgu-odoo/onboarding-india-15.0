@@ -1,0 +1,42 @@
+<odoo>
+    <record id='course_view_form' model='ir.ui.view'>
+        <field name='name'>course.view.form</field>
+        <field name='model'>course.academy</field>
+        <field name='arch' type='xml'>
+            <form string='Course_Form'>
+                <field name='name'/>
+                <field name='level'/>
+                <field name='description'/>
+                <field name='active'/>
+            </form>
+
+        </field>
+    </record>
+
+    <!-- <record id='course_view_tree' model='ir.ui.view'>
+        <field name='name'>course.view.tree</field>
+        <field name='model'>course.academy</field>
+        <field name='arch' type='xml'>
+            <tree string='Course_Tree'>
+                <field name='name'>
+                <field name='level'>
+                <field name='description'>
+                <field name='active'>
+            </tree>
+        </field>
+    </record> -->
+
+    <record id='action_course' model='ir.actions.act_window'>
+        <field name='name'>Course</field>
+        <field name='res_model'>course.academy</field>
+        <field name='view_mode'>tree,form</field>
+
+    </record>
+    <menuitem id='menu_academy'
+                name='Odoo Academy'/>
+
+    <menuitem id='menu_course'
+                name='Courses'
+                parent='menu_academy'
+                action='action_course'/>
+</odoo>

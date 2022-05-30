@@ -1,7 +1,4 @@
-from copy import copy
-from email.policy import default
-import string
-from typing_extensions import Required
+
 from odoo import models,fields,api
 
 
