@@ -2,7 +2,7 @@ from datetime import timedelta
 from email.policy import default
 from operator import invert
 from re import S
-from tkinter import CASCADE
+
 from tokenize import String
 
 from attr import field
@@ -27,6 +27,8 @@ class Session(models.Model):
                              default=fields.Date.today)
 
     duration = fields.Integer(string='Session Days', default=1)
+
+    total_price = fields.Float(string = 'total price' , related = 'course_id.total_price')
 
     end_date = fields.Date(
         string="End date", compute='_compute_end_date', inverse='_inverse_end_date', store=True)

@@ -1,3 +1,2 @@
 from . import models
-from . import demo
-from . import security
+from . import wizard

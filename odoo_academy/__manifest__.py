@@ -4,17 +4,21 @@
     'summary': 'day one technical training',
     'description': 'description for the module',
     'author': 'Test',
+    'sequence':-1000,
     'website': 'odoo.com',
-    'depends': ['base'],
+    'depends': ['base', 'product'],
     'data': [
         'security/academy_security.xml',
         'security/ir.model.access.csv',
         'views/course_views.xml',
         'views/session_views.xml',
+        'views/product_views_inherit.xml',
+        'wizard/sale_wizard_view.xml',
     ],
     'demo':
     ['demo/academy_demo.xml'],
 
     'installable': True,
-    'auto_install': False
+    'auto_install': False,
+    'application':True,
 }
