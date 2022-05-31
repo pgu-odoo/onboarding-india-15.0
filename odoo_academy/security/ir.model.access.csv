@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_course_academy,access.course.academy,model_course_academy,group_academy_admin,1,1,1,1
+access_academy_course,access.academy.course,model_course_academy,,1,1,1,1

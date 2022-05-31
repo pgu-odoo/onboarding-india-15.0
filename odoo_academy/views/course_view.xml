@@ -4,33 +4,42 @@
         <field name='model'>course.academy</field>
         <field name='arch' type='xml'>
             <form string='Course_Form'>
-                <field name='name'/>
-                <field name='level'/>
-                <field name='description'/>
-                <field name='active'/>
+                <sheet>
+                <group>
+                    <field name='name'/>
+                    <field name='level'/>
+                    <field name='description'/>
+                    <field name='active'/>
+                    <field name='price'/>
+                    <field name='start_course_date'/>
+                    <field name='end_course_date'/>
+                     </group>
+                </sheet>
             </form>
 
         </field>
     </record>
 
-    <!-- <record id='course_view_tree' model='ir.ui.view'>
+    <record id='course_view_tree' model='ir.ui.view'>
         <field name='name'>course.view.tree</field>
         <field name='model'>course.academy</field>
         <field name='arch' type='xml'>
             <tree string='Course_Tree'>
-                <field name='name'>
-                <field name='level'>
-                <field name='description'>
-                <field name='active'>
+                <field name='name'/>
+                <field name='level'/>
+                <field name='description'/>
+                <!-- <field name='active'/> -->
+                <field name='price'/>
+                <field name='start_course_date'/>
+                <field name='end_course_date'/>
             </tree>
         </field>
-    </record> -->
+    </record>
 
     <record id='action_course' model='ir.actions.act_window'>
         <field name='name'>Course</field>
         <field name='res_model'>course.academy</field>
         <field name='view_mode'>tree,form</field>
-
     </record>
     <menuitem id='menu_academy'
                 name='Odoo Academy'/>
