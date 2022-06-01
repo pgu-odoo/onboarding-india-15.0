@@ -18,6 +18,8 @@ class Course(models.Model):
 
 	active = fields.Boolean(string='Active', default=True)
 	parent_id = fields.Integer(string='Parent Id')
+	gender = fields.Selection([('male','Male'),('female','Female')])
+	
 
 	joindate = fields.Date(string='Join Course Date')
 
