@@ -6,7 +6,7 @@
             <form string='Course_Form'>
                 <sheet>
                 <group>
-                    <field name='name'/>
+                    <field name='name' placeholder="Enter your course name ex. Maths"/>
                     <field name='level'/>
                     <field name='description'/>
                     <field name='active'/>
@@ -36,10 +36,26 @@
         </field>
     </record>
 
+    <record id='course_view_search' model='ir.ui.view'>
+        <field name='name'>course.view.search</field>
+        <field name='model'>course.academy</field>
+        <field name='arch' type='xml'>
+            <search string='Course_search'>
+                <field name='name'/>
+                <field name='level'/>
+                <field name='description'/>
+                <!-- <field name='active'/> -->
+                <field name='price'/>
+                <field name='start_course_date'/>
+                <field name='end_course_date'/>
+            </search>
+        </field>
+    </record>
+
     <record id='action_course' model='ir.actions.act_window'>
         <field name='name'>Course</field>
         <field name='res_model'>course.academy</field>
-        <field name='view_mode'>tree,form</field>
+        <field name='view_mode'>tree,form,search</field>
     </record>
     <menuitem id='menu_academy'
                 name='Odoo Academy'/>
