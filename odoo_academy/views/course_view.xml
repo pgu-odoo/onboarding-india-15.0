@@ -5,14 +5,14 @@
         <field name='arch' type='xml'>
             <form string='Course_Form'>
                 <sheet>
-                <group>
-                    <field name='name' placeholder="Enter your course name ex. Maths"/>
-                    <field name='level'/>
-                    <field name='description'/>
-                    <field name='active'/>
-                    <field name='price'/>
-                    <field name='start_course_date'/>
-                    <field name='end_course_date'/>
+                    <group>
+                        <field name='name' placeholder="Enter your course name ex. Maths"/>
+                        <field name='level'/>
+                        <field name='description'/>
+                        <field name='active'/>
+                        <field name='price'/>
+                        <field name='start_course_date'/>
+                        <field name='end_course_date'/>
                      </group>
                 </sheet>
             </form>
@@ -55,7 +55,7 @@
     <record id='action_course' model='ir.actions.act_window'>
         <field name='name'>Course</field>
         <field name='res_model'>course.academy</field>
-        <field name='view_mode'>tree,form,search</field>
+       <field name='view_mode'>tree,form,search</field>
     </record>
     <menuitem id='menu_academy'
                 name='Odoo Academy'/>
