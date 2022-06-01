@@ -14,6 +14,7 @@
         'views/session_views.xml',
         'views/product_views_inherit.xml',
         'wizard/sale_wizard_view.xml',
+        'views/sale_view_inherit.xml',
     ],
     'demo':
     ['demo/academy_demo.xml'],

@@ -55,6 +55,7 @@
                         date_stop="end_date"
                         color="instructor_id"
                         mode="month">
+            
             <field name="name"/>
             <field name="instructor_id"/>
             </calendar>
