@@ -2,7 +2,7 @@
     "name":"Odoo Academy",
 
     "summary": """Acadeny app to manage Training""",
-    "sequence":-1000,
+    "sequence":-100,
     "description":"""
         Academy Module to manage Training:
           -Courses
@@ -11,10 +11,10 @@
     """,      
     "author":"Odoo",
     "website":"https://www.odoo.com",
-
+    "license":"LGPL-3",
 
     "category":"Training",
-    "version":"0.1",
+    "version":"1.1.0",
 
     "depends":["base"],
 
@@ -25,7 +25,8 @@
     ],
 
     "demo": [
-    "demo/academy_demo.xml",
+        "demo/academy_demo.xml",
+        "demo/course.academy.csv",
     ],
 
     'application':True,

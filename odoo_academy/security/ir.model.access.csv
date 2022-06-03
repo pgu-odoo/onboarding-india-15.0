@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_academy_course,access.academy.course,model_course_academy,,1,1,1,1
+odoo_academy.access_academy_session,access_academy_session,odoo_academy.model_academy_session,base.group_user,1,0,0,0
