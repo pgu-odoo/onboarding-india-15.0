@@ -1,4 +1,3 @@
-import imp
 from odoo import fields, models, api
 
 
@@ -11,5 +10,5 @@ class SaleOrder(models.Model):
     instructor_id = fields.Many2one(
         string="Session Instructor", related='session_id.instructor_id')
 
-    students_id = fields.Many2many(
+    student_ids = fields.Many2many(
         string="Students", related='session_id.students_ids')

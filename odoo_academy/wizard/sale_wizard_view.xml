@@ -3,8 +3,8 @@
 <odoo>
     <data>
         <record id='academy_sale_wizard_form_view' model = 'ir.ui.view'>
-            <field name= 'name'>academy.sale.wizard.form_view</field>
-            <field name='model'>sale.wizard</field>
+            <field name= 'name'>academy.sale.wizard.form</field>
+            <field name='model'>academy.sale.wizard</field>
             <field name="arch" type = 'xml'>
                 <form string= 'create sale order for session'>
                     <group>
@@ -27,7 +27,7 @@
         <act_window id='launch_sale_wizard' 
         name = 'Create Sale Order' 
         binding_model = 'academy.session' 
-        res_model = 'sale.wizard' 
+        res_model = 'academy.sale.wizard' 
         view_mode = 'form' 
         target = 'new' />
 

@@ -1,7 +1,6 @@
 from copy import copy
 from email.policy import default
 
-from attr import field
 from odoo import models, fields, api
 from odoo.exceptions import UserError, ValidationError
 

@@ -1,11 +1,5 @@
 from datetime import timedelta
-from email.policy import default
-from operator import invert
-from re import S
 
-from tokenize import String
-
-from attr import field
 from odoo import models, fields, api
 
 

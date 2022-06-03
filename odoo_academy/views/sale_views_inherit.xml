@@ -13,7 +13,7 @@
                     <field name="session_id" />    
                 </xpath>
 
-                <field name="partner_id" position='before'>
+                <field name="partner_id" position='before' >
                     <field name="instructor_id" attrs = "{'invisible':[('session_id','=',False)]}"/>
                 </field>
 
