@@ -11,7 +11,7 @@ class SaleWizard(models.TransientModel):
 		return self.env['academy.session'].browse(self._context.get('active_id'))
 
 	session_id = fields.Many2one(comodel_name='academy.session',
-								 string='Session',
+								 string='Sessionzzz',
 								 required=True,
 								 default = _default_session)
 
@@ -33,3 +33,4 @@ class SaleWizard(models.TransientModel):
 					'session_id': self.session_id,
 					'order_line': [(0,0,{'product_id': session_product_id.id, 'price_unit':self.session_id.total_price})]
 					})
+				

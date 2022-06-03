@@ -13,19 +13,21 @@
 					</group>
 					<footer>
 						<button name='create_sale_orders' type='object'
-								string='Create' class='oe_highlight'/>
+								string='Create Sale Orders' class='oe_highlight'/>
 						or 
 						<button special='cancel' string="Cancel"/>
  					</footer>
 				</form>
 			</field>
 		</record>
-		
-		<!-- <act_window id="launch_sale_wizard"
-					name='Create Sale Order'
-					binding_model='academy.session'
-					res_model='academy.sale.wizard'
-					view_mode='form'
-					target='new'/> -->
+
+		<record id="launch_sale_wizard" model="ir.actions.act_window">
+			<field name='name'>Create Sale Order</field>
+			<field name='type'>ir.actions.act_window</field>
+			<field name='res_model'>academy.sale.wizard</field>
+			<field name='view_mode'>form</field>
+			<field name='binding_model_id' ref='odoo_academy.model_academy_session'/>
+			<field name='target'>new</field>
+		</record>
 	</data>
 </odoo>
