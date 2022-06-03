@@ -56,8 +56,8 @@
                         color="instructor_id"
                         mode="month">
             
-            <field name="name"/>
-            <field name="instructor_id"/>
+                <field name="name"/>
+                <field name="instructor_id"/>
             </calendar>
             </field>
         </record>

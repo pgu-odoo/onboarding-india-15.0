@@ -17,11 +17,13 @@
             <field name="level">intermediate</field>
         </record>
 
-        <record model="academy.course" id="website">
-            <field name="name">Website</field>
-            <field name="description">Website</field>
-            <field name="level">Advanced</field>
+        <record id="website" model="academy.course">
+             <field name="name">Website</field>
+            <field name="description" >Website101
+            </field>
+            <field name="level">advanced</field>
         </record>
+
     </data>
     
     

@@ -2,7 +2,7 @@
 
 <odoo>
 
-    <report id="report_session" model = "academy.session" string="Session report" name="odoo_academy.report_session_document" file = "odoo_academy.report_session" report_type = 'qweb-html' />
+    <report id="report_session" model = "academy.session" string="Session report" name="odoo_academy.report_session_document" file = "odoo_ academy.report_session" report_type = 'qweb-html' />
 
 
     <template id="report_session_document">
@@ -16,21 +16,21 @@
                         <div class = "col-auto mw-100 mb-2">
                             <strong>Session Duration:</strong>
                             <t t-if = "doc.start_date">
-                                <span t-field = "doc.start_date">
+                                <span t-field = "doc.start_date" />
 
                             </t>
                             to
-                            <t t-if="doc.end_date">
+                            <t t-if="doc.end_date"> 
                                 <span t-field = "doc.end_date"/>
                             </t>
-                    </div>
+                            </div>
 
-                    <div t-if = "doc.instructor_id " class="col-auto mw-100 mb-2">
-                        <strong>instructor:</strong>
-                        <span t-field = "doc.instructor_id.name"/>
+                            <div t-if = "doc.instructor_id " class="col-auto mw-100 mb-2">
+                                <strong>instructor:</strong>
+                                <span t-field = "doc.instructor_id.name"/>
 
-                    </div>
-                </div>
+                            </div>
+                        </div>
                     <h4>Students </h4>
                     <table class="table table-sm o_main_table">
                         <thead>

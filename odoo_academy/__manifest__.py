@@ -6,7 +6,7 @@
     'author': 'Test',
     'sequence':-1000,
     'website': 'odoo.com',
-    'depends': ['base','product' , 'website'],
+    'depends': ['base','product','sale' , 'website'],
     'data': [
         'security/academy_security.xml',
         'security/ir.model.access.csv',
@@ -15,7 +15,7 @@
         'views/product_views_inherit.xml',
         'wizard/sale_wizard_view.xml',
         'views/sale_views_inherit.xml',
-        'report/session_report_template.xml',
+        'reports/session_report_template.xml',
         'views/academy_web_template.xml'
     ],
 

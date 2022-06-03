@@ -11,4 +11,4 @@ class SaleOrder(models.Model):
         string="Session Instructor", related='session_id.instructor_id')
 
     student_ids = fields.Many2many(
-        string="Students", related='session_id.students_ids')
+        string="Students", related='session_id.student_ids')

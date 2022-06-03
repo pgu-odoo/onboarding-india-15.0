@@ -20,7 +20,7 @@
                 <xpath expr="//sheet//notebook" position="inside">
                     <page string = "Students" attrs = "{'invisible':[('session_id','=',False)]}">
                     
-                        <field name="student_ids" >
+                        <!-- <field name="student_ids" >
                                     <tree>
                                         <field name="name" />
                                         <field name="phone" />
@@ -28,7 +28,7 @@
                                 </field>
                             </record>
                         
-                        </field>
+                        </field> -->
                     </page>
                 </xpath>
 
