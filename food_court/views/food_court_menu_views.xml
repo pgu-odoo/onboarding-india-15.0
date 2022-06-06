@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_lunch_order" model="ir.actions.client">
+        <field name="name">Lunch Order</field>
+        <field name="tag">lunch.order.widgets</field>
+        <field name="res_model">lunch.order</field>
+    </record>
+
+    <menuitem id="menu_food_court_root"
+        name="Food Court"
+        web_icon="food_court,static/description/icon.png"
+        sequence="1"
+        action="action_lunch_order">
+    </menuitem>
+</odoo>
