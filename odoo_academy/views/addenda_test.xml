@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id="l10n_mx_edi_addenda_test" name="Test Addenda">
+			<Addenda>
+				Customer=<t t-esc="record.partner_id.name"/>
+				<Inicial>
+					<NumeroFacturaOriginal><t t-esc="record.name"/></NumeroFacturaOriginal>
+				</Inicial>
+			</Addenda>
+		</template>
+
+		<record id="l10n_mx_edi_addenda_test" model="ir.ui.view">
+			<!-- <field name="l10n_mx_edi_addenda_flag">True</field> -->
+		</record>
+	</data>
+</odoo>
