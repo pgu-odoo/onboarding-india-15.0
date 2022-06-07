@@ -1,21 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <odoo>
+    <data>
     <record id='course_view_form' model='ir.ui.view'>
         <field name='name'>course.view.form</field>
         <field name='model'>course.academy</field>
         <field name='arch' type='xml'>
             <form string='Course_Form'>
                 <sheet>
+                    <h1>
+                        <field name='name'/>
+                    </h1>
                     <group>
-                        <field name='name' placeholder="Enter your course name ex. Maths"/>
-                        <field name='level'/>
-                        <field name='description'/>
-                        <field name='active'/>
-                        <field name='base_price'/>
-                        <field name='additional_fee'/>
-                        <field name='total_price' force_save = "1" />
-
-
-                     </group>
+                        <group>
+                            <field name="active"/>
+                            <field name="level"/>
+                        </group>
+                        <group>
+                            <field name="base_price"/>
+                                                        <field name="additional_fee" />
+                            <field name="total_price" force_save="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                        <page string="sessions">
+                            <!--                        <field name="sessions_ids"/>-->
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
 
@@ -43,7 +57,7 @@
                 <field name='name'/>
                 <field name='level'/>
                 <field name='description'/>
-                 <field name='active'/>
+                <field name='active'/>
 
             </search>
         </field>
@@ -52,13 +66,10 @@
     <record id='action_course' model='ir.actions.act_window'>
         <field name='name'>Course</field>
         <field name='res_model'>course.academy</field>
-       <field name='view_mode'>tree,form,search</field>
+        <field name='view_mode'>tree,form,search</field>
     </record>
-    <menuitem id='menu_academy'
-                name='Odoo Academy'/>
+    <menuitem id='menu_academy' name='Odoo Academy'/>
 
-    <menuitem id='menu_course'
-                name='Courses'
-                parent='menu_academy'
-                action='action_course'/>
+    <menuitem id='menu_course' name='Courses' parent='menu_academy' action='action_course'/>
+    </data>
 </odoo>

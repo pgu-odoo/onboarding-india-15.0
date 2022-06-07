@@ -22,11 +22,12 @@
          'security/academy_security.xml',
          'security/ir.model.access.csv',
          'views/course_view.xml',
+         'views/session_view.xml',
+         'views/academy_menuitems.xml',
     ],
 
     "demo": [
         "demo/academy_demo.xml",
-        "demo/course.academy.csv",
     ],
 
     'application':True,
