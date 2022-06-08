@@ -4,7 +4,7 @@
         <record model="ir.actions.act_window" id="course_list_action">
         <field name="name">courses</field>
         <field name="res_model">course.academy</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,pivot</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create the first course
@@ -16,7 +16,7 @@
     <record model="ir.actions.act_window" id= "session_list_action">
         <field name="name">sessions</field>
         <field name="res_model">academy.session</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,calendar</field>
         <field name="help" type="html">
         <p class="o_view_nocontent_smiling_face">
             Create the first course

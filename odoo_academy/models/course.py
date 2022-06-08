@@ -14,12 +14,13 @@ class Course(models.Model):
     description = fields.Text(string="Description")
 
     level = fields.Selection(string="Level",
-                selection = [("beginner","Beginner"),("intermediate","Intermediate"),("advanced","Advanced")],default='advanced')
+
+                selection = [("beginner","Beginner"),("intermediate","Intermediate"),("advanced","Advanced")], default= "advanced")
 
     active = fields.Boolean(string="Active", default=True)
 
     base_price = fields.Float(string="Base price", default=0.00)
-    additional_fee = fields.Float(string="additional fee", default = 0.00)
+    additional_fee = fields.Float(string="additional fee", default=0.00)
     total_price = fields.Float(string="total price", readonly = True)
 
     session_ids = fields.One2many(comodel_name ="academy.session", inverse_name = "course_id", string="Sessions")

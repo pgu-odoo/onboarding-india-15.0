@@ -1,6 +1,6 @@
 <odoo>
     <record id= 'group_academy_admin' model='res.groups'>
-        <field name='name'>Admin</field>
+        <field name='name'>Academy Admin</field>
     </record>
 
     <record id="only_active_modify" model="ir.rule">

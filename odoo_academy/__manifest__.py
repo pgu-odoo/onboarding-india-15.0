@@ -16,7 +16,7 @@
     "category":"Training",
     "version":"1.1.0",
 
-    "depends":["base"],
+    "depends":["base","sale"],
 
     "data":[
          'security/academy_security.xml',
@@ -24,6 +24,7 @@
          'views/course_view.xml',
          'views/session_view.xml',
          'views/academy_menuitems.xml',
+         'views/sale_views_inherit.xml',
     ],
 
     "demo": [
