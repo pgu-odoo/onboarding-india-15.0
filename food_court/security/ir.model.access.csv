@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+food_court.access_lunch_order,access_lunch_order,food_court.model_lunch_order,,1,1,1,1
+food_court.access_lunch_order_line,access_lunch_order_line,food_court.model_lunch_order_line,,1,1,1,1
