@@ -5,8 +5,8 @@
             <field name="parent_id" ref="product.product_category_all"/>
             <field name="name">Lunch</field>
         </record>
-        <record id="product_product_pizza" model="product.product">
-            <field name="name">Pizza</field>
+        <record id="product_product_Sandwich" model="product.product">
+            <field name="name">Sandwich</field>
             <field name="default_code">Lunch_001</field>
             <field name="type">service</field>
             <field name="categ_id" ref="food_court.product_category_lunch_order"/>
@@ -16,8 +16,8 @@
             <field name="list_price">500.0</field>
         </record>
 
-        <record id="product_product_burger" model="product.product">
-            <field name="name">Burger</field>
+        <record id="product_product_petis" model="product.product">
+            <field name="name">Petis</field>
             <field name="default_code">Lunch_002</field>
             <field name="type">service</field>
             <field name="categ_id" ref="food_court.product_category_lunch_order"/>
@@ -27,8 +27,8 @@
             <field name="list_price">80.0</field>
         </record>
 
-        <record id="product_product_french_fries" model="product.product">
-            <field name="name">French Fries</field>
+        <record id="product_product_upma" model="product.product">
+            <field name="name">Upma</field>
             <field name="default_code">Lunch_003</field>
             <field name="type">service</field>
             <field name="categ_id" ref="food_court.product_category_lunch_order"/>
@@ -60,8 +60,8 @@
             <field name="list_price">100.0</field>
         </record>
 
-        <record id="product_product_mango_juice" model="product.product">
-            <field name="name">Mango Juice</field>
+        <record id="product_product_poha" model="product.product">
+            <field name="name">Poha</field>
             <field name="default_code">Lunch_006</field>
             <field name="type">service</field>
             <field name="categ_id" ref="food_court.product_category_lunch_order"/>
