@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+github_reports.access_github_pr,access_pr,github_reports.model_pull_request,base.group_user,1,1,1,1
+github_reports.access_github_team,access_github_team,github_reports.model_github_team,base.group_user,1,1,1,1
+github_reports.access_pr_comment,access_pr_comment,github_reports.model_pr_comment,base.group_user,1,1,1,1

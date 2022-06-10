@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="github_pr_report_cron_action" model="ir.cron">
+            <field name="name">Github Reports</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="model_id" ref="model_github_team"/>
+            <field name="code">model.cron_fetch_pr()</field>
+            <field name="state">code</field>
+        </record>
+    </data>
+</odoo>

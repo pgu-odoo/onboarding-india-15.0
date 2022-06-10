@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="pr_form_view" model="ir.ui.view">
+            <field name="name">pull.request.form</field>
+            <field name="model">pull.request</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="fetch_comments" string="Fetch Comments" type="object"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="title" class="o_text_overflow" placeholder="Title"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="pr_number" string="PR Number"/>
+                                <field name="author"/>
+                                <field name="team"/>
+                            </group>
+                            <group>
+                                <field name="create_date"/>
+                                <field name="closed_date" attrs="{'invisible': [('state', '!=', 'closed')]}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="PR Message">
+                                <field name="body"/>
+                            </page>
+                            <page string="PR Comment">
+                                <field name="comments">
+                                    <tree>
+                                        <field name="body"/>
+                                        <field name="contributor"/>
+                                        <field name="pr" string="PR Number" optional="hide"/> 
+                                        <field name="create_date" optional="hide"/>
+                                        <field name="updated_date" optional="hide"/>
+                                   </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+ 
+        <record id="github_issues_tree_view" model="ir.ui.view">
+            <field name="name">Pull Request</field>
+            <field name="model">pull.request</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="title"/>
+                    <field name="pr_number" string="PR Number"/>
+                    <field name="author"/>
+                    <field name="state"/>
+                    <field name="create_date"/>
+                    <field name="closed_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="github_issues_search_view" model="ir.ui.view">
+            <field name="name">PR Search View</field>
+            <field name="model">pull.request</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="author"/>
+                    <field name="pr_number"/>
+                    <field name="title"/>
+                    <field name="team"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Team" name="group_by_team" context="{'group_by': 'team'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="pr_comments_form_view" model="ir.ui.view">
+            <field name="name">pr.comment.form</field>
+            <field name="model">pr.comment</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="pr" class="o_text_overflow" placeholder="PR Number"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="contributor"/>
+                            </group>
+                            <group>
+                                <field name="create_date"/>
+                                <field name="updated_date"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Comment Message">
+                                <field name="body"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="github_issues_comment_tree_view" model="ir.ui.view">
+            <field name="name">pr.comment.tree</field>
+            <field name="model">pr.comment</field>
+            <field name="arch" type="xml">
+                <tree string="PR Comment">
+                    <field name="pr" string="PR No."/>
+                    <field name="contributor"/>
+                    <field name="create_date"/>
+                    <field name="updated_date"/>
+                </tree>
+            </field>
+        </record>
+
+    </data>
+</odoo>

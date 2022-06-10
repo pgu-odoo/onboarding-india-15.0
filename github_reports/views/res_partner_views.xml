@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="res_partner_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button type="object" class="oe_stat_button" icon="fa-thumbs-o-up" name="action_view_partner_contribution">
+                    <div class="o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="contribution_count"/>
+                        </span>
+                        <span class="o_stat_text">Contributions</span>
+                    </div>
+                </button>
+                <button type="object" class="oe_stat_button" icon="fa-plus-square" name="action_view_partner_pull_requests">
+                    <div class="o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="pr_count"/>
+                        </span>
+                        <span class="o_stat_text">PRs</span>
+                    </div>
+                </button>
+            </div>
+            <xpath expr="//notebook/page[@name='internal_notes']" position="after">
+                <page name="Github" string="Github">
+                    <group>
+                        <group>
+                            <field name="github_user" string="Github User ID"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

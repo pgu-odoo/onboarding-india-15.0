@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <record id="github_team_action" model="ir.actions.act_window">
+            <field name="name">Github Team</field>
+            <field name="res_model">github.team</field>
+            <field name="view_mode">kanban,tree,form</field>
+        </record>
+
+        <record id="pull_request_action" model="ir.actions.act_window">
+            <field name="name">Pull Request</field>
+            <field name="res_model">pull.request</field>
+            <field name="view_mode">tree,form,search</field>
+            <field name="context">{'search_default_group_by_team': 1}</field>
+        </record>
+
+        <record id="pr_comment_action" model="ir.actions.act_window">
+            <field name="name">PR Comments</field>
+            <field name="res_model">pr.comment</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_github_reports_root" name="Github Reports" web_icon="github_reports,static/description/icon.png">
+            <menuitem id="github_main_menu" name="Github Reports">
+                <menuitem id="github_team" name="Teams" action="github_team_action"/>
+                <menuitem id="github_pr" name="Pull Request" action="pull_request_action"/>
+                <menuitem id="github_contributor" name="Contributors" action="contacts.action_contacts"/>
+            </menuitem>
+        </menuitem>
+    </data>
+</odoo>

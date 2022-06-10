@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="github_team_form_view" model="ir.ui.view">
+            <field name="name">github.team</field>
+            <field name="model">github.team</field>
+            <field name="arch" type="xml">
+                <form string="GitHub Team">
+                    <header>
+                        <button name="fetch_pr" string="Fetch PR" type="object"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" class="o_text_overflow" placeholder="Team Name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="organization"/>
+                                <field name="members" widget="many2many_tags"/>
+                            </group>
+                            <group>
+                                <field name="github_user"/>
+                                <field name="github_token"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Github PR">
+                                <field name="pr_ids">
+                                    <tree>
+                                        <field name="pr_number" string="PR Number"/>
+                                        <field name="title"/>
+                                        <field name="author"/>
+                                        <field name="state"/>
+                                        <field name="body" optional="hide"/>
+                                        <field name="create_date" optional="hide"/>
+                                        <field name="closed_date" optional="hide"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="github_team_tree_view" model="ir.ui.view">
+            <field name="name">github.team.tree</field>
+            <field name="model">github.team</field>
+            <field name="arch" type="xml">
+                <tree string="Github Team">
+                    <field name="name" />
+                    <field name="github_user" />
+                    <field name="github_token" />
+                    <field name="organization" />
+                    <field name="pr_ids"/>
+                    <field name="members"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="github_team_kanban_view" model="ir.ui.view">
+            <field name="name">github.team.kanban</field>
+            <field name="model">github.team</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="name"/>
+                    <field name="organization"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_content oe_kanban_global_click">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <strong><field name="name" string="Team Name"/></strong>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <field name="organization" string="Organization"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+    </data>
+</odoo>
