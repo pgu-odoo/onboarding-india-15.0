@@ -114,7 +114,7 @@ def index():
 @app.route('/search', methods=['GET', 'POST'])
 def search_product():
     res = 'Invalid Session'
-    name = request.args["p_name"]
+    name = request.get_json().get('p_name')
     product_list = []
     if is_valid_session():
         for product in products:
@@ -127,7 +127,7 @@ def search_product():
 def add_to_cart():
     if is_valid_session():
         qty = 1
-        p_id = int(request.args.get('product_id'))
+        p_id = int(request.get_json().get('product_id'))
         product = get_product(p_id)
         order = get_current_order()
         if order:
@@ -145,7 +145,7 @@ def add_to_cart():
 @app.route('/remove_from_cart', methods=['GET', 'POST'])
 def remove_from_cart():
     if is_valid_session():
-        pid = int(request.args['product_id'])
+        pid = int(request.get_json().get('product_id').split('_')[1])
         order = get_current_order()
         if order:
             line = get_order_line(order, pid)
