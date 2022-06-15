@@ -94,7 +94,6 @@
 // mount(Root, document.body, {dev: true});
 
 
-
 const { Component, mount, xml, useRef, onMounted, useState, reactive, useEnv } = owl;
 
 // -------------------------------------------------------------------------
@@ -114,6 +113,7 @@ class TaskList {
   constructor(tasks) {
     this.tasks = tasks || [];
     const taskIds = this.tasks.map((t) => t.id);
+    // *******************
     this.nextId = taskIds.length ? Math.max(...taskIds) + 1 : 1;
   }
 
@@ -143,6 +143,7 @@ class TaskList {
 function createTaskStore() {
   const saveTasks = () => localStorage.setItem("todoapp", JSON.stringify(taskStore.tasks));
   const initialTasks = JSON.parse(localStorage.getItem("todoapp") || "[]");
+  // ********************  reactive
   const taskStore = reactive(new TaskList(initialTasks), saveTasks);
   saveTasks();
   return taskStore;
@@ -162,6 +163,7 @@ class Task extends Component {
   static props = ["task"];
 
   setup() {
+    // ******************
     this.store = useStore();
   }
 }
@@ -170,6 +172,7 @@ class Task extends Component {
 // Root Component
 // -------------------------------------------------------------------------
 class Root extends Component {
+  // ****************************** t-key=""    t-att-class="{active: filter.value===f}"
   static template = xml/* xml */ `
     <div class="todo-app">
       <input placeholder="Enter a new task" t-on-keyup="addTask" t-ref="add-input"/>

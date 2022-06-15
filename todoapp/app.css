@@ -61,6 +61,6 @@
 .task:hover {
   background-color: #def0ff;
 }
-.task.done label {
+.task.done span {
   text-decoration: line-through;
 }
