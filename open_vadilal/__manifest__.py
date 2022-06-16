@@ -1,5 +1,5 @@
 {
-    'name' : 'Open vadilal',
+    'name' : 'Open Vadilal',
     'version' : '1.0',
     'summary': 'Module for testing',
     'sequence': 1,
@@ -12,4 +12,6 @@
     'auto_install': False,
     'license': 'LGPL-3',
 
+
+    
 }
