@@ -1,5 +1,5 @@
 {
-    'name' : 'Open space',
+    'name' : 'Open vadilal',
     'version' : '1.0',
     'summary': 'Module for testing',
     'sequence': 1,
@@ -12,8 +12,4 @@
     'auto_install': False,
     'license': 'LGPL-3',
 
-
-    'demo':[
-    'demo/space_demo.xml',],
-    
 }
