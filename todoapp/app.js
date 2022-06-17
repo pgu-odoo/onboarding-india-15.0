@@ -137,7 +137,6 @@ class TaskList {
     const index = this.tasks.findIndex((t) => t.id === task.id);
     this.tasks.splice(index, 1);
   }
-
 }
 
 function createTaskStore() {
