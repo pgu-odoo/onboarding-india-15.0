@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="academy.course" id="erp_101">
+			<field name="name">ERP 101</field>
+			<field name="description">Learn ERP Systems</field>
+			<field name="level">beginner</field>
+		</record>
+
+		<record model="academy.course" id="accounting_101">
+			<field name="name">Accounting 101</field>
+			<field name="description">Learning about Cost and Revenue Analysis
+			</field>
+			<field name="level">intermediate</field>
+		</record>
+
+		<record model="academy.course" id="website_101">
+			<field name="name">Website 101</field>
+			<field name="description">Description</field>
+			<field name="level">advanced</field>
+		</record>
+	</data>
+</odoo>
