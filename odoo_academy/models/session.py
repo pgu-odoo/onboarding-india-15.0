@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*- 
 from odoo import models, fields, api
 from datetime import timedelta
+
 class Session(models.Model):
 	_name = 'academy.session'
 	_description='Session Info'
 
-	course_id=fields.Many2one(comodel_name='academy.course',
+	course_id = fields.Many2one(comodel_name='academy.course',
 								string='Course',
 								ondelete='cascade',
 								required=True)
 
-	name=fields.Char(string='Title',related='course_id.name')
+	name = fields.Char(string='Title',related='course_id.name')
 
 	instructor_id=fields.Many2one(comodel_name='res.partner',string='Instructor')
 
@@ -18,6 +19,7 @@ class Session(models.Model):
 
 	start_date=fields.Date(string='Start Date',
 							default=fields.Date.today)
+										
 	duration=fields.Integer(string='Session Days',default=1)
 
 	end_date=fields.Date(string='End Date',compute='_compute_end_date',
@@ -27,7 +29,7 @@ class Session(models.Model):
 	state=fields.Selection(string='States',selection=[('draft','Draft'),('open','In Progress'),('done','Done'),('canceled','Canceled')],
 		default='draft',required=True)
 
-	total_price=fields.Float(string='Total Price',related='course_id.total_price')
+	total_price = fields.Float(string='Total Price',related='course_id.total_price')
 
 
 	@api.depends('start_date','duration')

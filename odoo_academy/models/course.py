@@ -17,7 +17,7 @@ class Course(models.Model):
 	additional_fee=fields.Float(string='Additional Fee', default=0.00)
 	total_price=fields.Float(string='Total Price', readonly=True)
 
-	session_ids=fields.One2many(comodel_name='academy.session',
+	session_ids = fields.One2many(comodel_name='academy.session',
 								inverse_name='course_id',
 								string='Sessions')
 
