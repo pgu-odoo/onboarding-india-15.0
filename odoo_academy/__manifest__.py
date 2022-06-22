@@ -21,6 +21,7 @@
         'demo/academy_demo.xml',
     ],
     
+
     'installable': True,
     'license': 'LGPL-3',
 }

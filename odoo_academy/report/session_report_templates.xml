@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
 	<report
 		id="report_session"
 		model="academy.session"
@@ -30,9 +31,14 @@
 									<strong>Instructor:</strong>
 									<span t-field="doc.instructor_id.name"/>
 								</div>
+
 							</div>
+
 							<h4>Students</h4>
+
 							<table class="table table-sm o_main_table">
+
+								
 								<thead>
 									<tr>
 										<th name="th_name">Name</th>
@@ -40,7 +46,9 @@
 										<th name="th_email">Email</th>
 									</tr>
 								</thead>
+
 								<tbody>
+
 									<t t-foreach="doc.student_ids" t-as="student">
 										<tr>
 											<td t-if="student.name" name="td_name">
@@ -55,6 +63,7 @@
 										</tr>
 									</t>
 								</tbody>
+
 							</table>
 						</div>
 					</t>
