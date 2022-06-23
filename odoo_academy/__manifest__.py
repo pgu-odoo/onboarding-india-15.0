@@ -4,7 +4,7 @@
     'name': 'Odoo Academy',
     'version': '1.0',
     'description': """test odoo""",
-    'depends': ['sale'],
+    'depends': ['sale','website'],
     'data': [
         'security/academy_security.xml',
         'security/ir.model.access.csv',
@@ -15,6 +15,7 @@
         'views/product_views_inherit.xml',
         'wizards/sale_wizard_view.xml',
         'report/session_report_templates.xml',
+        'views/academy_web_templates.xml',
     ],
 
     'demo':[
