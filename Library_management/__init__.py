@@ -1,2 +1,2 @@
 # -*- coding: utf-8 -*-
-from . import Book
+from . import models
