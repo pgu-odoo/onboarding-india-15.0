@@ -1,3 +1,4 @@
+
 {
     'name' : 'Odoo academy',
     'version' : '1.0',
