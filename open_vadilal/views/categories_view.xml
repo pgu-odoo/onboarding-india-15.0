@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model='ir.ui.view' id='categories_view_form'>
+			<field name="name">vadilal.categories.form</field>
+			<field name="model">vadilal.categories</field>
+			<field name="arch" type="xml">
+				<form string="Categories Form">
+				<sheet>
+					<h1><field name="name"/></h1>
+					<group>
+						<group>
+							<field name="active"/>
+							<field name="level"/>
+						</group>
+						<group>
+							<field name="wholesale_rate"/>
+							<field name="retail_rate"/>
+							<field name="total_rate" force_save="1"/>
+						</group>
+					</group>
+					<notebook>
+						<page string="Description">
+							<field name="description"></field>
+							
+						</page>
+						<page string="Sessions">
+							<field name="session_ids"/>
+							
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="categories_view_list">
+			<field name="name">vadilal.categories.list</field>
+			<field name="model">vadilal.categories</field>
+			<field name="arch" type="xml">
+			<tree string="Categories List">
+				<field name="name"/>
+				<field name="description"/>
+				<field name="level"/>
+				
+			</tree>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="categories_view_search">
+			<field name="name">vadilal.categories.search</field>
+			<field name="model">vadilal.categories</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name"/>
+					<field name="description"/>
+
+				</search>
+			</field>
+		</record>
+		<record model="ir.ui.view" id="categories_view_pivot">
+			<field name="name">vadilal.categories.pivot</field>
+			<field name="model">vadilal.categories</field>
+			<field name="arch" type="xml">
+				<pivot>
+					<field name="level" type="row"/>
+					<field name="name" type="row"/>
+					<field name="wholesale_rate"  type="measure"/>
+					<field name="retail_rate"  type="measure"/>
+					<field name="total_rate" type="measure"/>
+				</pivot>
+			</field>
+		</record>
+	</data>
+</odoo>

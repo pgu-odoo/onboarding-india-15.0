@@ -1,0 +1,26 @@
+<odoo>
+	<data>
+		<record  model="academy.course" id="info_101">
+
+			<field name="name">info_101</field>
+			<field name="description"> level information</field>
+			<field name="level">beginner</field>
+		</record>
+
+		<record model="academy.course" id="select_200">
+			<field name="name">select_200</field>
+			<field name="description">select_200
+				choose the course</field>
+			<field name="level">intermidiate</field>
+		</record>
+
+		<record model="academy.course" id="final_200">
+			<field name="name">final_200</field>
+			<field name="description"></field>	
+			<field name="level">advanced</field>
+		</record>
+
+
+	</data>
+
+</odoo>

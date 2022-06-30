@@ -1,0 +1,23 @@
+<odoo>
+	<data>
+		<record model="vadilal.categories" id="cone_101">
+			<field name="name">cone_101</field>
+			<field description="description">level information</field>
+			<field level="level">Cone</field>
+
+			
+		</record>
+
+		<record model="vadilal.categories" id="candy_102">
+			<field name="name">candy_102</field>
+			<field name="description">candy varities</field>
+			<field name="level">candy</field>
+		</record>
+
+		<record model="vadilal.categories" id="cake_103">
+			<field name="name">cake_103</field>
+			<field name="description">cake varities</field>
+			<field name="level">cake</field>
+		</record>
+	</data>
+</odoo>

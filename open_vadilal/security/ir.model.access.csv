@@ -1,0 +1,5 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+categories_admin,categories admin,model_vadilal_categories,group_vadilal_admin,1,1,1,1
+categories_read_all,catgories read all,model_vadilal_categories,,1,0,0,0
+session_admin,session admin,model_vadilal_session,group_vadilal_admin,1,1,1,1
+session_read_all,session read all,model_vadilal_session,,1,0,0,0

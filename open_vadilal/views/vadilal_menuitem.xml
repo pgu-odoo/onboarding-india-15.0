@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.actions.act_window" id="categories_list_action">
+			<field name="name">Categoriess</field>
+			<field name="res_model">vadilal.categories</field>
+			<field name="view_mode">tree,form,pivot</field>
+			<field name="help" type="html">
+				<p class="o_view_nocontent_smiling_face">
+					Create the First Categories
+				</p>
+
+			</field>
+			
+		
+		</record>
+		<record model="ir.actions.act_window" id="session_list_action">
+			<field name="name">Sessions</field>
+			<field name="res_model">vadilal.session</field>
+			<field name="view_mode">tree,form,calendar</field>
+			<field name="help" type="html">
+				<p class="o_view_nocontent_smiling_face">
+					Create the First Session
+				</p>
+			</field>
+			
+		</record>
+
+		<menuitem name="Open Vadilal"
+				id="menu_vadilal"
+				sequence="1"/>
+
+		<menuitem id="menu_vadilal_sub" name="Open Vadilal" parent="menu_vadilal" sequence="2"/>
+		<menuitem id="menu_vadilal_categoriess" name="Categoriess" parent="menu_vadilal_sub"	sequence="3" action="categories_list_action"/>
+
+		<menuitem id="menu_vadilal_sessions" name="Sessions" parent="menu_vadilal_sub"  sequence="4"  action="session_list_action"/>
+		
+
+
+	</data>
+</odoo>
