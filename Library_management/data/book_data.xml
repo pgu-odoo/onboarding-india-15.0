@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>           
+
+<odoo>
+	<data noupdate="1">
+		<record model="library.book" id="book_1">
+			<field name="name">Name_1</field>
+			<field name="authors">Authors_1</field>
+			<field name="editors">Editors_1</field>
+			<field name="publishers">Publishers_1</field>
+			<field name="year_of_edition">2020-09-12</field>
+			<field name="isbn">ISBN_1_123456</field>
+			<field name="price">100</field>
+		</record>
+
+		<record model="library.book" id="2">
+			<field name="name">Name_2</field>
+			<field name="authors">Authors_2</field>
+			<field name="editors">Editors_2</field>
+			<field name="publishers">Publishers_2</field>
+			<field name="year_of_edition">2021-04-28</field>
+			<field name="isbn">ISBN_2_123456</field>
+			<field name="price">110</field>
+		</record>
+
+		<record model="library.book" id="3">
+			<field name="name">Name_3</field>
+			<field name="authors">Authors_3</field>
+			<field name="editors">Editors_3</field>
+			<field name="publishers">Publishers_3</field>
+			<field name="year_of_edition">2019-09-12</field>
+			<field name="isbn">ISBN_3_123456</field>
+			<field name="price">120</field>
+		</record>
+
+		<record model="library.book" id="4">
+			<field name="name">Name_4</field>
+			<field name="authors">Authors_4</field>
+			<field name="editors">Editors+_4</field>
+			<field name="publishers">Publishers_4</field>
+			<field name="year_of_edition">2018-02-12</field>
+			<field name="isbn">ISBN_4_123456</field>
+			<field name="price">140</field>
+		</record>
+
+		<record model="library.book" id="5">
+			<field name="name">Name_5</field>
+			<field name="authors">Authors</field>
+			<field name="editors">Editors_5</field>
+			<field name="publishers">Publishers_5</field>
+			<field name="year_of_edition">2017-09-12</field>
+			<field name="isbn">ISBN_5_123456</field>
+			<field name="price">150</field>
+		</record>
+	</data>
+
+</odoo>
