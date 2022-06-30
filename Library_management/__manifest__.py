@@ -7,7 +7,17 @@
     'author': 'Shamy',
     'website': 'http://odoo.com',
     'depends': ['base'],
-    
+
+    'data':[
+            'data/book_data.xml',
+            'security/security_library.xml',
+            'security/ir.model.access.csv',
+            'view/library_menuitem.xml',
+            'view/library_view.xml'
+    ],
+    'depends': ['base'], 
     'installable':  True,
-    'auto_install': False
+    'auto_install': False,
+    'license': 'LGPL-3'
+
 }
