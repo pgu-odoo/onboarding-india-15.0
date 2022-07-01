@@ -13,7 +13,8 @@
             'security/security_library.xml',
             'security/ir.model.access.csv',
             'view/library_menuitem.xml',
-            'view/library_view.xml'
+            'view/library_view.xml',
+            'view/rent_views.xml',
     ],
     'depends': ['base'], 
     'installable':  True,

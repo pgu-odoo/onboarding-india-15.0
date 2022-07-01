@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?> 
+
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="rent_view_form">
+			<field name="name">library.rent.form</field>
+			<field name="model">library.rent</field>
+			<field name="arch" type="xml">
+				<form string="Rent Form">
+					<sheet>
+						<h1><field name="name"/></h1>
+						<group>
+							<group>
+								<field name="customer_id"/>
+							</group>
+							<group>
+								<field name="book"/>
+							</group>
+							<notebook>
+								<page string="Book">
+									<field name="book"/>
+								</page>  
+							</notebook>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="rent_view_list">
+			<field name="name">library.rent.list</field>
+			<field name="model">library.rent</field>
+			<field name="arch" type="xml">
+				<tree string="Rent list">
+					<field name="name"/>
+					<field name="book"/>
+				</tree>
+			</field>
+		</record>
+	</data>
+</odoo>

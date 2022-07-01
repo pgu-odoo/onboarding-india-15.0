@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 Library_management.access_library_book,access_library_book,Library_management.model_library_book,Library_management.library_admin,1,1,1,1
 Library_management.access_library_read,read_library_book,Library_management.model_library_book,,1,0,0,0
+Library_management.rent_library_book,rent_library_book,Library_management.model_library_rent,Library_management.library_admin,1,1,1,1
+Library_management.rent_library_read,rent_library_book,Library_management.model_library_rent,,1,0,0,0
