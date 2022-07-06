@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?> 
+
+<odoo>
+	<data>
+		<record model='ir.ui.view' id='view_order_from_inherits_library'>
+			<field name='name'>library.book.form.inherits.library</field>
+			<field name='model'>book.copy</field>
+			<field name='inherit_id' ref='Library_management.library_view_form'/>	
+			<field name='arch' type='xml'>
+				<xpath expr="//field[@name='number_isbn']" position="after">
+					<field name='internel_ref'>Internal Ref. </field>
+				</xpath>
+  			</field>
+		</record>
+	</data>
+</odoo>

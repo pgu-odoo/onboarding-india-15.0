@@ -8,7 +8,7 @@
 			<field name="editors">Editors_1</field>
 			<field name="publishers">Publishers_1</field>
 			<field name="year_of_edition">2020-09-12</field>
-			<field name="isbn">ISBN_1_123456</field>
+			<field name="number_isbn">ISBN_1_123456</field>
 			<field name="price">100</field>
 		</record>
 
@@ -18,7 +18,7 @@
 			<field name="editors">Editors_2</field>
 			<field name="publishers">Publishers_2</field>
 			<field name="year_of_edition">2021-04-28</field>
-			<field name="isbn">ISBN_2_123456</field>
+			<field name="number_isbn">ISBN_2_123456</field>
 			<field name="price">110</field>
 		</record>
 
@@ -28,7 +28,7 @@
 			<field name="editors">Editors_3</field>
 			<field name="publishers">Publishers_3</field>
 			<field name="year_of_edition">2019-09-12</field>
-			<field name="isbn">ISBN_3_123456</field>
+			<field name="number_isbn">ISBN_3_123456</field>
 			<field name="price">120</field>
 		</record>
 
@@ -38,7 +38,7 @@
 			<field name="editors">Editors+_4</field>
 			<field name="publishers">Publishers_4</field>
 			<field name="year_of_edition">2018-02-12</field>
-			<field name="isbn">ISBN_4_123456</field>
+			<field name="number_isbn">ISBN_4_123456</field>
 			<field name="price">140</field>
 		</record>
 
@@ -48,7 +48,7 @@
 			<field name="editors">Editors_5</field>
 			<field name="publishers">Publishers_5</field>
 			<field name="year_of_edition">2017-09-12</field>
-			<field name="isbn">ISBN_5_123456</field>
+			<field name="number_isbn">ISBN_5_123456</field>
 			<field name="price">150</field>
 		</record>
 	</data>

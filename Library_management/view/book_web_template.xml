@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<template id='book_website'>
+			<t t-call='website.layout'>
+				<t t-set='title'>Book</t>
+				<div class='oe_structure'>
+					<div class='container'>
+						<h1>Book Information</h1>
+						<t t-foreach='book' t-as='book'>
+							<h3>
+								<t t-esc='book.id'/>
+								<t t-esc='book.name'/>
+							</h3>
+							<p>Name:
+								<span t-field='book.name'/>
+							</p>
+							<p>Author Name:
+								<span t-field='book.authors'/>
+							</p>
+							<p>Editor:
+								<span t-field='book.editors'/>
+							</p>
+							<p>Publisher:
+								<span t-field='book.publishers'/>
+							</p>
+							<p>Year of Edition:
+								<span t-field='book.year_of_edition'/>
+							</p>
+							<p>Price:
+								<span t-field='book.price'/>
+							</p>
+						</t>
+					</div>
+				</div>
+			</t>
+		</template>
+	</data>
+</odoo>

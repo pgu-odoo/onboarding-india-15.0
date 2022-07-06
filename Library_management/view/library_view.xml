@@ -19,7 +19,7 @@
 								<field name="publishers"/>
 							</group>
 							<group>
-								<field name="isbn"/>
+								<field name="number_isbn"/>
 							</group>
 							<group>
 								<field name="price"/>
@@ -39,7 +39,7 @@
 					<field name="authors"/>
 					<field name="editors"/>
 					<field name="publishers"/>
-					<field name="isbn"/>
+					<field name="number_isbn"/>
 					<field name="price"/>
 				</search>
 			</field>

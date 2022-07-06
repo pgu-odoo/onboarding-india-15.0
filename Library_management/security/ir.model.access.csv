@@ -3,3 +3,5 @@ Library_management.access_library_book,access_library_book,Library_management.mo
 Library_management.access_library_read,read_library_book,Library_management.model_library_book,,1,0,0,0
 Library_management.rent_library_book,rent_library_book,Library_management.model_library_rent,Library_management.library_admin,1,1,1,1
 Library_management.rent_library_read,rent_library_book,Library_management.model_library_rent,,1,0,0,0
+Library_management.access_book_copy,access_book_copy,Library_management.model_book_copy,base.group_user,1,1,1,1
+Library_management.access_library_book_wizard,access_library_book_wizard,Library_management.model_library_book_wizard,base.group_user,1,1,1,1

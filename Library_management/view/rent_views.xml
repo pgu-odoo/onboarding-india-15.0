@@ -37,5 +37,22 @@
 				</tree>
 			</field>
 		</record>
+
+		<!--<record model="ir.ui.view" id="rent_view_map">
+			<field name="name">library.rent.map</field>
+			<field name="model">library.rent</field>
+			<field name="arch" type="xml">
+				<map string="Rent Map" res_partner="customer_id">
+				</map>
+			</field>
+		</record>-->
+
+		<record model="ir.ui.view" id="rent_view_map">
+			<field name="name">library.rent.map</field>
+			<field name="model">library.rent</field>
+			<field name="arch" type="xml">
+				<map res_partner="customer_id"/>
+			</field>
+		</record>
 	</data>
 </odoo>

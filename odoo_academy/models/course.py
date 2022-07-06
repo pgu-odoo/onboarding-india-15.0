@@ -19,6 +19,7 @@ class Course(models.Model):
 		                   ('intermediate','Intermediate'),
 		                   ('advanced','Advanced')],
 		                   copy=False)
+	
 	active=fields.Boolean(string='Active',default=True)
 
 	base_price=fields.Float(string='Base Price', default=0.00)
@@ -28,9 +29,7 @@ class Course(models.Model):
 	total_price=fields.Float(string="Total Price", readonly=True)
 
 
-	session_ids=fields.Many2many(comodel_name='acadamy.session',
-		                          inverse_name='course_id',
-		                          string='Session')
+	session_ids=fields.Many2many(comodel_name='acadamy.session', string='Session')
 
 	@api.onchange('base_price', 'additional_fee')
 	def _onchange_total_price(self):
