@@ -5,7 +5,7 @@ from odoo import models, fields, api
 class ProductTemplate(models.TransientModel):
 
 	_name='acadamy.sale.wizard'
-	_decription='wizard: Quick sale order for Session Students'
+	_description='wizard: Quick sale order for Session Students'
 
 	def _default_session(self):
 		return self.env['acadamy.session'].browse(self._context.get('active_id'))
