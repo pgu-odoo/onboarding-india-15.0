@@ -1,0 +1,285 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* Library_management
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-07 09:35+0000\n"
+"PO-Revision-Date: 2022-07-07 09:35+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: Library_management
+#: model_terms:ir.ui.view,arch_db:Library_management.book_website
+msgid "Author Name:"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model.fields,field_description:Library_management.field_book_copy__authors
+#: model:ir.model.fields,field_description:Library_management.field_library_book__authors
+msgid "Author name"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model.fields,field_description:Library_management.field_library_rent__book
+#: model_terms:ir.ui.view,arch_db:Library_management.book_website
+#: model_terms:ir.ui.view,arch_db:Library_management.rent_view_form
+msgid "Book"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model,name:Library_management.model_book_copy
+msgid "Book Copy Info"
+msgstr ""
+
+#. module: Library_management
+#: model_terms:ir.ui.view,arch_db:Library_management.library_view_form
+msgid "Book Form"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model.fields,field_description:Library_management.field_book_copy__book_id
+msgid "Book Id"
+msgstr ""
+
+#. module: Library_management
+#: model_terms:ir.ui.view,arch_db:Library_management.book_website
+msgid "Book Information"
+msgstr ""
+
+#. module: Library_management
+#: model_terms:ir.ui.view,arch_db:Library_management.library_rent_wizard
+msgid "Cancel"
+msgstr ""
+
+#. module: Library_management
+#: model_terms:ir.ui.view,arch_db:Library_management.library_rent_wizard
+msgid "Create Rented Book"
+msgstr ""
+
+#. module: Library_management
+#: model_terms:ir.actions.act_window,help:Library_management.rent_list_action
+msgid "Create first Rent"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model.fields,field_description:Library_management.field_book_copy__create_uid
+#: model:ir.model.fields,field_description:Library_management.field_library_book__create_uid
+#: model:ir.model.fields,field_description:Library_management.field_library_book_wizard__create_uid
+#: model:ir.model.fields,field_description:Library_management.field_library_rent__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model.fields,field_description:Library_management.field_book_copy__create_date
+#: model:ir.model.fields,field_description:Library_management.field_library_book__create_date
+#: model:ir.model.fields,field_description:Library_management.field_library_book_wizard__create_date
+#: model:ir.model.fields,field_description:Library_management.field_library_rent__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model.fields,field_description:Library_management.field_library_rent__customer_id
+msgid "Customer"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model.fields,field_description:Library_management.field_book_copy__display_name
+#: model:ir.model.fields,field_description:Library_management.field_library_book__display_name
+#: model:ir.model.fields,field_description:Library_management.field_library_book_wizard__display_name
+#: model:ir.model.fields,field_description:Library_management.field_library_rent__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: Library_management
+#: model_terms:ir.ui.view,arch_db:Library_management.book_website
+msgid "Editor:"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model.fields,field_description:Library_management.field_book_copy__editors
+#: model:ir.model.fields,field_description:Library_management.field_library_book__editors
+msgid "Editors Name"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model.fields,field_description:Library_management.field_book_copy__id
+#: model:ir.model.fields,field_description:Library_management.field_library_book__id
+#: model:ir.model.fields,field_description:Library_management.field_library_book_wizard__id
+#: model:ir.model.fields,field_description:Library_management.field_library_rent__id
+msgid "ID"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model.fields,field_description:Library_management.field_book_copy__number_isbn
+#: model:ir.model.fields,field_description:Library_management.field_library_book__number_isbn
+msgid "ISBN No."
+msgstr ""
+
+#. module: Library_management
+#: model_terms:ir.ui.view,arch_db:Library_management.view_order_from_inherits_library
+msgid "Internal Ref."
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model.fields,field_description:Library_management.field_book_copy____last_update
+#: model:ir.model.fields,field_description:Library_management.field_library_book____last_update
+#: model:ir.model.fields,field_description:Library_management.field_library_book_wizard____last_update
+#: model:ir.model.fields,field_description:Library_management.field_library_rent____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model.fields,field_description:Library_management.field_book_copy__write_uid
+#: model:ir.model.fields,field_description:Library_management.field_library_book__write_uid
+#: model:ir.model.fields,field_description:Library_management.field_library_book_wizard__write_uid
+#: model:ir.model.fields,field_description:Library_management.field_library_rent__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model.fields,field_description:Library_management.field_book_copy__write_date
+#: model:ir.model.fields,field_description:Library_management.field_library_book__write_date
+#: model:ir.model.fields,field_description:Library_management.field_library_book_wizard__write_date
+#: model:ir.model.fields,field_description:Library_management.field_library_rent__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.ui.menu,name:Library_management.menu_library
+#: model:ir.ui.menu,name:Library_management.menu_library_sub
+msgid "Library Management"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model.fields,field_description:Library_management.field_book_copy__name
+#: model:ir.model.fields,field_description:Library_management.field_library_book__name
+msgid "Name"
+msgstr ""
+
+#. module: Library_management
+#: model_terms:ir.ui.view,arch_db:Library_management.book_website
+msgid "Name:"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model.fields,field_description:Library_management.field_book_copy__note
+#: model:ir.model.fields,field_description:Library_management.field_library_book__note
+msgid "Note"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model.fields,field_description:Library_management.field_book_copy__price
+#: model:ir.model.fields,field_description:Library_management.field_library_book__price
+msgid "Price"
+msgstr ""
+
+#. module: Library_management
+#: model_terms:ir.ui.view,arch_db:Library_management.book_website
+msgid "Price:"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model.fields,field_description:Library_management.field_book_copy__publishers
+#: model:ir.model.fields,field_description:Library_management.field_library_book__publishers
+msgid "Publisher"
+msgstr ""
+
+#. module: Library_management
+#: model_terms:ir.ui.view,arch_db:Library_management.book_website
+msgid "Publisher:"
+msgstr ""
+
+#. module: Library_management
+#: model_terms:ir.actions.act_window,help:Library_management.course_list_action
+msgid "Read first book"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model.fields,field_description:Library_management.field_book_copy__internel_ref
+msgid "Reference Name"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.actions.act_window,name:Library_management.rent_list_action
+msgid "Rent"
+msgstr ""
+
+#. module: Library_management
+#: model_terms:ir.ui.view,arch_db:Library_management.rent_view_form
+msgid "Rent Form"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model,name:Library_management.model_library_rent
+msgid "Rent Info"
+msgstr ""
+
+#. module: Library_management
+#: model_terms:ir.ui.view,arch_db:Library_management.rent_view_list
+msgid "Rent list"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.actions.act_window,name:Library_management.lunch_book_wizard
+#: model:ir.model.fields,field_description:Library_management.field_library_book_wizard__rent_ids
+msgid "Rented Book"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.ui.menu,name:Library_management.menu_library_rent
+msgid "Rents"
+msgstr ""
+
+#. module: Library_management
+#: model_terms:ir.ui.view,arch_db:Library_management.library_rent_wizard
+msgid "Show"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model.fields,field_description:Library_management.field_library_rent__name
+msgid "Title"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model.fields,field_description:Library_management.field_book_copy__year_of_edition
+#: model:ir.model.fields,field_description:Library_management.field_library_book__year_of_edition
+msgid "Year of Edition"
+msgstr ""
+
+#. module: Library_management
+#: model_terms:ir.ui.view,arch_db:Library_management.book_website
+msgid "Year of Edition:"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.actions.act_window,name:Library_management.course_list_action
+#: model:ir.ui.menu,name:Library_management.menu_library_book
+msgid "library"
+msgstr ""
+
+#. module: Library_management
+#: model:res.groups,name:Library_management.library_admin
+msgid "library / librarian"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model,name:Library_management.model_library_book
+msgid "library book"
+msgstr ""
+
+#. module: Library_management
+#: model_terms:ir.ui.view,arch_db:Library_management.library_rent_wizard
+msgid "or"
+msgstr ""
+
+#. module: Library_management
+#: model:ir.model,name:Library_management.model_library_book_wizard
+msgid "wizard: Rented Book"
+msgstr ""
