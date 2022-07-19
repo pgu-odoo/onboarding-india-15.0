@@ -8,7 +8,7 @@
     'sequence': 1,
     'description': """testing""",
     'website': 'https://www.odoo.com/',
-    'depends' : ['sale'],
+    'depends' : ['sale','website'],
     'installable': True,
     'application': True,
     'auto_install': False,
@@ -23,7 +23,8 @@
     'views/sale_views_inherit.xml',
     'views/product_views_inherit.xml',
     'wizard/sale_wizard_view.xml',
-    'report/session_report_templates.xml',],
+    'report/session_report_templates.xml',
+    'views/academy_views_template.xml',],
     
     'demo':[
     'demo/academy_demo.xml',],
