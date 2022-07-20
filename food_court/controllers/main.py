@@ -32,7 +32,7 @@ class LunchOrderController(Controller):
         return request.env['lunch.order'].create(vals)
 
     def set_order_done(self, order):
-        if order.get('state') == 'draft':
+        if order.state == 'draft':
             order['state'] = 'done'
         return True
 
