@@ -9,4 +9,7 @@
     'depends': ['base'],
     'data': [],
     'license': 'LGPL-3',
+    'demo': [
+    	'demo/academy.xml',
+    ],
 }
