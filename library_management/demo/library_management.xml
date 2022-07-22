@@ -2,19 +2,19 @@
 
 <odoo>
 	<data noupdate="1">
-		<record model="Library Management" id="book_101">
+		<record model="library.management" id="book_101">
 			<field name="name">Mihir Soni</field>
 			<field name="description">odoo technology</field>
 			<field name="category">Technology</field>
 			<field name="summary">it's a technology book</field>
 		</record>
-		<record model="Library Management" id="book_102">
+		<record model="library.management" id="book_102">
 			<field name="name">jack smith</field>
 			<field name="description">python technology</field>
 			<field name="category">Technology</field>
 			<field name="sumary">overview of python</field>
 		</record>
-		<record model="Library Management" id="book_103">
+		<record model="library.management" id="book_103">
 			<field name="name">chetan bhagat</field>
 			<field name="description">2 states</field>
 			<field name="category">management</field>
