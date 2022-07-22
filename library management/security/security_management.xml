@@ -1,0 +1,32 @@
+<?xml veersion="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="group_library_admin" model="res.groups">
+		<field name="name">academy/admin</field>
+		
+
+
+
+
+
+
+
+
+	</record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</odoo>
