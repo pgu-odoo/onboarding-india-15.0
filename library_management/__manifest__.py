@@ -11,6 +11,7 @@
     'data': [
         'security/security_management.xml',
         'security/ir.model.access.csv',
+        'views/academy_menuitems.xml',
     ],
     'license': 'LGPL-3',
     'demo': [
