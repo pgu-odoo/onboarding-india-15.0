@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <odoo>
-	<data noupdate="1">
+	<data noupdate="5">
 		<record model="library.management" id="book_101">
-			<field name="name">Mihir Soni</field>
+			<field name="name">kush pandya</field>
 			<field name="description">odoo technology</field>
-			<field name="category">Technology</field>
+			<field name="category">technology</field>
 			<field name="summary">it's a technology book</field>
 		</record>
 		<record model="library.management" id="book_102">
 			<field name="name">jack smith</field>
 			<field name="description">python technology</field>
-			<field name="category">Technology</field>
-			<field name="sumary">overview of python</field>
+			<field name="category">technology</field>
+			<field name="summary">overview of python</field>
 		</record>
 		<record model="library.management" id="book_103">
 			<field name="name">chetan bhagat</field>
@@ -22,3 +21,5 @@
 		</record>
 	</data>
 </odoo>
+
+

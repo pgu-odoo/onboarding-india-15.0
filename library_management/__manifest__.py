@@ -12,9 +12,11 @@
         'security/security_management.xml',
         'security/ir.model.access.csv',
         'views/academy_menuitems.xml',
+        'views/library_view.xml',
     ],
     'license': 'LGPL-3',
+
     'demo': [
-        'demo/library_management.xml',
+       'demo/library_management12.xml',
     ],
 }
