@@ -44,6 +44,7 @@
 					<field name="level"/>
 				</tree>
 			</field>
+
 		</record>
 		<record model="ir.ui.view" id="course_view_search">
 			<field name="name">acadamy.course.search</field>
@@ -55,6 +56,7 @@
 				</search>
 			</field>
 		</record>
+		
 		<record model="ir.ui.view" id="course_view_pivot">
 			<field name="name">acadamy.course.pivot</field>
 			<field name="model">acadamy.course</field>
