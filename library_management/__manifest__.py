@@ -13,6 +13,7 @@
         'security/ir.model.access.csv',
         'views/academy_menuitems.xml',
         'views/library_view.xml',
+        'views/session_views.xml',
     ],
     'license': 'LGPL-3',
 

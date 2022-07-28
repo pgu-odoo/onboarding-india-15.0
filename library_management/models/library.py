@@ -21,6 +21,8 @@ class management(models.Model):
 	additional_fee = fields.Float(string="Additional Fee", default=10.00)
 	total_price = fields.Float(string='Total Price', readonly=True)
 
+	session_ids = fields.One2many(comodel_name='library.session', inverse_name='book_id', string='sessions')
+
 	@api.onchange('book_price','additional_fee')
 	def _onchange_total_price(self):
 

@@ -23,6 +23,9 @@
 							<page id="pg_description" string="Description">
 								<field name="description"/>
 							</page>
+							<page id="pg_sessions" string="sessions">
+								<field name="session_ids"/>
+							</page>
 						</notebook>
 					</sheet>
 				</form>
@@ -51,3 +54,4 @@
 		</record>
 	</data>
 </odoo>
+
