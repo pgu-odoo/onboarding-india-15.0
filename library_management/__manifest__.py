@@ -8,12 +8,14 @@
     'author': 'mihir soni',
     'category': 'management',
     'version':'15.0.1.0.0',
+    'depends': ['sale'],
     'data': [
         'security/security_management.xml',
         'security/ir.model.access.csv',
         'views/academy_menuitems.xml',
         'views/library_view.xml',
         'views/session_views.xml',
+        'views/book_view_inheritance.xml',
     ],
     'license': 'LGPL-3',
 

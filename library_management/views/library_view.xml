@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<data>
+	
 		<record model="ir.ui.view" id="book_view_form">
 			<field name="name">book.list.form</field>
 			<field name="model">library.management</field>
 			<field name="arch" type="xml">
-				<form strings="Book Form">
+				<form string="Book Form">
 					<sheet>
 						<h1><field name="name"/></h1>
 						<group>
@@ -31,6 +31,7 @@
 				</form>
 			</field>
 		</record>
+
 		<record model="ir.ui.view" id="book_view_list">
 			<field name="name">library.management.list</field>
 			<field name="model">library.management</field>
@@ -42,6 +43,7 @@
 				</tree>
 			</field>
 		</record>
+		
 		<record model="ir.ui.view" id="book_view_search">
 			<field name="name">library.management.search</field>
 			<field name="model">library.management</field>
@@ -52,6 +54,20 @@
 				</search>
 			</field>
 		</record>
-	</data>
+		
+		<record model="ir.ui.view" id="book_view_pivot">
+			<field name="name">library.management.pivot</field>
+			<field name="model">library.management</field>
+			<field name="arch" type="xml">
+				<pivot>
+					<field name="category" type="row"/>
+					<field name="name" type="row"/>
+					<field name="book_price" type="measure"/>
+					<field name="additional_fee" type="measure"/>
+					<field name="total_price" type="measure"/>
+				</pivot>
+			</field>
+		</record>
+	
 </odoo>
 
