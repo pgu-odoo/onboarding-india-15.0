@@ -1,0 +1,40 @@
+
+def get_product():
+    products = [
+        {
+            'name': 'Odoo GAP Analysis',
+            'price': "$100.00 USD",
+            'image': "https://www.images.cybrosys.com/blog/Uploads/BlogImage/gap-analysis-in-erp-implementation.png"
+        },
+        {
+            'name': 'Odoo Enterprise',
+            'price': "$500.00 USD",
+            'image': "https://www.intforcesoftware.com/wp-content/uploads/2021/08/1_3c0QSpmkmPbOGBQ39HPSUw.jpeg"
+        },
+        {
+            'name': 'CRM',
+            'price': '$8.00 USD',
+            'image': "https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_7be165a2e804933e87ed378d43c476b6/odoo-crm.png"
+        },
+        {
+            'name': 'Invoicing',
+            'price': '$4.00 USD',
+            'image': 'https://hibou.io/web/image/slide.channel/3/image_1920/Odoo%2010%20Accounting?unique=3862c56'
+        },
+        {
+            'name': 'Website',
+            'price': '$8.00 USD',
+            'image': 'data:image/jpeg;base64,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'
+        },
+        {
+            'name': 'Manufacturing',
+            'price': '$16.00 USD',
+            'image': 'https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_b647ddaac33150aa904c0432643e3971/odoo-mrp.png'
+        },
+        {
+            'name': 'Email Marketing',
+            'price': '$16.00 USD',
+            'image': 'https://static.crozdesk.com/web_app_library/providers/logos/000/011/480/box/odoo-email-marketing-1607543911-logo.png?1607543911'
+        }
+    ]
+    return products

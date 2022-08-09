@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./../static/shop.css">
+    </head>
+    <body>
+        <h2 style="text-align: center;">Our products</h2>
+        <body>
+
+            Cart: <span id="count">{{ count }}</span>
+            <span style="display: flex; justify-content: center">
+            <input type="text" placeholder="Search.." id="search" onkeyup="searchProduct()">
+            <!-- <button type="submit">Search</button> -->
+            <button style="position: absolute; right: 10px;" id="clc">Home Page</button>
+            </span>
+            
+        </body>
+        <!-- <div style="margin-top:30px" class="row text-center"> -->
+        <div>
+        <div class="product-list" id="product-list">
+            <ul>
+            {% for product in products %}
+                <li>
+                    <div class="product">
+                        <div>
+                            <img src="{{ product['image'] }}" alt="">
+                        </div>
+                        <div>
+                            <h3>{{ product['name'] }}</h3>
+                            <div><h4>{{ product['price']}}</h4></div>
+                            <div>
+                                <button id="plus">  +  </button>
+                                Buy Now
+                                <button id="minus">  -  </button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+            </ul>
+        </div> 
+        </div>
+        
+        <script type="text/javascript" src="../static/script/shop.js"></script>
+        <script type="text/javascript" src="../static/script/search.js"></script>
+    </body>
+</html>
+
+<!--
+    XMLHttpRequest():
+    The XMLHttpRequest object can be used to exchange data with a web server behind the scenes.
+    This means that it is possible to update parts of a web page, without reloading the whole page.
+
+ -->
