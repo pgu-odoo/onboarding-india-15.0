@@ -38,12 +38,15 @@ let products = [
     }
 ]
 
+// 
 for (let i=0; i < carts.length; i++) {
     carts[i].addEventListener('click', () => {
-        cartNumbers();
+        cartNumbers(products[i]);
+        totalCost(products[i])
     })
 }
 
+// save the count when refresh page, get data from localStorage
 function onLoadCartNumbers() {
     let productNumber = localStorage.getItem('cartNumbers')
 
@@ -52,7 +55,8 @@ function onLoadCartNumbers() {
     }
 }
 
-function cartNumbers() {
+function cartNumbers(product) {
+    // console.log("On click of product ", product);
     let productNumber = localStorage.getItem('cartNumbers')  // this gives string
     productNumber = parseInt(productNumber)  // convert it into INT
     // console.log(productNumber);
@@ -63,14 +67,67 @@ function cartNumbers() {
         localStorage.setItem('cartNumbers', 1);
         document.querySelector('.count').textContent = 1;
     }
+
+    setItems(product);
 }
 
+// add product in cart
+function setItems(product) {
+    // console.log("inside setItems function \n My product ", product);
+    let cartItems = localStorage.getItem('productsInCart');
+    cartItems = JSON.parse(cartItems);
+    console.log("cart items: ", cartItems);
+
+    if (cartItems != null) {
+        if (cartItems[product.name] == undefined) {
+            cartItems = {
+                ...cartItems,  // rest operator
+                [product.name]: product
+            }
+        }
+        cartItems[product.name].inCart += 1;
+    } else {
+        product.inCart = 1;
+        cartItems = {  // this will return JS object, we need to convert this into JSON object
+            [product.name]: product
+        }
+    }
+    localStorage.setItem("productsInCart", JSON.stringify(cartItems));  // using JSON.stringify, convert JS object to JSON object
+}
+
+// redirect to homepage on lick homepage
 document.getElementById('clc').addEventListener('click', () => {
     window.open('/homepage', '_self')
 });
 
+// calculate total cost
+function totalCost(prod) {
+    // console.log("the products price is", prod.price);
+    let cartCost = localStorage.getItem('totalCost');  // whenever we get something for localStorage it comes as a string
+    
+    if (cartCost != null) {
+        cartCost = parseInt(cartCost)
+        localStorage.setItem("totalCost", cartCost + prod.price)
+    } else {
+        localStorage.setItem("totalCost", prod.price);
+    }
+
+}
+
 
 onLoadCartNumbers()  // load the page for fisrt time this function gets called to check local storage of add cart count
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* + or - button logic
     document.addEventListener('DOMContentLoaded', () => {
