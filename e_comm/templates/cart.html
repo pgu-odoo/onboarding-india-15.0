@@ -12,8 +12,22 @@
         <h1>welcome to odoo E-commerce</h1>     
         <ul>
             <li><a href="/shop">Shop</a></li>
+            <li><a>Cart: <span id="count" class="count"> 0 </span></a></li>
+            <button onclick="clearCart()">Clear</button>
             <button style="position: absolute; right: 10px;" id="clc">Home Page</button>
-          </ul>
+        </ul>
+        <div class="product-container">
+            <div class="product-header">
+                <h5 class="product-title">PRODUCT</h5>
+                <h5 class="price">PRICE</h5>
+                <h5 class="quantity">QUANTITY</h5>
+                <h5 class="total">TOTAL</h5>
+            </div>
+            <div class="products">
+
+            </div>
+        </div>
     </body>
+
     <script type="text/javascript" src="../static/script/shop.js"></script>
 </html>

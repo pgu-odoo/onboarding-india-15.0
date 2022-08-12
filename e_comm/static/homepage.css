@@ -29,3 +29,84 @@ h1 {
     font-size:20pt;
     color:purple;
 }
+
+/* CART PAGE */
+
+.product-container {
+    max-width: 650px;
+    justify-content: space-around;
+    margin: 0 auto;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+/* display: flex;
+flex-wrap: wrap;
+justify-content: center; */
+
+
+
+.product-header {
+    width: 100%;
+    max-width: 650px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0 auto;
+}
+
+.product-title {
+    width: 45%;
+}
+
+.price {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    /* border-bottom: 1px solid lightgreen; */
+}
+
+.total {
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.products {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product {
+    width: 45%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.quantity {
+    width: 15%;
+    display: flex;
+    align-items: center;
+}
+
+.totalContainer {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.totalTitle {
+    width: 30%;
+}
+
+.basketTotal {
+    width: 10%;
+}
+
+
+/* justify-content: space-around; */

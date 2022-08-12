@@ -100,6 +100,13 @@ document.getElementById('clc').addEventListener('click', () => {
     window.open('/homepage', '_self')
 });
 
+// redirect to cart on click
+function goToCart() {
+    document.addEventListener('click', () => {
+        window.open('/cart', '_self')
+    })
+}
+
 // calculate total cost
 function totalCost(prod) {
     // console.log("the products price is", prod.price);
@@ -114,9 +121,53 @@ function totalCost(prod) {
 
 }
 
+function displayCart() {
+    let cartItems = localStorage.getItem('productsInCart');
+    cartItems = JSON.parse(cartItems)
+    console.log(cartItems);
+    let productContainer = document.querySelector('.products')
+    let cartCost = localStorage.getItem('totalCost');
+
+    if (cartItems && productContainer) {
+        productContainer.innerHTML = '';
+        Object.values(cartItems).map(item => {
+            productContainer.innerHTML += `
+            <div class="product">
+                <span>${item.name}</span>
+            </div>
+            <div class="price">${item.price}</div>
+            <div class="quantity">${item.inCart}</div>
+            <div class="total">${item.price * item.inCart}</div>
+            `
+        });
+
+        productContainer.innerHTML += `
+            <div class="totalContainer">
+                <h4 class="totalTitle">
+                    Total:
+                </h4>
+                <h4 class="basketTotal">
+                    ${cartCost}
+                </h4>
+            </div>
+        `
+    }
+}
+
+function clearCart () {
+    let cartItems = localStorage.getItem('productsInCart')
+    cartItems = JSON.parse(cartItems)
+    console.log("in cart items", cartItems);
+
+    if (cartItems) {
+        localStorage.clear('productsInCart')
+        location.reload()
+    }
+}
+
 
 onLoadCartNumbers()  // load the page for fisrt time this function gets called to check local storage of add cart count
-
+displayCart();
 
 
 
