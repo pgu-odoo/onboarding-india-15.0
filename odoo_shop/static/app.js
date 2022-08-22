@@ -5,18 +5,18 @@ class Base {
 	constructor(parent) {
 		this.parent = parent;
 	}
-	// render method
+	// render method, convert template from string to html format (using DOMparser)  and append it to its parent.
 	render() {
 		console.log("super render gets called");
 		var parser = new DOMParser();  // interface provides the ability to parse XML or HTML source code from a string into a DOM Document 
 		var tmpl = parser.parseFromString(this.template, "text/html").body.childNodes;  //`body` -> whole html body, `childNodes` -> separate node NodeList [div]
 		this.parent.appendChild(tmpl[0]);
 	}
-	// on method
+	// on method: update the global dictionary “registry” with key and method as its value
 	on(key, method) {
 		registry[key] = method;
 	}
-	// trigger method
+	// trigger method: call the method whose key is given and pass data as argument
 	trigger(key, data) {
 		let fn = registry[key];
 		console.log("reg", registry);
@@ -62,6 +62,7 @@ class Search extends Base {
 		<button id='search'>Search</button>
 	</div>
 	`
+	// Add a method which will be called when you click on the Search button
 	onSearch(){
 		console.log("I am searching");
 		var name = document.getElementById('product_name').value;
@@ -74,6 +75,7 @@ class Search extends Base {
 			console.log(response);
 			return response.json();
 		})
+		// Trigger update_list, so that product list can render its data
 		.then(response => {
 			this.trigger('update_list', response)
 		})
@@ -249,7 +251,7 @@ class Cart extends Base {
 			`
 			super.render();
 			document.getElementById(btn).addEventListener('click', (e) => {this.removeFromCart(e)});
-			document.getElementById('btn_checkout').addEventListener('click', (e) => {this.renderCheckout(e)});
+			document.getElementById('btn_checkout').addEventListener('click', (e) => {this.checkout(e)});
 		}
 		if (this.order.length == 0) {
 			this.parent.innerHTML = '';

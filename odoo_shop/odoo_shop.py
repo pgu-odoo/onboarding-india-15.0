@@ -9,6 +9,7 @@ from flask import Flask, render_template, request
 odoo_shop = Flask(__name__)
 odoo_shop.config['order_id'] = 1
 
+# JSON data
 sessions = [
     {'id': '1'}
 ]
@@ -82,8 +83,9 @@ def get_order_line(order, product_id):
 
 def get_order_lines(order):
     product_list = []
+    print("order_lines: ", order_lines)
     for line in order_lines:
-        print("order.get('id') ----- ", order.get('id'))
+        # print("order.get('id') ----- ", order.get('id'))
         if line['order_id'] == order.get('id'):
             p_name = get_product(line['product_id'])
             vals = {
@@ -125,18 +127,21 @@ def add_to_cart():
         qty = 1
         product_id = int(request.get_json().get('product_id'))
         product = get_product(product_id)
+        print("product_id: ", product_id)
         order = get_current_order()
+        print("add_to_cart, order: ", order)
         if order:
             line = get_order_line(order, product['id'])
+            print("line :", line)
             if line:
                 line['qty'] += qty
                 line['price'] += (qty * product['price'])
             else:
-                order = add_order_line(order, product, qty)
+                add_order_line(order, product, qty)
         else:
             order = add_order()
             add_order_line(order, product, qty)
-    return {'order_lines': get_order_lines(order)}
+    return {'order_lines': get_order_lines(order or order_id)}
 
 
 @odoo_shop.route('/remove_from_cart', methods=['GET', 'POST'])
@@ -164,17 +169,18 @@ def set_order_done(order):
 
 @odoo_shop.route('/checkout', methods=['GET', 'POST'])
 def checkout():
-    res = "Not valid session"
+    res = "Not valid session X"
     if is_valid_session():
+        print("inside route checkout")
         order = get_current_order()
         if order:
             order_lines = get_order_lines(order)
             vals = {
-                'product': order_lines,
+                'products': order_lines,
                 'total': get_lines_total(order_lines)
             }
             set_order_done(order)
-            res = {'order_details': vals}
+            res = {'order_detail': vals}
     return res
 
 
