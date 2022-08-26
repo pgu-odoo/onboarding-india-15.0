@@ -1,3 +1,4 @@
+// import { Component, useState, xml, mount, useRef, onMounted, reactive, useEnv } from "@odoo/owl";
 const { Component, useState, xml, mount, useRef, onMounted, reactive, useEnv } = owl;  // Q1
 
 (function () {
@@ -41,6 +42,7 @@ class TaskList {
 
     constructor(task) {
         this.tasks = this.tasks || [];
+        console.log("this.tasks: ", this.tasks);
         const taskId = this.tasks.map((t) => t.id);
         this.nextId = taskId.length ? Math.max(...taskId) + 1 : 1;
     }
@@ -110,7 +112,7 @@ class Root extends Component {
         <input placeholder="Enter new Task" t-on-keyup="addTask" t-ref="add-input"/>
         <div class="task-list">
             <t t-foreach="displayedTasks" t-as="task" t-key="task.id">
-                <Task task="task" />
+                <Task task="task" /> <!-- Q3 -->
             </t>
         </div>
         <div class="task-panel" t-if="store.tasks.length">
