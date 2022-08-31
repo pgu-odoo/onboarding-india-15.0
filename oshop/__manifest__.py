@@ -9,10 +9,19 @@
     ],
     'data': [
         # static data go here
+        'data/shop_product_data.xml',
         'views/shop_menu.xml',
+        'views/product_view.xml',
+        'security/ir.model.access.csv',
     ],
     'assets': {
-        # 
+        'web.assets_backend_prod_only': [
+            'oshop/static/src/main.js',
+        ],
+        'web.assets_backend': [
+            'oshop/static/src/widgets/o_shop.js',
+            'oshop/static/src/widgets/shop.scss',
+        ],
     },
     'demo': [],
     'installable': True,

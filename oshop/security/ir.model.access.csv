@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+oshop.access_shop_order,access_shop_order,oshop.model_shop_order,,1,1,1,1
+oshop.access_shop_order_line,access_shop_order_line,oshop.model_shop_order_line,,1,1,1,1
