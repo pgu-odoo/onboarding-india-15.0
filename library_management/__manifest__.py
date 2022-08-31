@@ -27,6 +27,7 @@
 	],
 
 	'demo' : [
-
+		'demo/library_demo'
 	],
+	'license': 'LGPL-3',
 }
