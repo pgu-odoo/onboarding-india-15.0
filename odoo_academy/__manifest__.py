@@ -27,6 +27,8 @@
 	],
 
 	'demo' : [
-
+		'demo/academy_demo'
 	],
+    'license': 'LGPL-3',
+	
 }
