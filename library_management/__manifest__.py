@@ -7,7 +7,7 @@
 
 	'description' : """
 		Management Module to manage library:
-		- Courses
+		- Book
 		- sessions
 		- Attendes
 	""",
