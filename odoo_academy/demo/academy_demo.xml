@@ -20,7 +20,7 @@
 		<record model="academy.course" id="website_500">
 			<field name="name">Website 500</field>
 			<field name="description"></field>
-			<field name="level">advanced</field>
+			<field name="level">advance</field>
 		</record> 
 	</data>
 </odoo>
