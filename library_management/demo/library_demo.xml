@@ -4,46 +4,51 @@
 		<record model="library.book" id="book1">
 			<field name="name">Greatest Novelist and Their Novels</field>
 			<field name="author">W. Somerset Maugham</field>
+			<field name="editor"></field>
 			<field name="publisher">westland publication , London</field>
 			<field name="year_of_edition">1954</field>
 			<field name="ISBN">123-93-8099-432-2</field>
-			<field name="Level">novel</field>
+			<field name="genre">novel</field>
 		</record> 
 
 		<record model="library.book" id="book2">
 			<field name="name">Data Structure using C</field>
 			<field name="author">Sharad Kumar Verma</field>
+			<field name="editor"></field>
 			<field name="publisher">Thakur Publication , Lucknow</field>
 			<field name="year_of_edition">2015</field>
 			<field name="ISBN">978-93-5163-389-1</field>
-			<field name="Level">personal_development</field>
+			<field name="genre">personal_development</field>
 		</record> 
 
 		<record model="library.book" id="book3">
 			<field name="name">Client Server Computing</field>
 			<field name="author">Sharad Kumar Verma</field>
+			<field name="editor"></field>
 			<field name="publisher">Sun India Publication , New Delhi</field>
 			<field name="year_of_edition">2012</field>
 			<field name="ISBN">978-93-8067-432-2</field>
-			<field name="Level">personal_development</field>
+			<field name="genre">personal_development</field>
 		</record> 
 
 		<record model="library.book" id="book4">
-			<field name="name">Journey to the center of the earth/field>
-			<field name="author">jules verne/field>
+			<field name="name">Journey to the center of the earth</field>
+			<field name="author">jules verne</field>
+			<field name="editor"></field>
 			<field name="publisher">Penguin Random House , Europe</field>
 			<field name="year_of_edition">2001</field>
 			<field name="ISBN">764-90-7653-897-3</field>
-			<field name="Level">fiction</field>
+			<field name="genre">fiction</field>
 		</record> 
 
 		<record model="library.book" id="book5">
 			<field name="name">Starship troopers</field>
 			<field name="author">Robert Heinlein</field>
+			<field name="editor"></field>
 			<field name="publisher">Aleph Book Company,manchester</field>
 			<field name="year_of_edition">1978</field>
 			<field name="ISBN">265-56-8023-743-9</field>
-			<field name="Level">fantasy</field>
+			<field name="genre">fantasy</field>
 		</record> 
 	</data>
 </odoo>

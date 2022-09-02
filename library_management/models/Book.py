@@ -13,7 +13,7 @@ class book(models.Model):
 	publisher = fields.Char(string='Publisher name', required=True)
 	year_of_edition = fields.Char(string='Year of edition', required=True)
 	ISBN= fields.Char(string='ISBN Code', required=True)
-	genre= fields.Text(string='Level' , 
+	genre= fields.Selection(string='Genre' , 
 					   selection=[('fiction','Fiction'),
 							  	  ('novel', 'Novel'),
 							  	  ('fantasy','Fantasy'),

@@ -23,11 +23,13 @@
 	'depends' : ['base'],
 
 	'data' : [
-
+		'security/library_security.xml',
+		'security/ir.model.access.csv',
+		'views/library_menuitems.xml'
 	],
 
 	'demo' : [
-		'demo/library_demo'
+		'demo/library_demo.xml'
 	],
 	'license': 'LGPL-3',
 }
