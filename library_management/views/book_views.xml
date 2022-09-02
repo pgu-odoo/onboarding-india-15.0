@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="book_view_form">
+			<field name="name">library.book.form</field>
+			<field name="model">library.book</field>
+			<field name="arch" type="xml">
+				<form string="Book Form">
+					<sheet>
+						<h1><field name="name"/></h1>
+						<group>
+							<group>
+								<field name="author"/>
+							</group>
+							<group>
+								<field name="ISBN"/>
+							</group>
+							<group>
+								<field name="active"/>
+							</group>
+						</group>
+						<group>
+							<group>
+								<field name="editor"/>
+							</group>
+							<group>
+								<field name="publisher"/>
+							</group>
+						</group>
+						<group>
+							<group>
+								<field name="year_of_edition"/>
+							</group>
+							<group>
+								<field name="genre"/>
+							</group>
+						</group>
+						<notebook>
+							<page string="Note">
+								<field name="note"/>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="book_view_list">
+			<field name="name">library.book.list</field>
+			<field name="model">library.book</field>
+			<field name="arch" type="xml">
+				<tree string="Book List">
+					<field name="name"/>
+					<field name="note"/>
+					<field name="author"/>
+					<field name="editor"/>
+					<field name="ISBN"/>
+					<field name="publisher"/>
+					<field name="genre"/>
+					<field name="year_of_edition"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="book_view_search">
+			<field name="name">library.book.search</field>
+			<field name="model">library.book</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="author"/>
+					<field name="ISBN"/>
+				</search>
+			</field>
+		</record>
+	</data>
+</odoo>

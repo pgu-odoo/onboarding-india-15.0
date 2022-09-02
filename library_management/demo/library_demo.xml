@@ -3,6 +3,7 @@
 	<data noupdate="1">
 		<record model="library.book" id="book1">
 			<field name="name">Greatest Novelist and Their Novels</field>
+			<field name="note">This book contains story of greatest novelist and their novels.</field>
 			<field name="author">W. Somerset Maugham</field>
 			<field name="editor"></field>
 			<field name="publisher">westland publication , London</field>
@@ -13,6 +14,7 @@
 
 		<record model="library.book" id="book2">
 			<field name="name">Data Structure using C</field>
+			<field name="note">This book is all about how data structure is with C-language.</field>
 			<field name="author">Sharad Kumar Verma</field>
 			<field name="editor"></field>
 			<field name="publisher">Thakur Publication , Lucknow</field>
@@ -23,6 +25,7 @@
 
 		<record model="library.book" id="book3">
 			<field name="name">Client Server Computing</field>
+			<field name="note">This book contains content of Client-server computing.</field>
 			<field name="author">Sharad Kumar Verma</field>
 			<field name="editor"></field>
 			<field name="publisher">Sun India Publication , New Delhi</field>
@@ -33,7 +36,8 @@
 
 		<record model="library.book" id="book4">
 			<field name="name">Journey to the center of the earth</field>
-			<field name="author">jules verne</field>
+			<field name="note"></field>
+			<field name="author">jules verne</field>x
 			<field name="editor"></field>
 			<field name="publisher">Penguin Random House , Europe</field>
 			<field name="year_of_edition">2001</field>
@@ -43,6 +47,7 @@
 
 		<record model="library.book" id="book5">
 			<field name="name">Starship troopers</field>
+			<field name="note"></field>
 			<field name="author">Robert Heinlein</field>
 			<field name="editor"></field>
 			<field name="publisher">Aleph Book Company,manchester</field>

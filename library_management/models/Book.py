@@ -8,6 +8,7 @@ class book(models.Model):
 	_description = 'Book Info'
 
 	name = fields.Char(string='Title', required=True)
+	note = fields.Text(string='Note')
 	author = fields.Char(string='author name', required=True)
 	editor = fields.Char(string='editor name')
 	publisher = fields.Char(string='Publisher name', required=True)
