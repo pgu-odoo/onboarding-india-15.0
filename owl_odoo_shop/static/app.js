@@ -75,7 +75,7 @@ class ProductList extends Component{
 
     setup() {
         this.items = useState([]);
-        bus.addEventListener("update_list", (data) => { this.onUpdate(data)});
+        bus.addEventListener("update_list", (data) => { this.onUpdate(data) });
     }
 
     onUpdate(data) {

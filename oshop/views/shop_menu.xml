@@ -12,3 +12,5 @@
               action="action_shop_order">
     </menuitem>
 </odoo>
+
+<!-- https://www.odoo.com/documentation/15.0/developer/reference/frontend/javascript_reference.html#client-actions -->

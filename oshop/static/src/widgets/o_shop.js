@@ -20,7 +20,7 @@ class Search extends Component {
     onSearch() {
         var name = document.getElementById('product_name').value;
         // fetch
-        this.env.services.rpc({  // find
+        this.env.services.rpc({  // rpc: https://www.youtube.com/watch?v=MdaGuP6-bKs    
             route: "/search",
             params: {'name': name},
         })
@@ -65,10 +65,12 @@ class ProductList extends Component {
         </div>
         `;
     static components = { Items };
+// we can also use child component like this by mentioning outside class
+// ProductList.components = { Items }, will be same, need to check first
 
     setup(){
         this.items = useState([]);
-        this.env.bus.on("update_list", this, (data) => {this.onUpdate(data)});
+        this.env.bus.on("update_list", this, (data) => {this.onUpdate(data)});  // Event system
     }
     onUpdate(data){
         for (var i=0; i < data['products'].length; i++){
@@ -196,6 +198,16 @@ export const LaunchShopOrderWidget = AbstractAction.extend({
             return;
         }
         this.component = new Shop();
-        return this.component.mount(this.el.firstElementChild);
+        return this.component.mount(this.el.firstElementChild);  // el means element
     }
 });
+
+
+/**
+ * Event system: a simple system which allows adding listeners and triggering events.
+ * Base Event system, It implements a simple bus pattern. We have 4 main methods:
+ *             on: this is used to register a listener on an event.
+ *             off: useful to remove events listener.
+ *             once: this is used to register a listener that will only be called once.
+ *             trigger: trigger an event. This will cause each listeners to be called.              
+ */
