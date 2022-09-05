@@ -13,7 +13,7 @@
 								<field name="author"/>
 							</group>
 							<group>
-								<field name="ISBN"/>
+								<field name="isbn"/>
 							</group>
 							<group>
 								<field name="active"/>
@@ -54,7 +54,7 @@
 					<field name="note"/>
 					<field name="author"/>
 					<field name="editor"/>
-					<field name="ISBN"/>
+					<field name="isbn"/>
 					<field name="publisher"/>
 					<field name="genre"/>
 					<field name="year_of_edition"/>
@@ -68,7 +68,7 @@
 			<field name="arch" type="xml">
 				<search>
 					<field name="author"/>
-					<field name="ISBN"/>
+					<field name="isbn"/>
 				</search>
 			</field>
 		</record>

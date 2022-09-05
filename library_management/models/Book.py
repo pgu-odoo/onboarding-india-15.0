@@ -1,6 +1,7 @@
 #_*_ coding: utf-8 _*_
 
 from odoo import models,fields,api
+from odoo.exceptions import ValidationError
 
 class book(models.Model):
 
@@ -9,11 +10,10 @@ class book(models.Model):
 
 	name = fields.Char(string='Title', required=True)
 	note = fields.Text(string='Note')
-	author = fields.Char(string='author name', required=True)
-	editor = fields.Char(string='editor name')
+	author = fields.Char(string='Author name', required=True)
+	editor = fields.Char(string='Editor name')
 	publisher = fields.Char(string='Publisher name', required=True)
 	year_of_edition = fields.Char(string='Year of edition', required=True)
-	ISBN= fields.Char(string='ISBN Code', required=True)
 	genre= fields.Selection(string='Genre' , 
 					   selection=[('fiction','Fiction'),
 							  	  ('novel', 'Novel'),
@@ -24,3 +24,11 @@ class book(models.Model):
 							  	  ('personal_development','Personal_Development')],
 					   copy=False)
 	active = fields.Boolean(string='Active' , default=True)
+
+	isbn= fields.Char(string='ISBN Code' , required=True)
+
+	@api.constrains('isbn')
+	def _size_isbn(self):
+		for record in self:
+			if len(self.isbn) > 12:
+				raise ValidationError('The length of ISBN code should must be of 13 ')
