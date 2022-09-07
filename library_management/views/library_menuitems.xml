@@ -12,9 +12,24 @@
 			</field>
 		</record>
 
+		<record model="ir.actions.act_window" id="rental_list_action">
+			<field name="name">Rentals</field>
+			<field name="res_model">library.rental</field>
+			<field name="view_mode">tree,form</field>
+			<field name="help" type="html">
+				<p class="o_view_nocontent_smiling_face">
+					Do the first rental
+				</p>
+			</field>
+		</record>
+
 		<menuitem name="Library Management" id="menu_book" sequence="1"/>
 		<menuitem name="Library Management" id="menu_book_sub" parent="menu_book" sequence="2"/>
-		<menuitem name="Books" id="menu_book_courses" parent="menu_book_sub" sequence="3" action="book_list_action"/>
+		<menuitem name="Books" id="menu_book_courses" parent="menu_book_sub" sequence="3"
+		action="book_list_action"/>
+		<menuitem name="Rentals" id="menu_book_rentals" parent="menu_book_sub" sequence="4"
+		action="rental_list_action"/>
+
 
 	</data>
 </odoo>

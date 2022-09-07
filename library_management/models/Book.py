@@ -25,6 +25,10 @@ class book(models.Model):
 					   copy=False)
 	active = fields.Boolean(string='Active' , default=True)
 
+	rental_ids = fields.One2many(comodel_name='library.rental',
+								inverse_name='book_id',
+								string='Rentals')
+
 	isbn= fields.Char(string='ISBN Code' , required=True)
 
 	@api.constrains('isbn')

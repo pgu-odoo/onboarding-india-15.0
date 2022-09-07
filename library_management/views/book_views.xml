@@ -39,6 +39,9 @@
 							<page string="Note">
 								<field name="note"/>
 							</page>
+							<page string="Rentals">
+								<field name="rental_ids"/>
+							</page>
 						</notebook>
 					</sheet>
 				</form>

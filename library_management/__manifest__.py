@@ -26,7 +26,8 @@
 		'security/library_security.xml',
 		'security/ir.model.access.csv',
 		'views/library_menuitems.xml',
-		'views/book_views.xml'
+		'views/book_views.xml',
+		'views/rentals_views.xml',
 	],
 
 	'demo' : [
