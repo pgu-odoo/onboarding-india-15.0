@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="view_bookcopies_inherits_library">
+			<field name="name">book.copies.inherits.library></field>
+			<field name="model">book.copies</field>
+			<field name="arch" type="xml">
+				<form string="Book Copies Form">
+					<sheet>
+						<!-- <h1><field name="name"/></h1>	 -->
+						<group>
+							<group>
+								<field name="rental_ids"/>
+								<!-- <field name="author"/>
+								<field name="editor"/> -->
+							</group>
+							<!-- <group>
+								<field name="intref_ids"/>
+								<field name="publisher"/>
+								<field name="isbn"/>
+							</group> -->
+							<notebook>
+								<page string="Internal Reference">
+									<!-- <field name="internal_ref"/> -->
+								</page>
+							</notebook>
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+	</data>
+</odoo>

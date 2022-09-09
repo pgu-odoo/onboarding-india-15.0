@@ -3,3 +3,4 @@ librarian,librarian,model_library_book,group_library_admin,1,1,1,1
 customer,customer,model_library_book,,1,0,0,0
 rental_admin,Rental admin,model_library_rental,group_library_admin,1,1,1,1
 rental_read_all,rental read all,model_library_rental,,1,0,0,0
+library_management.access_book_copies,access_book_copies,library_management.model_book_copies,base.group_user,1,1,1,1

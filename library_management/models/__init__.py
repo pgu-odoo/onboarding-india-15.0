@@ -2,3 +2,4 @@
 
 from . import Book
 from . import rental
+from . import book_copies
