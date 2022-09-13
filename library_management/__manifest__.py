@@ -20,7 +20,7 @@
 
 	'version' : '0.1' ,
 
-	'depends' : ['base', 'web_map'],
+	'depends' : ['base', 'web_map','website'],
 
 	'data' : [
 		'security/library_security.xml',
@@ -30,6 +30,7 @@
 		'views/rentals_views.xml',
 		'views/bookcopies_views_inherit.xml',
 		'wizard/book_wizard_view.xml',
+		'views/library_web_templates.xml'
 	],
 
 	'demo' : [

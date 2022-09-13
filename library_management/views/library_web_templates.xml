@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data>
+		<template id="book_website">
+			<t t-call="website.layout">
+				<t t-set="title">Library</t>
+				<div class="oe_structure">
+					<div class="container">
+						<h1>Books</h1>
+						<t t-foreach="books" t-as="book">
+							<h3>
+								<t t-esc="book.name"/>
+							</h3>
+							<p>Description :
+								<t t-esc="book.note"/>
+							</p>
+							<p>
+								<t t-esc="book.author"/>
+								<t t-esc="book.editor"/>
+							</p>
+							<p>Publisher :
+								<t t-esc="book.publisher"/>
+							</p>
+							<p>Year of Edition : 
+								<t t-esc="book.year_of_edition"/>
+							</p>
+							<p>Genre :
+								<t t-esc="book.genre"/>
+							</p>
+							<p>ISBN:
+								<span t-field="book.isbn"/>
+							</p>
+
+							<strong>Rentals</strong>
+							<t t-foreach="book.rental_ids" t-as="rental">
+								<p>
+									<a t-attf-href="/library/{{ slug(rental)}}">
+										<t t-esc="rental.name"/>
+									</a>
+								</p>
+								<p>Last Modified:
+									<i t-field="rental.write_date" t-field-options='{"format":"long"}'/>
+								</p>
+							</t>
+							<t t-if="not book.rental_ids">
+								<p>No Rentals Currently</p>
+							</t>
+						</t>
+					</div>
+				</div>
+			</t>
+		</template>
+
+		<template id="rental_website">
+			<t t-call="website.layout">
+				<t t-set="title">Rentals</t>
+				<div class="oe_structure">
+					<div class="container">
+						<h3 t-field="rental.name"/>
+						<p>Last Modified:
+							<i t-field="rental.write_date" t-field-options='{"format":"long"}'/>
+						</p>
+						<p>Book:
+							<t t-esc="rental.book_id.name"/>
+						</p>
+						<h3>Customers:</h3>
+						<ul>
+							<t t-foreach="rental.customer_id" t-as="customer">
+								<li>
+									<span t-field="customer.name"/>
+								</li>
+							</t>
+						</ul>
+					</div>
+				</div>
+			</t>
+		</template>
+	</data>
+</odoo>
