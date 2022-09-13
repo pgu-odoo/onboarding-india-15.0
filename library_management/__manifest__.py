@@ -29,6 +29,7 @@
 		'views/book_views.xml',
 		'views/rentals_views.xml',
 		'views/bookcopies_views_inherit.xml',
+		'wizard/book_wizard_view.xml',
 	],
 
 	'demo' : [

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="library_book_wizard_form_view">
+			<field name="name">library.book.wizard.form</field>
+			<field name="model">library.book.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Create Rented Book">
+					<group>
+						<field name="rental_ids"/>
+					</group>
+
+					<footer>
+						<button  name="library_management.rental_list_action" type="action"
+							string="Show" class="oe_highlight"/>
+						or
+						<button special="cancel" string="Cancel"/>
+					</footer>
+				</form>
+			</field>
+		</record>
+
+		<record id="lunch_book_wizard" model="ir.actions.act_window">
+			<field name="name">Rented Book</field>
+			<field name="res_model">library.book.wizard</field>
+			<field name="view_mode">form</field>
+			<field name="binding_model_id" ref="library_management.model_library_rental"/>
+			<field name="target">new</field>
+		</record>
+	</data>
+</odoo>
