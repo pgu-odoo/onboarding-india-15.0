@@ -1,7 +1,7 @@
 from xmlrpc import client
 
 url = 'http://localhost:8069'
-db = 'test130'
+db = 'test131'
 username = 'admin'
 password = 'admin'
 
@@ -20,10 +20,21 @@ print(model_access)
 
 rentals = models.execute_kw(db, uid, password, 
 							'library.rental' , 'search_read' ,
-							[[['write_date' ,'<' , '2022-09-13 13:27:44.655457']]])
-print(rentals)			
+							[[['write_date' ,'<' , '2022-09-14 07:28:26.871528']]])
+print(rentals)		
+
+fetch_book = models.execute_kw(db, uid, password,
+									'library.rental', 'search' ,
+									[[['name' , '=', 'Client Server Computing']]])
+print(fetch_book)
+
+fetch_customer = models.execute_kw(db, uid, password,
+									'library.rental', 'search' ,
+									[[['customer_id' , '=', 'Deco Addict']]])
+print(fetch_customer)
 
 update_rental = models.execute_kw(db, uid, password,
-								  'library.rental' , 'write',
-								  [[1],{'intref': 9 }])	
+ 								  'library.rental' , 'write',
+								  [[1],{'customer_id':fetch_customer[0],
+								  		'intref' : 7 ,}])	
 print(update_rental)
