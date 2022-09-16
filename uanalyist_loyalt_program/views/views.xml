@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="loyalt_program_menu" name="Loyalt Program" parent="sale.sale_menu_root" sequence="5"/>
+        <menuitem id="configuration_menu" name="Configuration" parent="uanalyist_loyalt_program.loyalt_program_menu"
+                  action="uanalyist_loyalt_program.configuration_action" sequence="1"/>
+        <menuitem id="loyalty_transaction_menu" name="Loyalty Transaction" parent="loyalt_program_menu"
+                  action="uanalyist_loyalt_program.loyalty_transaction_action" sequence="2"/>
+        <menuitem id="ranking_menu" name="Ranking" parent="loyalt_program_menu" action="uanalyist_loyalt_program.ranking_action" sequence="3"/>
+    </data>
+</odoo>

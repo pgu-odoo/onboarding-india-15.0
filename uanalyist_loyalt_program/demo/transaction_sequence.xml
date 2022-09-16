@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="seq_loyalty_program_transaction" model="ir.sequence">
+            <field name="name">loyalty program transaction sequence</field>
+            <field name="code">loyalty.program.transaction.sequence</field>
+            <field name="prefix">T-</field>
+            <field name="padding">4</field>
+        </record>
+    </data>
+</odoo>
