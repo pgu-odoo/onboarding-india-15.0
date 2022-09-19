@@ -20,8 +20,8 @@ class LoyaltyProgramConfig(models.Model):
         ('customer', 'Customer'),
     ], 'Role', required=True,)
     based_on_state = fields.Selection([
-        ('a', 'Product'),
-        ('c', 'order'),
+        ('product', 'Product'),
+        ('order', 'order'),
     ], 'Based on',required=True, )
     company_id = fields.Many2one(comodel_name='res.company', string='Company', store=True, default=lambda self: self.env.company.id)
     company_currency_id = fields.Many2one(string='Company Currency', readonly=True, related='company_id.currency_id')
@@ -36,13 +36,11 @@ class LoyaltyProgramConfig(models.Model):
                     raise ValidationError(_("To Date Must be Greater than From Date"))
 
     @api.model
-    def _autocheck_enddate(self):
+    def auto_deactivated_loyalty_program(self):
         ''' This method is called from a cron job.
-        It is used to deactived loyalty program configure if it is over'''
+        It is used to deactived loyalty program configure if it is expired'''
 
         records = self.search([])
         for rec in records:
             if rec.to_date < date.today():
-                print('\n\n end date is finished')
                 rec.active = False
-        print('call _autocheck_enddate',records)

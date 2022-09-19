@@ -7,29 +7,24 @@
             <field name="arch" type="xml">
                 <form string="">
                     <sheet>
-
                         <div class="oe_title">
                             <h1>
                                 <field name="name" placeholder="Name"/>
                             </h1>
-
                         </div>
                         <group>
                             <group>
                                 <field name="partner_id"/>
                                 <field name="date"/>
-                                <field name="value"/>
-
+<!--                                <field name="value"/>-->
+                                <field name="sale_invoice_id"/>
                             </group>
                             <group>
                                 <field name="points"/>
-
                                 <field name="adds"/>
                                 <field name="redemption"/>
                                 <field name="balance"/>
                                 <field name="operation_type"/>
-                                <field name="sale_invoice_id"/>
-
                             </group>
                             <field name="description"/>
                         </group>
@@ -50,8 +45,7 @@
                     <field name="name"/>
                     <field name="partner_id"/>
                     <field name="date"/>
-                    <field name="value" sum="Total Value"/>
-                    <field name="points"/>
+<!--                    <field name="value" sum="Total Value"/>-->
                     <field name="adds"/>
                     <field name="redemption"/>
                     <field name="balance"/>

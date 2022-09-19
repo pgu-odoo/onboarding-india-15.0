@@ -9,3 +9,4 @@ class ResConfigSettings(models.TransientModel):
 
     loyalty_points = fields.Float(string="Default loyalty", related='company_id.store_loyalty_points', readonly=False)
     value_for_every_point = fields.Monetary(string='Value For Every Point', currency_field='company_currency_id',related='company_id.store_value_for_every_point', readonly=False)
+    product = fields.Many2one('product.product', string='product' ,related='company_id.store_product', readonly=False)

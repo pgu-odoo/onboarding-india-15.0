@@ -30,7 +30,6 @@
         'views/res_partner_views.xml',
         'views/sale_invoice.xml',
         'views/views.xml',
-
     ],
     # only loaded in demonstration mode
     'demo': [

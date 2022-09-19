@@ -5,14 +5,14 @@
             <field name="name">loyalty.redemption.transaction.form</field>
             <field name="model">loyalty.redemption.transaction.wizard</field>
             <field name="arch" type="xml">
-                <form string="">
+                <form>
                     <sheet>
                         <group>
                             <field name="points"/>
                         </group>
                         <footer>
                             <button string="Cancel" class="btn btn-secondary" special="cancel"/>
-                            <button string="Redemption" name="action_create_redemption1" type="object" class="btn btn-secondary"/>
+                            <button string="Redemption" name="action_create_redemption" type="object" class="btn btn-secondary"/>
                         </footer>
                     </sheet>
                 </form>

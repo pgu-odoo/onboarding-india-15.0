@@ -21,11 +21,12 @@
                             <label for="value_for_every_point" string="Value" class="col-lg-3 o_light_label"/>
                             <field name ="value_for_every_point"/>
                         </div>
-
+                        <div class ="content-group">
+                            <label for="product" string="product" class="col-lg-3 o_light_label"/>
+                            <field name ="product"/>
+                        </div>
                     </div>
                 </div>
-<!--                <field name="loyalty_points"/>-->
-<!--                <field name="value_for_every_point"/>-->
             </xpath>
         </field>
     </record>

@@ -19,7 +19,6 @@ class ResPartner(models.Model):
             'type': 'ir.actions.act_window',
             'res_model': 'loyalty.program.transaction',
             'view_type': 'tree',
-            # 'view_mode': 'form',
             'view_id': self.env.ref('uanalyist_loyalt_program.loyalty_transaction_tree_view').id,
             'views': [(self.env.ref('uanalyist_loyalt_program.loyalty_transaction_tree_view').id, 'tree')],
             'target': 'current',

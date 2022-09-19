@@ -8,3 +8,4 @@ class ResCompany(models.Model):
 
     store_loyalty_points = fields.Float(string="Loyalty Points")
     store_value_for_every_point = fields.Monetary(string="Value For Every Point")
+    store_product = fields.Many2one('product.product', string='product')

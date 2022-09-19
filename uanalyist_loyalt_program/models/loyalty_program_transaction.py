@@ -11,11 +11,10 @@ class LoyaltyProgramTransaction(models.Model):
     name = fields.Char(string='Name', index=True, required=True, )
     partner_id = fields.Many2one('res.partner', string='Contact')
     date = fields.Date(string='Date')
-    value = fields.Float(string='Value')
     points = fields.Integer(string='Points')
     operation_type = fields.Selection([
-        ('a', 'Adding Points'),
-        ('b', 'Redemption')], 'Type', index=True, )
+        ('adding', 'Adding Points'),
+        ('redemption', 'Redemption')], 'Type', index=True, )
     adds = fields.Integer(string='Add')
     redemption = fields.Integer(string='Redemption')
     balance = fields.Float(string='Balance')
