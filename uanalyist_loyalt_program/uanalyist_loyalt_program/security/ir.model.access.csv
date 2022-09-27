@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_loyalty_program_config,loyalty.program.config,model_loyalty_program_config,base.group_user,1,1,1,1
+access_loyalty_program_transaction,loyalty.program.transaction,model_loyalty_program_transaction,base.group_user,1,1,1,1
+access_loyalty_program_ranking,loyalty.program.ranking,model_loyalty_program_ranking,base.group_user,1,1,1,1
+access_loyalty_redemption_transaction_wizard,access_loyalty_redemption_transaction_wizard,model_loyalty_redemption_transaction_wizard,base.group_user,1,1,1,1
+access_res_config_settings,access_res_config_settings,model_res_config_settings,base.group_user,1,1,1,1
