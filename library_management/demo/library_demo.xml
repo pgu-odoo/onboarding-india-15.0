@@ -6,7 +6,7 @@
 			<field name = "author">Irwin Shaw</field>
 			<field name = "editor">Richard Bracken Douglas Stewart</field>
 			<field name = "publisher">Delacorte Press</field>
-			<field name = "year_edition ">sepetember,1970</field>
+			<field name = "isnb">09832432123212</field>
 		</record>
 
 		<record model = "library.book" id="libraray_102"> 
@@ -14,7 +14,8 @@
 			<field name = "author">Irwin Shaw</field>
 			<field name = "editor">NORA ROBERTS</field>
 			<field name = "publisher">Macmillan</field>
-			<field name = "year_edition ">February ,1978.</field>
+			<field name = "isnb">09832432123212</field>
+
 		</record>
 		
 
@@ -23,7 +24,8 @@
 			<field name = "author"></field>
 			<field name = "editor"></field>
 			<field name = "publisher"></field>
-			<field name = "year_edition "></field>
+			<field name = "isnb">09832432123211</field>
+
 		</record>
 		
 
@@ -32,7 +34,8 @@
 			<field name = "author">Harper Lee</field>
 			<field name = "editor">Tay HohoffS</field>
 			<field name = "publisher">J. B. Lippincott and Co.</field>
-			<field name = "year_edition ">October 11, 1988</field>
+			<field name = "isnb">09832432123212</field>
+
 		</record>
 		
 
@@ -41,7 +44,8 @@
 			<field name = "author">J. D. Salinger</field>
 			<field name = "editor"></field>
 			<field name = "publisher">Little, Brown and Company</field>
-			<field name = "year_edition">1948 </field>
+			<field name = "isnb">09832432123213</field>
+
 		</record>
 		
 

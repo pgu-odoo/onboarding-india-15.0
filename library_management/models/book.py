@@ -13,5 +13,5 @@ class Book(models.Model):
 	author = fields.Text(string = 'Author')
 	editor = fields.Text(string = 'Editor')
 	publisher = fields.Text(string = 'publisher')
-	year_edition = fields.Date(date= 'Edition_Date')
+	isnb = fields.Integer(string = 'ISNB Number')
 	
