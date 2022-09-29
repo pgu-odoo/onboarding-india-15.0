@@ -11,6 +11,8 @@
 				</p>
 			</field>
 		</record>
+		
+
 		<menuitem name="Odoo Library"
 				  id="menu_library"
 				  sequence="1"/>
@@ -19,6 +21,5 @@
 
 		<menuitem id="menu_library_books" name="Books" parent="menu_library_sub" sequence="3"
 					action="book_list_action"/>
-
 	</data>
 </odoo>   
