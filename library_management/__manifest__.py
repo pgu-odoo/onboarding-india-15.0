@@ -1,30 +1,33 @@
-{
-    'name': "Library Management",
-    'version': '1.0',
-    'summary' : """Manage the books""",
-     'description': """
-         Library Management for manage the books
-      """,
-      'author': "odoo",
-
-     'website': 'https://www.odoo.com',
-     'category' : 'Management',
-
-     'depends': ['base'],
-
-     'data': [
-        'security/library_security.xml',
-        'security/ir.model.access.csv',
-        'views/library_menuitem.xml',
-        'views/book_views.xml',
-       
-        
-     ],
-
-     'demo': [
-        'demo/Library.demo.xml',
-     ],
-    
-}
 #-*- coding: utf-8 -*-
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
+{
+	'name' : 'Odoo Local Library',
+
+	'summary' : """
+	 	Library App to Manage books 
+	""",
+
+	'description' : """
+		Library Modeule to Manage books
+		- Check Out books
+		- Oraganize books
+	""",
+
+	'author' : 'Odoo',
+
+	'category' : 'institutional management',
+
+	'version' : '1.0',
+
+	'website' : "https://wwww.odoo.com",
+
+	'depends' : ['base'],
+
+	'data' : [
+
+	],
+
+	'demo' : [
+
+	],
+
+}
