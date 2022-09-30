@@ -11,12 +11,7 @@
                             <h1> <field name="author"/></h1>
                             <h1><field name="editor"/></h1>
                             <h1><field name="publisher"/></h1>
-                            <group>
-                                <group>
-                                    <field name="active"/>
-                                </group>
-                                
-                            </group>
+                            
                             
                     </sheet>
                 </form>
