@@ -1,0 +1,8 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+
+book_admin,book admin,model_library_book,group_library_admin,1,1,1,1
+
+
+book_read_all,book read all,model_library_book,,1,0,0,0
+
+

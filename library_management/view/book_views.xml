@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="book_view_form">
+            <field name="name">library.book.form</field>
+            <field name="model">library.book</field>
+            <field name="arch" type="xml">
+                <form string="Book Form">
+                    <sheet>
+                            <h1><field name="name"/></h1>
+                            <h1> <field name="author"/></h1>
+                            <h1><field name="editor"/></h1>
+                            <h1><field name="publisher"/></h1>
+                            
+                            
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="book_view_list">
+            <field name="name">library.book.list</field>
+            <field name="model">library.book</field>
+            <field name="arch" type="xml">
+                <tree string="Book list">
+                    <field name="name"/>
+                    <field name="author"/>
+                    <field name="editor"/>
+                    <field name="publisher"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="book_view_search">
+            <field name="name">library.book.search</field>
+            <field name="model">library.book</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="author"/>
+                </search>
+            </field>
+        </record>
+
+    </data>
+</odoo>
+

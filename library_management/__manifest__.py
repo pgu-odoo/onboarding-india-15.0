@@ -1,33 +1,29 @@
-#-*- coding: utf-8 -*-
 {
-	'name' : 'Odoo Local Library',
+    'name': "Odoo Local Library ",
+    'version': '1.0',
+    'summary' : """Manage the books""",
+     'description': """
+         Library Management for manage the books
+      """,
+      'author': "odoo",
 
-	'summary' : """
-	 	Library App to Manage books 
-	""",
+     'website': 'https://www.odoo.com',
+     'category' : 'Management',
 
-	'description' : """
-		Library Modeule to Manage books
-		- Check Out books
-		- Oraganize books
-	""",
+     'depends': ['base'],
 
-	'author' : 'Odoo',
+     'data': [
+        'security/library_security.xml',
+        'security/ir.model.access.csv',
+        'view/Library_menuitem.xml',
+        'view/book_views.xml',
+     ],
 
-	'category' : 'institutional management',
-
-	'version' : '1.0',
-
-	'website' : "https://wwww.odoo.com",
-
-	'depends' : ['base'],
-
-	'data' : [
-
-	],
-
-	'demo' : [
-
-	],
-
+     'demo': [
+        'demo/library_demo.xml'
+       
+     ],
+    
 }
+#-*- coding: utf-8 -*-
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
