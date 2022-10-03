@@ -2,7 +2,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import  models, fields, api
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError 
 
 
 class Book(models.Model):
@@ -15,10 +15,10 @@ class Book(models.Model):
 	editor = fields.Text(string = 'Editor')
 	publisher = fields.Text(string = 'publisher')
 	isnb = fields.Integer(string = 'ISNB Number')
-	active = fields.Boolean(string = "Active" default="true")
+	active = fields.Boolean(string = "Active")
 
-	@api.onchange('isnb')
-	def _onchange_isnb(self):
+	rental_ids = fields.One2many(comodel_name = 'library.rental' ,
+								 inverse_name='book_id',
+								 string = 'Rentals')
 
-		if self.isnb>13:
-			raise UserError("isnb not be greater than ")
+     

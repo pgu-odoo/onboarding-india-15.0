@@ -7,12 +7,18 @@
             <field name="arch" type="xml">
                 <form string="Book Form">
                     <sheet>
-                            <h1><field name="name"/></h1>
-                            <h1> <field name="author"/></h1>
-                            <h1><field name="editor"/></h1>
-                            <h1><field name="publisher"/></h1>
-                            
-                            
+                            <h4><field name="name"/></h4>
+                            <group>
+                                <field name="author"/>
+                                <field name="editor"/>
+                                <field name="publisher"/>
+                                <field name="isnb"/>   
+                            </group>
+                            <notebook>
+                                <page string="Rentals">
+                                    <field name='rental_ids'/>
+                                </page>
+                            </notebook>
                     </sheet>
                 </form>
             </field>
@@ -26,6 +32,7 @@
                     <field name="author"/>
                     <field name="editor"/>
                     <field name="publisher"/>
+                     <field name="isnb"/>
                 </tree>
             </field>
         </record>
@@ -35,6 +42,7 @@
             <field name="arch" type="xml">
                 <search>
                     <field name="name"/>
+                    <field name="isnb"/>
                     <field name="author"/>
                 </search>
             </field>
