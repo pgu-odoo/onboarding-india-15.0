@@ -2,7 +2,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import  models, fields, api
-from odoo.exceptions import UserError 
 
 
 class Book(models.Model):
@@ -17,7 +16,7 @@ class Book(models.Model):
 	isnb = fields.Integer(string = 'ISNB Number')
 	active = fields.Boolean(string = "Active")
 
-	rental_ids = fields.One2many(comodel_name = 'library.rental' ,
+	rental_ids = fields.One2many(comodel_name = 'library.rental',
 								 inverse_name='book_id',
 								 string = 'Rentals')
 

@@ -23,6 +23,7 @@
                 </form>
             </field>
         </record>
+
         <record model="ir.ui.view" id="book_view_list">
             <field name="name">library.book.list</field>
             <field name="model">library.book</field>
@@ -36,6 +37,7 @@
                 </tree>
             </field>
         </record>
+
         <record model="ir.ui.view" id="book_view_search">
             <field name="name">library.book.search</field>
             <field name="model">library.book</field>
@@ -48,6 +50,7 @@
             </field>
         </record>
 
+        
     </data>
 </odoo>
 
