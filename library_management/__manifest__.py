@@ -12,7 +12,7 @@
 
      'category' : 'Management',
 
-     'depends': ['base'],
+     'depends': ['sale'],
 
      'license': 'OEEL-1',
 
@@ -22,6 +22,7 @@
         'views/library_menuitem.xml',
         'views/book_views.xml',
         'views/rental_views.xml',
+        #'views/sale_views_inherit.xml',
      ],
  
      'demo': [

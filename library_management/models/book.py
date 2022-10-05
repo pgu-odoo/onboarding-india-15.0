@@ -14,8 +14,7 @@ class Book(models.Model):
 	editor = fields.Text(string = 'Editor')
 	publisher = fields.Text(string = 'publisher')
 	isnb = fields.Integer(string = 'ISNB Number')
-	active = fields.Boolean(string = "Active")
-
+	
 	rental_ids = fields.One2many(comodel_name = 'library.rental',
 								 inverse_name='book_id',
 								 string = 'Rentals')

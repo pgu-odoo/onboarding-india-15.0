@@ -11,7 +11,7 @@ class Rental(models.Model):
 
 	book_id = fields.Many2one(comodel_name="library.book",
 								string="Book",
-								ondelete = 'cascade',
+		 						ondelete = 'cascade',
 								required = True)
 
 	name =  fields.Char(string="Title" , related='book_id.name')
