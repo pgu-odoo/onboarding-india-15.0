@@ -17,18 +17,18 @@
      'license': 'OEEL-1',
 
      'data': [
-        'security/library_security.xml',
-        'security/ir.model.access.csv',
-        'views/library_menuitem.xml',
-        'views/book_views.xml',
-        'views/rental_views.xml',
+        # 'security/library_security.xml',
+        # 'security/ir.model.access.csv',
+        # 'views/library_menuitem.xml',
+        # 'views/book_views.xml',
+        # 'views/rental_views.xml',
         #'views/sale_views_inherit.xml',
         #'report/rental_report_templete.xml',
         #'views/library_web_templete.xml',
             ],
  
      'demo': [
-        'demo/library_demo.xml'
+        # 'demo/library_demo.xml'
        
      ],
     

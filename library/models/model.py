@@ -4,10 +4,10 @@
 from odoo import  models, fields, api
 
 class Library(models.Model):
-	_name = "schhol.library"
+	_name = "school.library"
 	partner_id = fields.Many2one('res_partner',string='customer')
 
 class LibraryOrder(models.Model):
-	_name = "schhol.library order"
+	_name = "school.library_order"
 
 
