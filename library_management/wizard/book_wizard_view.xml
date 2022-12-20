@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="library_book_wizard_form_view">
+			<field name="name">library.book.wizard.form</field>
+			<field name="model">library.book.wizard</field>
+			<field name="arch" type="xml">
+				<group>
+					<field name="rental_id"/>
+					<field name="book_customer_ids" invisible='1'/>
+					<field name="customer_ids" domain="[('id','in','book_customer_ids')]">
+
+				</group>
+			</field>
+		</record>
+		</record>
+	</data>
+</odoo>

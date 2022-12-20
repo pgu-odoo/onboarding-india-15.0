@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<templete id="book_website">
+			<t t-cell="website_layout">
+				<t t-set="title">Library</t>
+				<div class="oe_structure">
+					<div class="container">
+						<h1>Books</h1>
+						<t t-foreach="books" t-as="book">
+							<h3>
+								<t t-esc="book.id"/>
+								<t t-esc="book.name"/>
+							</h3>
+
+							<p>Author:
+								<span t-field="book.author"/>
+							</p>
+
+							<p>ISNB : 
+								<span t-field="book.isnb"/>
+							</p>
+							
+						</t>
+					</div>
+				</div>
+			</t>
+		</templete>
+	</data>
+</odoo>

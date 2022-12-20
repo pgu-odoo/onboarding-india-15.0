@@ -17,7 +17,3 @@ class Rental(models.Model):
 	name =  fields.Char(string="Title" , related='book_id.name')
 	
 	customer_ids = fields.Many2many(comodel_name = 'res_partner' , string = 'Customers')
-
-
-
-

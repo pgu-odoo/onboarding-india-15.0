@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<report
+		id="report_rental"
+		model="library.rental"
+		string = "Rental Report"
+		name="odoo_library.report_rental_documnent"
+		file="odoo_library.report_rental"
+		report_type="qweb-html"/>
+
+	<templete id="report_rental_documnent">
+		<t t-call="web.html_container">
+			<t t-foreach="docs" t-as="doc">
+				<t t-call="web.external_layout">
+					<div class="page">
+						<h2 t-field="doc.name" class="mt16"/>
+						<h4>Customers</h4>
+						<table class="table table-sm o_main_table">
+							<thead>
+								<tr>
+									<th name="th_name">Name</th>
+									<th name="th_phone">Phone</th>
+									<th name="th_email">Email</th>
+								</tr>
+							</thead>
+							<tbody>
+								<t t-foreach="doc.customer_ids" t-as="Customer">
+									<tr>
+										<td t-if="customer.name" name="td_name">
+											<span t-field="customer.name"/>
+										</td>
+										<td t-if="customer.phone" name="td_phone">
+											<span t-field="customer.phone"/>
+										</td>
+										<td t-if="customer.email" name="td_email">
+											<span t-field="customer.email"/>
+										</td>
+									</tr>
+								</t>
+							</tbody>
+
+						</table>
+					</div>
+				</t>
+			</t>
+		</t>
+
+	</templete>
+
+</odoo>
