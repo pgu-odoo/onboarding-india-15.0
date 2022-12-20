@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="rental_view_form">
+			<field name="name">libray.rental.form</field>
+			<field name="model">library.rental</field>
+			<field name="arch" type="xml">
+				<form string="order book">
+                    <sheet>
+                           <group>
+                           		<group>
+                           			<field name= "partner_id"/>
+                           		</group>
+                           		
+                           </group> 
+                    </sheet>
+                </form>
+			</field>
+		</record>
+</odoo>

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_school_library,school.library,model_school_library,base.group_user,1,1,1,1 
+
+access_school_library_order,school.library.order,model_school_library_order,base.group_user,1,1,1,1 
